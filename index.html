@@ -84,6 +84,18 @@ a{color:inherit;text-decoration:none}
 .ins-actions{display:flex;align-items:center;gap:8px;flex-shrink:0}
 .dl{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;color:var(--brand);border:1px solid #c9d8ea;background:#f4f8fc;border-radius:18px;padding:5px 13px;cursor:pointer;transition:.15s;white-space:nowrap}
 .dl:hover{background:#e6f0fa;border-color:var(--brand)}
+.dldoc{background:var(--brand);color:#fff;border-color:var(--brand);font-weight:600}
+.dldoc:hover{background:#0b3a63;color:#fff;border-color:#0b3a63}
+.dlm{position:relative;display:inline-block}
+.dlm summary{list-style:none;display:inline-flex;align-items:center;gap:5px}
+.dlm summary::-webkit-details-marker{display:none}
+.dlm .caret{font-size:10px;opacity:.85;transition:.15s}
+.dlm[open] .caret{transform:rotate(180deg)}
+.dlm-menu{position:absolute;right:0;top:calc(100% + 6px);z-index:60;min-width:228px;background:#fff;border:1px solid #dbe6f2;border-radius:12px;box-shadow:0 12px 32px rgba(12,42,74,.16);padding:6px;display:flex;flex-direction:column;gap:2px}
+.dlm-menu a{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 10px;border-radius:8px;color:#1c2b3a;font-size:12.5px;text-decoration:none}
+.dlm-menu a:hover{background:#eff5fb;color:var(--brand)}
+.dlm-menu a em{font-style:normal;font-size:11px;color:#8a9bb0;white-space:nowrap}
+@media (max-width:760px){.dlm-menu{right:auto;left:0}}
 .dl-pdf{font-size:11px;padding:4px 10px;color:#5c6c7c;border-color:#dfe6ee;background:#f6f8fa}
 .dl-pdf:hover{background:#eceff3;border-color:#b9c6d4;color:#33445a}
 .toggle{border:1px solid var(--line);background:#fff;color:var(--brand);border-radius:18px;padding:6px 16px;font-size:13px;cursor:pointer;white-space:nowrap;transition:.15s}
@@ -206,7 +218,7 @@ footer .copy{margin-top:18px;opacity:.55;font-size:12px}
   <div class="ins-title"><h3>中英人寿 <span class="ins-en">AVIVA-COFCO</span></h3>
   <div class="ins-meta"><span class="badge2" style="background:#0f4c81">中粮×英杰华</span><span class="tagchip">合资寿险</span></div></div>
   <div class="ins-actions"><a class="dl" href="posters/zhongying-intro.png" target="_blank" title="查看公司介绍海报（图片）">🖼 介绍海报</a>
-  <a class="dl" href="posters/zhongying-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a>
+  <a class="dl" href="posters/zhongying-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a><details class="dlm"><summary class="dl dldoc">⬇ 下载原文 <span class="caret">▾</span></summary><div class="dlm-menu"><a href="docs/zhongying-intro.pdf" download><span>公司介绍（PDF版）</span><em>4.4MB · PDF</em></a><a href="docs/zhongying-services.pdf" download><span>增值服务手册</span><em>6.7MB · PDF</em></a></div></details>
   <button class="toggle" onclick="toggleIns('L0')">展开详情 <span class="arr">▾</span></button></div>
 </div>
 <div class="ins-body" id="bodyL0">
@@ -219,7 +231,7 @@ footer .copy{margin-top:18px;opacity:.55;font-size:12px}
   <div class="ins-title"><h3>中意人寿 <span class="ins-en">GENERALI CHINA LIFE</span></h3>
   <div class="ins-meta"><span class="badge2" style="background:#8a1f2d">中石油×忠利</span><span class="tagchip">合资寿险</span></div></div>
   <div class="ins-actions"><a class="dl" href="posters/zhongyi-intro.png" target="_blank" title="查看公司介绍海报（图片）">🖼 介绍海报</a>
-  <a class="dl" href="posters/zhongyi-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a>
+  <a class="dl" href="posters/zhongyi-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a><details class="dlm"><summary class="dl dldoc">⬇ 下载原文 <span class="caret">▾</span></summary><div class="dlm-menu"><a href="docs/zhongyi-xingji.pdf" download><span>星级服务介绍（完整版）</span><em>3.6MB · PDF</em></a><a href="docs/zhongyi-intro.pdf" download><span>公司介绍</span><em>4.4MB · PDF</em></a><a href="docs/zhongyi-services.pdf" download><span>增值服务手册</span><em>10.6MB · PDF</em></a></div></details>
   <button class="toggle" onclick="toggleIns('L1')">展开详情 <span class="arr">▾</span></button></div>
 </div>
 <div class="ins-body" id="bodyL1">
@@ -232,7 +244,7 @@ footer .copy{margin-top:18px;opacity:.55;font-size:12px}
   <div class="ins-title"><h3>中荷人寿 <span class="ins-en">ING-BOB LIFE</span></h3>
   <div class="ins-meta"><span class="badge2" style="background:#c03a2b">北京银行×法国巴黎保险集团</span><span class="tagchip">合资寿险</span></div></div>
   <div class="ins-actions"><a class="dl" href="posters/zhonghe-intro.png" target="_blank" title="查看公司介绍海报（图片）">🖼 介绍海报</a>
-  <a class="dl" href="posters/zhonghe-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a>
+  <a class="dl" href="posters/zhonghe-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a><details class="dlm"><summary class="dl dldoc">⬇ 下载原文 <span class="caret">▾</span></summary><div class="dlm-menu"><a href="docs/zhonghe-hehu.pdf" download><span>客户服务手册</span><em>11.3MB · PDF</em></a><a href="docs/zhonghe-intro.pdf" download><span>公司介绍（PDF版）</span><em>0.2MB · PDF</em></a></div></details>
   <button class="toggle" onclick="toggleIns('L2')">展开详情 <span class="arr">▾</span></button></div>
 </div>
 <div class="ins-body" id="bodyL2">
@@ -245,7 +257,7 @@ footer .copy{margin-top:18px;opacity:.55;font-size:12px}
   <div class="ins-title"><h3>中邮人寿 <span class="ins-en">CHINA POST LIFE</span></h3>
   <div class="ins-meta"><span class="badge2" style="background:#0a6e4f">中国邮政</span><span class="tagchip">银行系寿险</span></div></div>
   <div class="ins-actions"><a class="dl" href="posters/zhongyou-intro.png" target="_blank" title="查看公司介绍海报（图片）">🖼 介绍海报</a>
-  <a class="dl" href="posters/zhongyou-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a>
+  <a class="dl" href="posters/zhongyou-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a><a class="dl dldoc" href="docs/zhongyou-services.pdf" download title="下载完整原文：增值服务手册（PDF版）（4.2MB）">⬇ 下载原文</a>
   <button class="toggle" onclick="toggleIns('L3')">展开详情 <span class="arr">▾</span></button></div>
 </div>
 <div class="ins-body" id="bodyL3">
@@ -258,7 +270,7 @@ footer .copy{margin-top:18px;opacity:.55;font-size:12px}
   <div class="ins-title"><h3>恒安标准人寿 <span class="ins-en">HENG AN STANDARD LIFE</span></h3>
   <div class="ins-meta"><span class="badge2" style="background:#2d5f8f">天津泰达×安本集团</span><span class="tagchip">合资寿险</span></div></div>
   <div class="ins-actions"><a class="dl" href="posters/hengan-intro.png" target="_blank" title="查看公司介绍海报（图片）">🖼 介绍海报</a>
-  <a class="dl" href="posters/hengan-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a>
+  <a class="dl" href="posters/hengan-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a><a class="dl dldoc" href="docs/hengan-intro.pdf" download title="下载完整原文：公司介绍（1.7MB）">⬇ 下载原文</a>
   <button class="toggle" onclick="toggleIns('L4')">展开详情 <span class="arr">▾</span></button></div>
 </div>
 <div class="ins-body" id="bodyL4">
@@ -271,7 +283,7 @@ footer .copy{margin-top:18px;opacity:.55;font-size:12px}
   <div class="ins-title"><h3>同方全球人寿 <span class="ins-en">AEGON-THTF</span></h3>
   <div class="ins-meta"><span class="badge2" style="background:#9e2a2b">同方×荷兰全球人寿</span><span class="tagchip">合资寿险</span></div></div>
   <div class="ins-actions"><a class="dl" href="posters/tongfangquanqiu-intro.png" target="_blank" title="查看公司介绍海报（图片）">🖼 介绍海报</a>
-  <a class="dl" href="posters/tongfangquanqiu-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a>
+  <a class="dl" href="posters/tongfangquanqiu-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a><details class="dlm"><summary class="dl dldoc">⬇ 下载原文 <span class="caret">▾</span></summary><div class="dlm-menu"><a href="docs/tongfangquanqiu-lvtong.pdf" download><span>旅通出行</span><em>10.9MB · PDF</em></a><a href="docs/tongfangquanqiu-quanplus.pdf" download><span>全PLUS服务</span><em>0.8MB · PDF</em></a></div></details>
   <button class="toggle" onclick="toggleIns('L5')">展开详情 <span class="arr">▾</span></button></div>
 </div>
 <div class="ins-body" id="bodyL5">
@@ -284,7 +296,7 @@ footer .copy{margin-top:18px;opacity:.55;font-size:12px}
   <div class="ins-title"><h3>陆家嘴国泰人寿 <span class="ins-en">CATHAY LIFELINK</span></h3>
   <div class="ins-meta"><span class="badge2" style="background:#a37b4c">陆家嘴×国泰人寿</span><span class="tagchip">两岸合资</span></div></div>
   <div class="ins-actions"><a class="dl" href="posters/lujiazui-intro.png" target="_blank" title="查看公司介绍海报（图片）">🖼 介绍海报</a>
-  <a class="dl" href="posters/lujiazui-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a>
+  <a class="dl" href="posters/lujiazui-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a><details class="dlm"><summary class="dl dldoc">⬇ 下载原文 <span class="caret">▾</span></summary><div class="dlm-menu"><a href="docs/lujiazui-libin.pdf" download><span>礼宾服务</span><em>10.4MB · PDF</em></a><a href="docs/lujiazui-zungui.pdf" download><span>尊贵服务</span><em>9.5MB · PDF</em></a><a href="docs/lujiazui-services.pdf" download><span>增值服务手册</span><em>2.9MB · PDF</em></a></div></details>
   <button class="toggle" onclick="toggleIns('L6')">展开详情 <span class="arr">▾</span></button></div>
 </div>
 <div class="ins-body" id="bodyL6">
@@ -297,7 +309,7 @@ footer .copy{margin-top:18px;opacity:.55;font-size:12px}
   <div class="ins-title"><h3>复星保德信人寿 <span class="ins-en">PRAMERICA FOSUN</span></h3>
   <div class="ins-meta"><span class="badge2" style="background:#1f4e9e">复星×美国保德信</span><span class="tagchip">合资寿险</span></div></div>
   <div class="ins-actions"><a class="dl" href="posters/fuxingbaoxin-intro.png" target="_blank" title="查看公司介绍海报（图片）">🖼 介绍海报</a>
-  <a class="dl" href="posters/fuxingbaoxin-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a>
+  <a class="dl" href="posters/fuxingbaoxin-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a><details class="dlm"><summary class="dl dldoc">⬇ 下载原文 <span class="caret">▾</span></summary><div class="dlm-menu"><a href="docs/fuxingbaoxin-huiyuan.pdf" download><span>会员权益手册</span><em>5.5MB · PDF</em></a><a href="docs/fuxingbaoxin-intro.pdf" download><span>公司介绍</span><em>7.1MB · PDF</em></a></div></details>
   <button class="toggle" onclick="toggleIns('L7')">展开详情 <span class="arr">▾</span></button></div>
 </div>
 <div class="ins-body" id="bodyL7">
@@ -310,7 +322,7 @@ footer .copy{margin-top:18px;opacity:.55;font-size:12px}
   <div class="ins-title"><h3>长城人寿 <span class="ins-en">GREATWALL LIFE</span></h3>
   <div class="ins-meta"><span class="badge2" style="background:#1d4e89">金融街集团</span><span class="tagchip">国有控股</span></div></div>
   <div class="ins-actions"><a class="dl" href="posters/changcheng-intro.png" target="_blank" title="查看公司介绍海报（图片）">🖼 介绍海报</a>
-  <a class="dl" href="posters/changcheng-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a>
+  <a class="dl" href="posters/changcheng-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a><details class="dlm"><summary class="dl dldoc">⬇ 下载原文 <span class="caret">▾</span></summary><div class="dlm-menu"><a href="docs/changcheng-intro.pdf" download><span>公司介绍（PDF版）</span><em>2.9MB · PDF</em></a><a href="docs/changcheng-liuxue.pdf" download><span>留学服务</span><em>6.3MB · PDF</em></a><a href="docs/changcheng-yunju.pdf" download><span>云居旅居</span><em>2.6MB · PDF</em></a></div></details>
   <button class="toggle" onclick="toggleIns('L8')">展开详情 <span class="arr">▾</span></button></div>
 </div>
 <div class="ins-body" id="bodyL8">
@@ -323,7 +335,7 @@ footer .copy{margin-top:18px;opacity:.55;font-size:12px}
   <div class="ins-title"><h3>光大永明·光大养老 <span class="ins-en">EGC ELDERLY CARE</span></h3>
   <div class="ins-meta"><span class="badge2" style="background:#7d4f8b">光大集团</span><span class="tagchip">央企康养</span></div></div>
   <div class="ins-actions"><a class="dl" href="posters/guangda-intro.png" target="_blank" title="查看公司介绍海报（图片）">🖼 介绍海报</a>
-  <a class="dl" href="posters/guangda-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a>
+  <a class="dl" href="posters/guangda-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a><a class="dl dldoc" href="docs/guangda-services.pdf" download title="下载完整原文：增值服务手册（8.6MB）">⬇ 下载原文</a>
   <button class="toggle" onclick="toggleIns('L9')">展开详情 <span class="arr">▾</span></button></div>
 </div>
 <div class="ins-body" id="bodyL9">
@@ -336,7 +348,7 @@ footer .copy{margin-top:18px;opacity:.55;font-size:12px}
   <div class="ins-title"><h3>阳光人寿 <span class="ins-en">SUNSHINE LIFE</span></h3>
   <div class="ins-meta"><span class="badge2" style="background:#c2451e">阳光保险集团</span><span class="tagchip">大型寿险</span></div></div>
   <div class="ins-actions"><a class="dl" href="posters/sunshine-intro.png" target="_blank" title="查看公司介绍海报（图片）">🖼 介绍海报</a>
-  <a class="dl" href="posters/sunshine-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a>
+  <a class="dl" href="posters/sunshine-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a><details class="dlm"><summary class="dl dldoc">⬇ 下载原文 <span class="caret">▾</span></summary><div class="dlm-menu"><a href="docs/sunshine-baiwen.pdf" download><span>客户百问（PDF版）</span><em>0.3MB · PDF</em></a><a href="docs/sunshine-jianjie.pdf" download><span>公司简介</span><em>5.6MB · PDF</em></a><a href="docs/sunshine-lvju.pdf" download><span>旅居服务</span><em>19.1MB · PDF</em></a></div></details>
   <button class="toggle" onclick="toggleIns('L10')">展开详情 <span class="arr">▾</span></button></div>
 </div>
 <div class="ins-body" id="bodyL10">
@@ -349,7 +361,7 @@ footer .copy{margin-top:18px;opacity:.55;font-size:12px}
   <div class="ins-title"><h3>华泰人寿 <span class="ins-en">HUATAI LIFE</span></h3>
   <div class="ins-meta"><span class="badge2" style="background:#14548c">安达保险集团(Chubb)</span><span class="tagchip">外资寿险</span></div></div>
   <div class="ins-actions"><a class="dl" href="posters/huatai-intro.png" target="_blank" title="查看公司介绍海报（图片）">🖼 介绍海报</a>
-  <a class="dl" href="posters/huatai-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a>
+  <a class="dl" href="posters/huatai-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a><details class="dlm"><summary class="dl dldoc">⬇ 下载原文 <span class="caret">▾</span></summary><div class="dlm-menu"><a href="docs/huatai-intro.pdf" download><span>公司介绍（PDF版）</span><em>4.3MB · PDF</em></a><a href="docs/huatai-services.pdf" download><span>增值服务手册</span><em>0.2MB · PDF</em></a></div></details>
   <button class="toggle" onclick="toggleIns('L11')">展开详情 <span class="arr">▾</span></button></div>
 </div>
 <div class="ins-body" id="bodyL11">
@@ -362,7 +374,7 @@ footer .copy{margin-top:18px;opacity:.55;font-size:12px}
   <div class="ins-title"><h3>瑞泰人寿 <span class="ins-en">RUITAI LIFE</span></h3>
   <div class="ins-meta"><span class="badge2" style="background:#5c7a99">国家能源×耆卫</span><span class="tagchip">合资寿险</span></div></div>
   <div class="ins-actions"><a class="dl" href="posters/ruitai-intro.png" target="_blank" title="查看公司介绍海报（图片）">🖼 介绍海报</a>
-  <a class="dl" href="posters/ruitai-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a>
+  <a class="dl" href="posters/ruitai-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a><a class="dl dldoc" href="docs/ruitai-lvtong.pdf" download title="下载完整原文：旅通出行（PDF版）（0.2MB）">⬇ 下载原文</a>
   <button class="toggle" onclick="toggleIns('L12')">展开详情 <span class="arr">▾</span></button></div>
 </div>
 <div class="ins-body" id="bodyL12">
@@ -375,7 +387,7 @@ footer .copy{margin-top:18px;opacity:.55;font-size:12px}
   <div class="ins-title"><h3>泰康人寿 <span class="ins-en">TAIKANG LIFE</span></h3>
   <div class="ins-meta"><span class="badge2" style="background:#b03030">泰康保险集团</span><span class="tagchip">大型寿险</span></div></div>
   <div class="ins-actions"><a class="dl" href="posters/taikang-intro.png" target="_blank" title="查看公司介绍海报（图片）">🖼 介绍海报</a>
-  <a class="dl" href="posters/taikang-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a>
+  <a class="dl" href="posters/taikang-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a><a class="dl dldoc" href="docs/taikang-services.pdf" download title="下载完整原文：增值服务手册（6.8MB）">⬇ 下载原文</a>
   <button class="toggle" onclick="toggleIns('L13')">展开详情 <span class="arr">▾</span></button></div>
 </div>
 <div class="ins-body" id="bodyL13">
@@ -388,7 +400,7 @@ footer .copy{margin-top:18px;opacity:.55;font-size:12px}
   <div class="ins-title"><h3>中华联合人寿 <span class="ins-en">CHINA UNITED LIFE</span></h3>
   <div class="ins-meta"><span class="badge2" style="background:#c2571a">中华保险集团</span><span class="tagchip">国有控股</span></div></div>
   <div class="ins-actions"><a class="dl" href="posters/zhonghua-intro.png" target="_blank" title="查看公司介绍海报（图片）">🖼 介绍海报</a>
-  <a class="dl" href="posters/zhonghua-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a>
+  <a class="dl" href="posters/zhonghua-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a><details class="dlm"><summary class="dl dldoc">⬇ 下载原文 <span class="caret">▾</span></summary><div class="dlm-menu"><a href="docs/zhonghua-intro.pdf" download><span>公司介绍</span><em>8.9MB · PDF</em></a><a href="docs/zhonghua-services.pdf" download><span>增值服务手册</span><em>1.9MB · PDF</em></a></div></details>
   <button class="toggle" onclick="toggleIns('L14')">展开详情 <span class="arr">▾</span></button></div>
 </div>
 <div class="ins-body" id="bodyL14">
@@ -401,7 +413,7 @@ footer .copy{margin-top:18px;opacity:.55;font-size:12px}
   <div class="ins-title"><h3>大家养老 <span class="ins-en">DJ OLD-AGE</span></h3>
   <div class="ins-meta"><span class="badge2" style="background:#33658a">大家保险集团</span><span class="tagchip">专业养老</span></div></div>
   <div class="ins-actions"><a class="dl" href="posters/dajia-intro.png" target="_blank" title="查看公司介绍海报（图片）">🖼 介绍海报</a>
-  <a class="dl" href="posters/dajia-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a>
+  <a class="dl" href="posters/dajia-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a><details class="dlm"><summary class="dl dldoc">⬇ 下载原文 <span class="caret">▾</span></summary><div class="dlm-menu"><a href="docs/dajia-intro.pdf" download><span>公司介绍</span><em>0.1MB · PDF</em></a><a href="docs/dajia-services.pdf" download><span>增值服务手册</span><em>4.5MB · PDF</em></a></div></details>
   <button class="toggle" onclick="toggleIns('L15')">展开详情 <span class="arr">▾</span></button></div>
 </div>
 <div class="ins-body" id="bodyL15">
@@ -414,7 +426,7 @@ footer .copy{margin-top:18px;opacity:.55;font-size:12px}
   <div class="ins-title"><h3>利安人寿 <span class="ins-en">LIAN LIFE</span></h3>
   <div class="ins-meta"><span class="badge2" style="background:#1f6f54">连客优体系</span><span class="tagchip">全国性寿险</span></div></div>
   <div class="ins-actions"><a class="dl" href="posters/lianshou-intro.png" target="_blank" title="查看公司介绍海报（图片）">🖼 介绍海报</a>
-  <a class="dl" href="posters/lianshou-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a>
+  <a class="dl" href="posters/lianshou-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a><a class="dl dldoc" href="docs/lianshou-services.pdf" download title="下载完整原文：增值服务手册（2.4MB）">⬇ 下载原文</a>
   <button class="toggle" onclick="toggleIns('L16')">展开详情 <span class="arr">▾</span></button></div>
 </div>
 <div class="ins-body" id="bodyL16">
@@ -427,7 +439,7 @@ footer .copy{margin-top:18px;opacity:.55;font-size:12px}
   <div class="ins-title"><h3>安联人寿 <span class="ins-en">ALLIANZ CHINA</span></h3>
   <div class="ins-meta"><span class="badge2" style="background:#0a3d7a">德国安联</span><span class="tagchip">外资寿险</span></div></div>
   <div class="ins-actions"><a class="dl" href="posters/allianz-intro.png" target="_blank" title="查看公司介绍海报（图片）">🖼 介绍海报</a>
-  <a class="dl" href="posters/allianz-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a>
+  <a class="dl" href="posters/allianz-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a><details class="dlm"><summary class="dl dldoc">⬇ 下载原文 <span class="caret">▾</span></summary><div class="dlm-menu"><a href="docs/allianz-services1.pdf" download><span>服务手册（一）</span><em>0.7MB · PDF</em></a><a href="docs/allianz-services2.pdf" download><span>服务手册（二）</span><em>0.1MB · PDF</em></a></div></details>
   <button class="toggle" onclick="toggleIns('L17')">展开详情 <span class="arr">▾</span></button></div>
 </div>
 <div class="ins-body" id="bodyL17">
@@ -440,7 +452,7 @@ footer .copy{margin-top:18px;opacity:.55;font-size:12px}
   <div class="ins-title"><h3>国华人寿 <span class="ins-en">GUOHUA LIFE</span></h3>
   <div class="ins-meta"><span class="badge2" style="background:#4a6fa5">国华悠享会</span><span class="tagchip">混合所有制</span></div></div>
   <div class="ins-actions"><a class="dl" href="posters/guohua-intro.png" target="_blank" title="查看公司介绍海报（图片）">🖼 介绍海报</a>
-  <a class="dl" href="posters/guohua-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a>
+  <a class="dl" href="posters/guohua-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a><details class="dlm"><summary class="dl dldoc">⬇ 下载原文 <span class="caret">▾</span></summary><div class="dlm-menu"><a href="docs/guohua-intro.pdf" download><span>公司介绍（PDF版）</span><em>2.0MB · PDF</em></a><a href="docs/guohua-services.pdf" download><span>增值服务手册（PDF版）</span><em>2.5MB · PDF</em></a></div></details>
   <button class="toggle" onclick="toggleIns('L18')">展开详情 <span class="arr">▾</span></button></div>
 </div>
 <div class="ins-body" id="bodyL18">
@@ -453,7 +465,7 @@ footer .copy{margin-top:18px;opacity:.55;font-size:12px}
   <div class="ins-title"><h3>幸福人寿 <span class="ins-en">HAPPY LIFE</span></h3>
   <div class="ins-meta"><span class="badge2" style="background:#9a4a7c">以房养老开创者</span><span class="tagchip">全国性寿险</span></div></div>
   <div class="ins-actions"><a class="dl" href="posters/xingfu-intro.png" target="_blank" title="查看公司介绍海报（图片）">🖼 介绍海报</a>
-  <a class="dl" href="posters/xingfu-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a>
+  <a class="dl" href="posters/xingfu-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a><a class="dl dldoc" href="docs/xingfu-intro.pdf" download title="下载完整原文：公司介绍（PDF版）（5.4MB）">⬇ 下载原文</a>
   <button class="toggle" onclick="toggleIns('L19')">展开详情 <span class="arr">▾</span></button></div>
 </div>
 <div class="ins-body" id="bodyL19">
@@ -466,7 +478,7 @@ footer .copy{margin-top:18px;opacity:.55;font-size:12px}
   <div class="ins-title"><h3>长生人寿 <span class="ins-en">GREAT WALL CHANGSHENG</span></h3>
   <div class="ins-meta"><span class="badge2" style="background:#5a6b7d">长城资产×日本生命</span><span class="tagchip">中日合资</span></div></div>
   <div class="ins-actions"><a class="dl" href="posters/changsheng-intro.png" target="_blank" title="查看公司介绍海报（图片）">🖼 介绍海报</a>
-  <a class="dl" href="posters/changsheng-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a>
+  <a class="dl" href="posters/changsheng-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a><a class="dl dldoc" href="docs/changsheng-intro.pdf" download title="下载完整原文：公司介绍（4.8MB）">⬇ 下载原文</a>
   <button class="toggle" onclick="toggleIns('L20')">展开详情 <span class="arr">▾</span></button></div>
 </div>
 <div class="ins-body" id="bodyL20">
@@ -479,7 +491,7 @@ footer .copy{margin-top:18px;opacity:.55;font-size:12px}
   <div class="ins-title"><h3>工银安盛人寿 <span class="ins-en">ICBC-AXA</span></h3>
   <div class="ins-meta"><span class="badge2" style="background:#7a1f2b">工行×安盛×五矿</span><span class="tagchip">银行系合资</span></div></div>
   <div class="ins-actions"><a class="dl" href="posters/icbc-axa-intro.png" target="_blank" title="查看公司介绍海报（图片）">🖼 介绍海报</a>
-  <a class="dl" href="posters/icbc-axa-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a>
+  <a class="dl" href="posters/icbc-axa-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a><a class="dl dldoc" href="docs/icbc-axa-services.pdf" download title="下载完整原文：增值服务手册（4.1MB）">⬇ 下载原文</a>
   <button class="toggle" onclick="toggleIns('L21')">展开详情 <span class="arr">▾</span></button></div>
 </div>
 <div class="ins-body" id="bodyL21">
@@ -492,7 +504,7 @@ footer .copy{margin-top:18px;opacity:.55;font-size:12px}
   <div class="ins-title"><h3>人民人寿（人保寿险） <span class="ins-en">PICC LIFE</span></h3>
   <div class="ins-meta"><span class="badge2" style="background:#d2002e">中国人民保险</span><span class="tagchip">国有寿险</span></div></div>
   <div class="ins-actions"><a class="dl" href="posters/renmin-intro.png" target="_blank" title="查看公司介绍海报（图片）">🖼 介绍海报</a>
-  <a class="dl" href="posters/renmin-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a>
+  <a class="dl" href="posters/renmin-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a><details class="dlm"><summary class="dl dldoc">⬇ 下载原文 <span class="caret">▾</span></summary><div class="dlm-menu"><a href="docs/renmin-intro.pdf" download><span>公司介绍</span><em>8.3MB · PDF</em></a><a href="docs/renmin-yanglao.pdf" download><span>养老服务（PDF版）</span><em>7.3MB · PDF</em></a><a href="docs/renmin-zengzhi.pdf" download><span>增值服务（PDF版）</span><em>0.6MB · PDF</em></a></div></details>
   <button class="toggle" onclick="toggleIns('L22')">展开详情 <span class="arr">▾</span></button></div>
 </div>
 <div class="ins-body" id="bodyL22">
@@ -505,7 +517,7 @@ footer .copy{margin-top:18px;opacity:.55;font-size:12px}
   <div class="ins-title"><h3>小康人寿 <span class="ins-en">XIAOKANG LIFE</span></h3>
   <div class="ins-meta"><span class="badge2" style="background:#4b6f44">小康之家</span><span class="tagchip">全国性寿险</span></div></div>
   <div class="ins-actions"><a class="dl" href="posters/xiaokang-intro.png" target="_blank" title="查看公司介绍海报（图片）">🖼 介绍海报</a>
-  <a class="dl" href="posters/xiaokang-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a>
+  <a class="dl" href="posters/xiaokang-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a><a class="dl dldoc" href="docs/xiaokang-manual.pdf" download title="下载完整原文：服务手册（PDF版）（4.9MB）">⬇ 下载原文</a>
   <button class="toggle" onclick="toggleIns('L23')">展开详情 <span class="arr">▾</span></button></div>
 </div>
 <div class="ins-body" id="bodyL23">
@@ -518,7 +530,7 @@ footer .copy{margin-top:18px;opacity:.55;font-size:12px}
   <div class="ins-title"><h3>招商仁和人寿 <span class="ins-en">CMRH LIFE</span></h3>
   <div class="ins-meta"><span class="badge2" style="background:#a63e1e">招商局×中国移动×中国航信</span><span class="tagchip">央企控股</span></div></div>
   <div class="ins-actions"><a class="dl" href="posters/zhaoshangrenhe-intro.png" target="_blank" title="查看公司介绍海报（图片）">🖼 介绍海报</a>
-  <a class="dl" href="posters/zhaoshangrenhe-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a>
+  <a class="dl" href="posters/zhaoshangrenhe-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a><details class="dlm"><summary class="dl dldoc">⬇ 下载原文 <span class="caret">▾</span></summary><div class="dlm-menu"><a href="docs/zhaoshangrenhe-intro.pdf" download><span>公司介绍（PDF版）</span><em>0.1MB · PDF</em></a><a href="docs/zhaoshangrenhe-vip.pdf" download><span>VIP服务</span><em>2.8MB · PDF</em></a></div></details>
   <button class="toggle" onclick="toggleIns('L24')">展开详情 <span class="arr">▾</span></button></div>
 </div>
 <div class="ins-body" id="bodyL24">
@@ -531,7 +543,7 @@ footer .copy{margin-top:18px;opacity:.55;font-size:12px}
   <div class="ins-title"><h3>太平养老 <span class="ins-en">TAIPING PENSION</span></h3>
   <div class="ins-meta"><span class="badge2" style="background:#0d5eaf">中国太平</span><span class="tagchip">央企养老</span></div></div>
   <div class="ins-actions"><a class="dl" href="posters/taipingyanglao-intro.png" target="_blank" title="查看公司介绍海报（图片）">🖼 介绍海报</a>
-  <a class="dl" href="posters/taipingyanglao-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a>
+  <a class="dl" href="posters/taipingyanglao-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a><details class="dlm"><summary class="dl dldoc">⬇ 下载原文 <span class="caret">▾</span></summary><div class="dlm-menu"><a href="docs/taipingyanglao-intro.pdf" download><span>公司介绍</span><em>6.9MB · PDF</em></a><a href="docs/taipingyanglao-lexiang.pdf" download><span>乐享服务</span><em>4.5MB · PDF</em></a></div></details>
   <button class="toggle" onclick="toggleIns('L25')">展开详情 <span class="arr">▾</span></button></div>
 </div>
 <div class="ins-body" id="bodyL25">
@@ -544,7 +556,7 @@ footer .copy{margin-top:18px;opacity:.55;font-size:12px}
   <div class="ins-title"><h3>大家人寿 <span class="ins-en">DAJIA LIFE</span></h3>
   <div class="ins-meta"><span class="badge2" style="background:#2c6e63">大家保险集团</span><span class="tagchip">大型寿险</span></div></div>
   <div class="ins-actions"><a class="dl" href="posters/dajiarenshou-intro.png" target="_blank" title="查看公司介绍海报（图片）">🖼 介绍海报</a>
-  <a class="dl" href="posters/dajiarenshou-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a>
+  <a class="dl" href="posters/dajiarenshou-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a><details class="dlm"><summary class="dl dldoc">⬇ 下载原文 <span class="caret">▾</span></summary><div class="dlm-menu"><a href="docs/dajiarenshou-tuiguang.pdf" download><span>推广资料（PDF版）</span><em>6.8MB · PDF</em></a><a href="docs/dajiarenshou-yanglao.pdf" download><span>养老服务</span><em>1.1MB · PDF</em></a></div></details>
   <button class="toggle" onclick="toggleIns('L26')">展开详情 <span class="arr">▾</span></button></div>
 </div>
 <div class="ins-body" id="bodyL26">
@@ -557,7 +569,7 @@ footer .copy{margin-top:18px;opacity:.55;font-size:12px}
   <div class="ins-title"><h3>英大泰和人寿 <span class="ins-en">YINGDA LIFE</span></h3>
   <div class="ins-meta"><span class="badge2" style="background:#2e7d4f">国家电网×美国万通</span><span class="tagchip">央企控股</span></div></div>
   <div class="ins-actions"><a class="dl" href="posters/yingda-intro.png" target="_blank" title="查看公司介绍海报（图片）">🖼 介绍海报</a>
-  <a class="dl" href="posters/yingda-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a>
+  <a class="dl" href="posters/yingda-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a><a class="dl dldoc" href="docs/yingda-intro.pdf" download title="下载完整原文：公司介绍（PDF版）（3.3MB）">⬇ 下载原文</a>
   <button class="toggle" onclick="toggleIns('L27')">展开详情 <span class="arr">▾</span></button></div>
 </div>
 <div class="ins-body" id="bodyL27">
@@ -570,7 +582,7 @@ footer .copy{margin-top:18px;opacity:.55;font-size:12px}
   <div class="ins-title"><h3>信泰人寿 <span class="ins-en">XINTAI LIFE</span></h3>
   <div class="ins-meta"><span class="badge2" style="background:#1f6f8f">物产中大集团</span><span class="tagchip">国资控股</span></div></div>
   <div class="ins-actions"><a class="dl" href="posters/xintai-intro.png" target="_blank" title="查看公司介绍海报（图片）">🖼 介绍海报</a>
-  <a class="dl" href="posters/xintai-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a>
+  <a class="dl" href="posters/xintai-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a><a class="dl dldoc" href="docs/xintai-intro.pdf" download title="下载完整原文：公司介绍（18.8MB）">⬇ 下载原文</a>
   <button class="toggle" onclick="toggleIns('L28')">展开详情 <span class="arr">▾</span></button></div>
 </div>
 <div class="ins-body" id="bodyL28">
@@ -583,7 +595,7 @@ footer .copy{margin-top:18px;opacity:.55;font-size:12px}
   <div class="ins-title"><h3>富泽人寿 <span class="ins-en">FUZE LIFE</span></h3>
   <div class="ins-meta"><span class="badge2" style="background:#7a5c2e">保险保障基金×人保资产</span><span class="tagchip">国有寿险</span></div></div>
   <div class="ins-actions"><a class="dl" href="posters/fuze-intro.png" target="_blank" title="查看公司介绍海报（图片）">🖼 介绍海报</a>
-  <a class="dl" href="posters/fuze-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a>
+  <a class="dl" href="posters/fuze-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a><a class="dl dldoc" href="docs/fuze-intro.pdf" download title="下载完整原文：公司介绍（PDF版）（1.5MB）">⬇ 下载原文</a>
   <button class="toggle" onclick="toggleIns('L29')">展开详情 <span class="arr">▾</span></button></div>
 </div>
 <div class="ins-body" id="bodyL29">
@@ -596,7 +608,7 @@ footer .copy{margin-top:18px;opacity:.55;font-size:12px}
   <div class="ins-title"><h3>珠江人寿 <span class="ins-en">PEARL RIVER LIFE</span></h3>
   <div class="ins-meta"><span class="badge2" style="background:#8a6d3b">珠江投资×广州金控</span><span class="tagchip">全国性寿险</span></div></div>
   <div class="ins-actions"><a class="dl" href="posters/zhujiang-intro.png" target="_blank" title="查看公司介绍海报（图片）">🖼 介绍海报</a>
-  <a class="dl" href="posters/zhujiang-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a>
+  <a class="dl" href="posters/zhujiang-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a><a class="dl dldoc" href="docs/zhujiang-intro.pdf" download title="下载完整原文：公司介绍（2.5MB）">⬇ 下载原文</a>
   <button class="toggle" onclick="toggleIns('L30')">展开详情 <span class="arr">▾</span></button></div>
 </div>
 <div class="ins-body" id="bodyL30">
@@ -609,7 +621,7 @@ footer .copy{margin-top:18px;opacity:.55;font-size:12px}
   <div class="ins-title"><h3>国宝人寿 <span class="ins-en">GUOBAO LIFE</span></h3>
   <div class="ins-meta"><span class="badge2" style="background:#9a3324">四川发展控股</span><span class="tagchip">国有寿险</span></div></div>
   <div class="ins-actions"><a class="dl" href="posters/guobao-intro.png" target="_blank" title="查看公司介绍海报（图片）">🖼 介绍海报</a>
-  <a class="dl" href="posters/guobao-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a>
+  <a class="dl" href="posters/guobao-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a><a class="dl dldoc" href="docs/guobao-intro.pdf" download title="下载完整原文：公司介绍（3.6MB）">⬇ 下载原文</a>
   <button class="toggle" onclick="toggleIns('L31')">展开详情 <span class="arr">▾</span></button></div>
 </div>
 <div class="ins-body" id="bodyL31">
@@ -622,7 +634,7 @@ footer .copy{margin-top:18px;opacity:.55;font-size:12px}
   <div class="ins-title"><h3>弘康人寿 <span class="ins-en">HONGKANG LIFE</span></h3>
   <div class="ins-meta"><span class="badge2" style="background:#4a7d5b">互联网保险先行者</span><span class="tagchip">互联网寿险</span></div></div>
   <div class="ins-actions"><a class="dl" href="posters/hongkang-intro.png" target="_blank" title="查看公司介绍海报（图片）">🖼 介绍海报</a>
-  <a class="dl" href="posters/hongkang-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a>
+  <a class="dl" href="posters/hongkang-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a><a class="dl dldoc" href="docs/hongkang-intro.pdf" download title="下载完整原文：公司介绍（2.4MB）">⬇ 下载原文</a>
   <button class="toggle" onclick="toggleIns('L32')">展开详情 <span class="arr">▾</span></button></div>
 </div>
 <div class="ins-body" id="bodyL32">
@@ -635,7 +647,7 @@ footer .copy{margin-top:18px;opacity:.55;font-size:12px}
   <div class="ins-title"><h3>鼎诚人寿 <span class="ins-en">DINGCHENG LIFE</span></h3>
   <div class="ins-meta"><span class="badge2" style="background:#6b4d8f">新光×融汇国资</span><span class="tagchip">合资寿险</span></div></div>
   <div class="ins-actions"><a class="dl" href="posters/dingcheng-intro.png" target="_blank" title="查看公司介绍海报（图片）">🖼 介绍海报</a>
-  <a class="dl" href="posters/dingcheng-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a>
+  <a class="dl" href="posters/dingcheng-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a><details class="dlm"><summary class="dl dldoc">⬇ 下载原文 <span class="caret">▾</span></summary><div class="dlm-menu"><a href="docs/dingcheng-intro.pdf" download><span>公司介绍（PDF版）</span><em>3.1MB · PDF</em></a><a href="docs/dingcheng-xintuo.pdf" download><span>保险金信托</span><em>1.7MB · PDF</em></a><a href="docs/dingcheng-yiyang.pdf" download><span>医养服务</span><em>4.5MB · PDF</em></a></div></details>
   <button class="toggle" onclick="toggleIns('L33')">展开详情 <span class="arr">▾</span></button></div>
 </div>
 <div class="ins-body" id="bodyL33">
@@ -648,7 +660,7 @@ footer .copy{margin-top:18px;opacity:.55;font-size:12px}
   <div class="ins-title"><h3>君龙人寿 <span class="ins-en">JUNLONG LIFE</span></h3>
   <div class="ins-meta"><span class="badge2" style="background:#c8862a">厦门建发×台湾人寿</span><span class="tagchip">两岸合资</span></div></div>
   <div class="ins-actions"><a class="dl" href="posters/junlong-intro.png" target="_blank" title="查看公司介绍海报（图片）">🖼 介绍海报</a>
-  <a class="dl" href="posters/junlong-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a>
+  <a class="dl" href="posters/junlong-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a><a class="dl dldoc" href="docs/junlong-intro.pdf" download title="下载完整原文：公司介绍（2.3MB）">⬇ 下载原文</a>
   <button class="toggle" onclick="toggleIns('L34')">展开详情 <span class="arr">▾</span></button></div>
 </div>
 <div class="ins-body" id="bodyL34">
@@ -661,7 +673,7 @@ footer .copy{margin-top:18px;opacity:.55;font-size:12px}
   <div class="ins-title"><h3>中信保诚人寿 <span class="ins-en">CITIC-PRUDENTIAL LIFE</span></h3>
   <div class="ins-meta"><span class="badge2" style="background:#0a3d6e">中信×英国保诚</span><span class="tagchip">合资寿险</span></div></div>
   <div class="ins-actions"><a class="dl" href="posters/zhongxinbaocheng-intro.png" target="_blank" title="查看公司介绍海报（图片）">🖼 介绍海报</a>
-  <a class="dl" href="posters/zhongxinbaocheng-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a>
+  <a class="dl" href="posters/zhongxinbaocheng-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a><a class="dl dldoc" href="docs/zhongxinbaocheng-zunxiang.pdf" download title="下载完整原文：尊享服务（13.7MB）">⬇ 下载原文</a>
   <button class="toggle" onclick="toggleIns('L35')">展开详情 <span class="arr">▾</span></button></div>
 </div>
 <div class="ins-body" id="bodyL35">
@@ -674,7 +686,7 @@ footer .copy{margin-top:18px;opacity:.55;font-size:12px}
   <div class="ins-title"><h3>中宏人寿 <span class="ins-en">MANULIFE-SINOCHAR</span></h3>
   <div class="ins-meta"><span class="badge2" style="background:#b5651d">宏利×中化</span><span class="tagchip">合资寿险</span></div></div>
   <div class="ins-actions"><a class="dl" href="posters/zhonghong-intro.png" target="_blank" title="查看公司介绍海报（图片）">🖼 介绍海报</a>
-  <a class="dl" href="posters/zhonghong-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a>
+  <a class="dl" href="posters/zhonghong-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a><a class="dl dldoc" href="docs/zhonghong-intro.pdf" download title="下载完整原文：公司介绍（0.8MB）">⬇ 下载原文</a>
   <button class="toggle" onclick="toggleIns('L36')">展开详情 <span class="arr">▾</span></button></div>
 </div>
 <div class="ins-body" id="bodyL36">
@@ -700,7 +712,7 @@ footer .copy{margin-top:18px;opacity:.55;font-size:12px}
   <div class="ins-title"><h3>太平洋健康保险 <span class="ins-en">CPIC HEALTH</span></h3>
   <div class="ins-meta"><span class="badge2" style="background:#0a5e9e">中国太保全资</span><span class="tagchip">专业健康险</span></div></div>
   <div class="ins-actions"><a class="dl" href="posters/taipingyangjiankang-intro.png" target="_blank" title="查看公司介绍海报（图片）">🖼 介绍海报</a>
-  <a class="dl" href="posters/taipingyangjiankang-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a>
+  <a class="dl" href="posters/taipingyangjiankang-services.png" target="_blank" title="查看增值服务海报（图片）">🖼 服务海报</a><a class="dl dldoc" href="docs/taipingyangjiankang-intro.pdf" download title="下载完整原文：公司介绍（2.8MB）">⬇ 下载原文</a>
   <button class="toggle" onclick="toggleIns('L38')">展开详情 <span class="arr">▾</span></button></div>
 </div>
 <div class="ins-body" id="bodyL38">
