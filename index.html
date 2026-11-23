@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>罗其 · 保司增长服务全景</title>
+<meta name="description" content="各保险公司介绍与增长服务全景：健康绿通、康养养老、旅居、贵宾权益、医疗险服务矩阵，一页读懂保单之外的价值。支持一键下载保司介绍海报与增值服务手册摘要。">
+<style>
+:root{
+  --ink:#14212f; --muted:#5f6f7f; --line:#e4e9ef; --bg:#f6f7f9; --card:#ffffff;
+  --navy:#0e2a47; --brand:#12467e; --gold:#b98a2f;
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:"PingFang SC","Microsoft YaHei","Segoe UI",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:74px}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.75;font-size:15px}
+a{color:inherit;text-decoration:none}
+::selection{background:#12467e22}
+
+/* ---------- hero ---------- */
+.hero{background:linear-gradient(135deg,#0a1f38 0%,#123a63 55%,#1d5a86 100%);color:#fff;padding:72px 20px 60px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(ellipse 60% 80% at 85% 10%,rgba(185,138,47,.18),transparent 60%),
+  radial-gradient(ellipse 50% 70% at 10% 90%,rgba(38,132,255,.15),transparent 60%)}
+.hero::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.05) 1px,transparent 1px);background-size:28px 28px}
+.hero .kicker{position:relative;font-size:12px;letter-spacing:6px;color:#d9b96a;margin-bottom:16px}
+.hero h1{position:relative;font-family:var(--serif);font-size:44px;font-weight:900;letter-spacing:4px;margin-bottom:14px}
+.hero .sub{position:relative;font-size:15px;color:#b9cbdd;max-width:640px;margin:0 auto 30px;line-height:1.9}
+.hero .rule{position:relative;width:64px;height:2px;background:linear-gradient(90deg,transparent,#d9b96a,transparent);margin:0 auto 30px}
+.stats{display:flex;gap:0;justify-content:center;position:relative;flex-wrap:wrap}
+.stat{padding:6px 34px;border-left:1px solid rgba(255,255,255,.18)}
+.stat:first-child{border-left:none}
+.stat b{font-family:var(--serif);font-size:26px;display:block;color:#fff}
+.stat span{font-size:12px;color:#9fb4c8;letter-spacing:1px}
+
+/* ---------- topbar ---------- */
+.topbar{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.topbar .bar{max-width:1280px;margin:0 auto;padding:10px 24px;display:flex;align-items:center;gap:16px}
+.brand{font-family:var(--serif);font-weight:900;font-size:17px;color:var(--navy);white-space:nowrap}
+.brand em{font-style:normal;color:var(--gold)}
+.brand small{font-weight:400;color:var(--muted);font-size:12px;font-family:var(--sans)}
+.search{flex:1;max-width:480px;position:relative}
+.search input{width:100%;padding:8px 16px 8px 36px;border:1px solid var(--line);border-radius:22px;font-size:14px;outline:none;background:#f1f4f7;transition:.2s}
+.search input:focus{border-color:var(--brand);background:#fff;box-shadow:0 0 0 3px #12467e1a}
+.search::before{content:"⌕";position:absolute;left:13px;top:50%;transform:translateY(-52%);color:var(--muted);font-size:16px}
+.expandall{margin-left:auto;border:1px solid var(--line);background:#fff;color:var(--brand);border-radius:20px;padding:6px 16px;font-size:13px;cursor:pointer;white-space:nowrap;transition:.15s}
+.expandall:hover{border-color:var(--brand);background:#f0f5fb}
+
+/* ---------- layout ---------- */
+.layout{max-width:1280px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:232px 1fr;gap:44px;align-items:start}
+.sidenav{position:sticky;top:66px;max-height:calc(100vh - 90px);overflow-y:auto;padding:26px 0 40px;scrollbar-width:thin}
+.sidenav::-webkit-scrollbar{width:4px}
+.sidenav::-webkit-scrollbar-thumb{background:#d5dce4;border-radius:4px}
+.nav-cap{font-size:12px;color:var(--muted);letter-spacing:2px;margin:18px 0 8px;font-weight:600}
+.nav-cap:first-child{margin-top:0}
+.navlink{display:flex;align-items:center;gap:9px;padding:6px 10px;border-radius:8px;font-size:13.5px;color:#3c4c5c;transition:.15s;border-left:2px solid transparent}
+.navlink i{width:8px;height:8px;border-radius:2px;flex-shrink:0}
+.navlink:hover{background:#eef2f6;color:var(--navy)}
+.navlink.active{background:#eef4fa;color:var(--brand);font-weight:600;border-left-color:var(--brand)}
+
+/* ---------- sections ---------- */
+.sec{padding-top:44px}
+.sec-head{display:flex;align-items:baseline;gap:14px;border-bottom:2px solid var(--navy);padding-bottom:12px;margin-bottom:8px}
+.sec-head .no{font-family:var(--serif);font-size:30px;font-weight:900;color:var(--gold);line-height:1}
+.sec-head h2{font-family:var(--serif);font-size:24px;color:var(--navy);letter-spacing:1px}
+.sec-head span{font-size:13px;color:var(--muted);margin-left:auto;text-align:right}
+.chips{display:none;gap:8px;overflow-x:auto;padding:12px 0 6px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{white-space:nowrap;background:#fff;border:1px solid var(--line);border-radius:18px;padding:5px 14px;font-size:13px;color:var(--muted);transition:.15s}
+.chip:hover{border-color:var(--brand);color:var(--brand)}
+
+/* ---------- insurer card ---------- */
+.insurer{margin:20px 0;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:0 1px 3px rgba(20,33,47,.05),0 8px 24px -18px rgba(20,33,47,.12);overflow:hidden;transition:box-shadow .2s}
+.insurer:hover{box-shadow:0 2px 6px rgba(20,33,47,.07),0 12px 32px -16px rgba(20,33,47,.18)}
+.ins-head{display:flex;align-items:center;gap:16px;padding:18px 24px}
+.ins-logo{width:50px;height:50px;border-radius:12px;color:#fff;font-family:var(--serif);font-size:23px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:inset 0 -8px 16px rgba(0,0,0,.12)}
+.ins-title{flex:1;min-width:0}
+.ins-title h3{font-family:var(--serif);font-size:21px;color:var(--navy);letter-spacing:.5px}
+.ins-en{font-size:11px;color:var(--muted);font-weight:400;letter-spacing:2px;margin-left:8px}
+.ins-meta{display:flex;gap:8px;margin-top:4px;flex-wrap:wrap}
+.badge2{font-size:12px;color:#fff;border-radius:10px;padding:2px 11px}
+.tagchip{font-size:12px;color:#4a5c6e;background:#eef2f6;border-radius:10px;padding:2px 11px}
+.ins-actions{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.dl{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;color:var(--brand);border:1px solid #c9d8ea;background:#f4f8fc;border-radius:18px;padding:5px 13px;cursor:pointer;transition:.15s;white-space:nowrap}
+.dl:hover{background:#e6f0fa;border-color:var(--brand)}
+.toggle{border:1px solid var(--line);background:#fff;color:var(--brand);border-radius:18px;padding:6px 16px;font-size:13px;cursor:pointer;white-space:nowrap;transition:.15s}
+.toggle:hover{background:#f0f5fb}
+.toggle .arr{display:inline-block;margin-left:5px;transition:transform .2s}
+.insurer.open .toggle .arr{transform:rotate(180deg)}
+.ins-body{display:none;padding:0 24px 24px;border-top:1px solid #eef1f4}
+.insurer.open .ins-body{display:grid;grid-template-columns:minmax(260px,1fr) minmax(0,1.7fr);gap:26px;padding-top:20px}
+.col-intro h4,.col-svc h4{font-size:13px;color:var(--muted);letter-spacing:3px;margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.col-intro h4::after,.col-svc h4::after{content:"";flex:1;height:1px;background:var(--line)}
+.intro-list{list-style:none;position:relative;padding-left:2px}
+.intro-list li{font-size:13.5px;padding:9px 0 9px 18px;position:relative;color:#33445a;border-bottom:1px dashed #e7ecf1}
+.intro-list li:last-child{border-bottom:0}
+.intro-list li::before{content:"";position:absolute;left:2px;top:17px;width:7px;height:7px;border-radius:50%;background:var(--gold)}
+.intro-list li::after{content:"";position:absolute;left:5px;top:0;bottom:0;width:1px;background:#eef1f4;z-index:-1}
+
+.group{margin-bottom:16px;background:#f8fafc;border:1px solid #e9eef3;border-radius:12px;padding:14px 16px}
+.group:last-child{margin-bottom:0}
+.group-cat{display:inline-block;font-size:12.5px;font-weight:700;border-radius:8px;padding:3px 13px;letter-spacing:1px}
+.gnote{font-size:12.5px;color:#8b7a4e;background:#fbf6e9;border-radius:8px;padding:6px 12px;margin-top:9px;line-height:1.7}
+.svc{padding:10px 2px 10px 0;border-bottom:1px dashed #e3e9ef}
+.svc:last-child{border-bottom:0;padding-bottom:2px}
+.svc-t{font-size:14.5px;font-weight:700;color:var(--ink);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.pill{font-size:11px;font-weight:500;color:#5c6c7c;background:#eceff3;border-radius:9px;padding:1px 9px;letter-spacing:.5px}
+.svc-d{font-size:13px;color:var(--muted);margin-top:4px;line-height:1.8}
+
+/* ---------- medical tables ---------- */
+.prods2{grid-column:1/-1;display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:14px}
+.prod2{background:#f8fafc;border:1px solid #e9eef3;border-radius:12px;padding:14px 16px}
+.prod2-h{font-size:14px;font-weight:700;color:var(--navy);border-bottom:1px solid var(--line);padding-bottom:8px;margin-bottom:8px;display:flex;justify-content:space-between}
+.prod2-h span{font-size:12px;color:var(--brand);font-weight:400}
+.mlist{list-style:none}
+.mlist li{font-size:12.5px;padding:4px 0 4px 14px;position:relative;border-bottom:1px dashed #e3e9ef;color:var(--muted)}
+.mlist li::before{content:"·";position:absolute;left:4px;color:var(--brand);font-weight:800}
+.mtable{width:100%;border-collapse:collapse;font-size:12px}
+.mtable th{text-align:left;font-size:11px;color:var(--muted);padding:4px 6px;border-bottom:2px solid var(--line)}
+.mtable td{padding:5px 6px;border-bottom:1px dashed #e3e9ef;vertical-align:top}
+.mn{width:34%;font-weight:600}
+.mv{width:16%;color:var(--brand);font-weight:700;white-space:pre-line}
+.md{color:var(--muted)}
+
+/* ---------- misc ---------- */
+.note{background:#fff8e6;border:1px solid #f0dfae;border-radius:12px;padding:14px 18px;font-size:13px;color:#8a6d1a;margin:30px 0;line-height:1.8}
+.hidden{display:none!important}
+#resultInfo{margin:14px 0;font-size:14px;color:var(--muted)}
+footer{background:var(--navy);color:#c3d3e2;margin-top:70px;padding:44px 24px 52px;font-size:13px}
+footer .fin{max-width:900px;margin:0 auto}
+footer h4{font-family:var(--serif);color:#fff;font-size:17px;margin-bottom:12px;letter-spacing:2px}
+footer p{margin-bottom:9px;opacity:.85;line-height:1.9}
+footer .copy{margin-top:18px;opacity:.55;font-size:12px}
+
+@media(max-width:1040px){
+  .layout{grid-template-columns:1fr;gap:0}
+  .sidenav{display:none}
+  .chips{display:flex}
+  .hero h1{font-size:32px}
+  .insurer.open .ins-body{grid-template-columns:1fr}
+  .ins-head{flex-wrap:wrap}
+  .ins-actions{width:100%;justify-content:flex-start}
+}
+@media print{.topbar,.sidenav,.toggle,.dl,.chips{display:none!important}.hero{padding:30px}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="kicker">CURATED GUIDE · 2026</div>
+  <h1>保司增长服务全景</h1>
+  <div class="rule"></div>
+  <p class="sub">公司介绍 × 增长服务 —— 健康绿通 · 康养养老 · 旅居 · 贵宾权益 · 教育传承<br>保单之外的价值，一页读懂；每家保司的介绍海报与服务手册摘要，点击即可下载。</p>
+  <div class="stats">
+    <div class="stat"><b>19</b><span>寿险·养老保司</span></div>
+    <div class="stat"><b>9</b><span>医疗险服务商</span></div>
+    <div class="stat"><b>28+</b><span>服务类别</span></div>
+    <div class="stat"><b>2026</b><span>最新资料</span></div>
+  </div>
+</header>
+
+<div class="topbar"><div class="bar">
+  <span class="brand">罗其<em>·</em>增长服务全景 <small>保单之外的价值</small></span>
+  <span class="search"><input id="q" type="search" placeholder="搜索保司或服务：陪诊 / 绿通 / 旅居 / 养老社区 / 信托 / 积分…"></span>
+  <button class="expandall" id="expandAll">全部展开</button>
+</div></div>
+
+<div class="layout">
+  <aside class="sidenav">
+    <div class="nav-cap">一 · 寿险与养老保司</div>
+    <a class="navlink" href="#L0"><i style="background:#0f4c81"></i>中英人寿</a><a class="navlink" href="#L1"><i style="background:#8a1f2d"></i>中意人寿</a><a class="navlink" href="#L2"><i style="background:#b03030"></i>泰康人寿</a><a class="navlink" href="#L3"><i style="background:#c2571a"></i>中华联合人寿</a><a class="navlink" href="#L4"><i style="background:#33658a"></i>大家养老</a><a class="navlink" href="#L5"><i style="background:#0a6e4f"></i>中邮人寿</a><a class="navlink" href="#L6"><i style="background:#7d4f8b"></i>光大永明·光大养老</a><a class="navlink" href="#L7"><i style="background:#1f6f54"></i>利安人寿</a><a class="navlink" href="#L8"><i style="background:#0a3d7a"></i>安联人寿</a><a class="navlink" href="#L9"><i style="background:#4a6fa5"></i>国华人寿</a><a class="navlink" href="#L10"><i style="background:#9a4a7c"></i>幸福人寿</a><a class="navlink" href="#L11"><i style="background:#5a6b7d"></i>长生人寿</a><a class="navlink" href="#L12"><i style="background:#7a1f2b"></i>工银安盛人寿</a><a class="navlink" href="#L13"><i style="background:#c2451e"></i>阳光人寿</a><a class="navlink" href="#L14"><i style="background:#c03a2b"></i>中荷人寿</a><a class="navlink" href="#L15"><i style="background:#1d4e89"></i>长城人寿</a><a class="navlink" href="#L16"><i style="background:#14548c"></i>华泰人寿</a><a class="navlink" href="#L17"><i style="background:#2d5f8f"></i>恒安标准人寿</a><a class="navlink" href="#L18"><i style="background:#1f4e9e"></i>复星保德信人寿</a>
+    <div class="nav-cap">二 · 医疗险服务商</div>
+    <a class="navlink" href="#M0"><i style="background:#0e7d68"></i>MSH 精准医药</a><a class="navlink" href="#M1"><i style="background:#0e7d68"></i>平安健康</a><a class="navlink" href="#M2"><i style="background:#0e7d68"></i>安盛（AXA）高端</a><a class="navlink" href="#M3"><i style="background:#0e7d68"></i>安盛（AXA）中端·百万</a><a class="navlink" href="#M4"><i style="background:#0e7d68"></i>复星联合健康</a><a class="navlink" href="#M5"><i style="background:#0e7d68"></i>众安保险</a><a class="navlink" href="#M6"><i style="background:#0e7d68"></i>招商信诺人寿</a><a class="navlink" href="#M7"><i style="background:#0e7d68"></i>京东安联财险</a><a class="navlink" href="#M8"><i style="background:#0e7d68"></i>中间带（Medilink）</a>
+  </aside>
+  <main>
+    <div id="resultInfo" class="hidden"></div>
+
+    <section class="sec" id="sec-life">
+      <div class="sec-head"><span class="no">壹</span><h2>寿险与养老保司</h2><span>公司介绍 + 增长服务<br>服务手册 / 康养 / 旅居 / 贵宾权益</span></div>
+      <div class="chips"><a class="chip" href="#L0">中英人寿</a><a class="chip" href="#L1">中意人寿</a><a class="chip" href="#L2">泰康人寿</a><a class="chip" href="#L3">中华联合人寿</a><a class="chip" href="#L4">大家养老</a><a class="chip" href="#L5">中邮人寿</a><a class="chip" href="#L6">光大永明·光大养老</a><a class="chip" href="#L7">利安人寿</a><a class="chip" href="#L8">安联人寿</a><a class="chip" href="#L9">国华人寿</a><a class="chip" href="#L10">幸福人寿</a><a class="chip" href="#L11">长生人寿</a><a class="chip" href="#L12">工银安盛人寿</a><a class="chip" href="#L13">阳光人寿</a><a class="chip" href="#L14">中荷人寿</a><a class="chip" href="#L15">长城人寿</a><a class="chip" href="#L16">华泰人寿</a><a class="chip" href="#L17">恒安标准人寿</a><a class="chip" href="#L18">复星保德信人寿</a></div>
+      <section class="insurer" data-kw="中英人寿AVIVA-COFCO合资寿险中粮×英杰华 健康绿通 体检·出行 紧急援助 康养养老 客户分层" id="L0">
+<div class="ins-head">
+  <div class="ins-logo" style="background:#0f4c81">中</div>
+  <div class="ins-title"><h3>中英人寿 <span class="ins-en">AVIVA-COFCO</span></h3>
+  <div class="ins-meta"><span class="badge2" style="background:#0f4c81">中粮×英杰华</span><span class="tagchip">合资寿险</span></div></div>
+  <div class="ins-actions"><a class="dl" href="posters/zhongying-intro.pdf" download title="下载公司介绍海报">⬇ 介绍海报</a>
+  <a class="dl" href="posters/zhongying-services.pdf" download title="下载增值服务摘要">⬇ 服务海报</a>
+  <button class="toggle" onclick="toggleIns('L0')">展开详情 <span class="arr">▾</span></button></div>
+</div>
+<div class="ins-body" id="bodyL0">
+  <div class="col-intro"><h4>公司介绍</h4><ul class="intro-list"><li>2003年1月1日开业，中粮资本与英国英杰华集团（330年保险经验）各持股50%，注册资本金29.5亿元</li><li>业务覆盖18个省市、80多个重点城市，规模与利润稳居合资寿险第一梯队</li><li>2026年一季度：综合偿付能力充足率250.77%，核心偿付能力充足率167.13%</li><li>连续39次获监管风险综合评级'A类'，新规下累计13次获评AAA</li></ul></div>
+  <div class="col-svc"><h4>增长服务</h4><div class="group"><div class="group-head"><span class="group-cat" style="color:#0e7d68;background:#0e7d681a;border-left:3px solid #0e7d68">健康绿通</span></div><div class="svc"><div class="svc-t">就医陪诊</div><div class="svc-d">银钻及以上客户可享，覆盖全国多家二甲以上医院，诊前提醒、就诊陪护、预约检查、取报告、复诊提醒全流程，单次不超过4小时</div></div><div class="svc"><div class="svc-t">对症预约</div><div class="svc-d">对号源紧张科室，专人按主诉病情协助选择对症医院和科室预约；银钻及以上客户，每服务周期与最多4位被保险人共享3次</div></div><div class="svc"><div class="svc-t">预约挂号</div><div class="svc-d">联合医疗健康平台提供在线预约挂号服务，覆盖全国主要医院</div></div><div class="svc"><div class="svc-t">健康咨询</div><div class="svc-d">线上健康咨询服务，日常疾病、用药、慢病管理指导</div></div></div><div class="group"><div class="group-head"><span class="group-cat" style="color:#a8791c;background:#a8791c1a;border-left:3px solid #a8791c">体检·出行</span></div><div class="svc"><div class="svc-t">尊享体检</div><div class="svc-d">臻钻/星钻/黑钻/金钻层级每年1次（与贵宾出行二选一），多部位恶性肿瘤早期筛查，三级医院高年资专家阅片，文字+语音报告+10分钟专家咨询</div></div><div class="svc"><div class="svc-t">体检优惠</div><div class="svc-d">全国知名体检机构套餐优惠购买，覆盖全国主要城市，官方微信直接预约</div></div><div class="svc"><div class="svc-t">贵宾出行</div><div class="svc-d">全球机场休息室+国内高铁站贵宾厅（龙腾出行），臻钻/星钻/黑钻每年4点、金钻2点，境外/国际出发1.5点/次、境内机场1点/次、高铁0.5点/次</div></div></div><div class="group"><div class="group-head"><span class="group-cat" style="color:#a8791c;background:#a8791c1a;border-left:3px solid #a8791c">紧急援助</span></div><div class="svc"><div class="svc-t">SOS全球紧急援助</div><div class="svc-d">旅行期间医疗援助、意外旅行协助，24小时热线400-650-5909；国内医疗援助11项/海外旅行医疗援助21项；金钻及以上客户援助限额最高20万美元</div></div><div class="svc"><div class="svc-t">SOS亲友共享</div><div class="svc-d">银钻及以上客户可推介三位亲友体验一年寰宇卡服务</div></div></div><div class="group"><div class="group-head"><span class="group-cat" style="color:#7c5cbf;background:#7c5cbf1a;border-left:3px solid #7c5cbf">康养养老</span></div><div class="svc"><div class="svc-t">康养'YOUNG'计划</div><div class="svc-d">为客户打造'自信、自尊、自立'的养老生活，提供康养服务权益体系，覆盖客户及家人</div></div></div><div class="group"><div class="group-head"><span class="group-cat" style="color:#5c6c7c;background:#5c6c7c1a;border-left:3px solid #5c6c7c">客户分层</span></div><div class="svc"><div class="svc-t">钻石五级会员体系</div><div class="svc-d">银钻→金钻→黑钻→星钻→臻钻，按个人年交化有效保费分级；团体保单另有金钻层级权益</div></div><div class="svc"><div class="svc-t">10E智能保单服务</div><div class="svc-d">i万家平台：智能核保（250余种疾病在线核保）、电子回执/回访、保单变更、英爱赔伴智慧理赔等保单全周期服务</div></div></div></div>
+</div></section>
+<section class="insurer" data-kw="中意人寿GENERALI CHINA LIFE合资寿险中石油×忠利 星级体系 健康关爱 出行保障 专属礼遇 养老生活 意管家·悦养老" id="L1">
+<div class="ins-head">
+  <div class="ins-logo" style="background:#8a1f2d">中</div>
+  <div class="ins-title"><h3>中意人寿 <span class="ins-en">GENERALI CHINA LIFE</span></h3>
+  <div class="ins-meta"><span class="badge2" style="background:#8a1f2d">中石油×忠利</span><span class="tagchip">合资寿险</span></div></div>
+  <div class="ins-actions"><a class="dl" href="posters/zhongyi-intro.pdf" download title="下载公司介绍海报">⬇ 介绍海报</a>
+  <a class="dl" href="posters/zhongyi-services.pdf" download title="下载增值服务摘要">⬇ 服务海报</a>
+  <button class="toggle" onclick="toggleIns('L1')">展开详情 <span class="arr">▾</span></button></div>
+</div>
+<div class="ins-body" id="bodyL1">
+  <div class="col-intro"><h4>公司介绍</h4><ul class="intro-list"><li>2002年2月成立，中国入世后首家合资保险公司，中国石油集团资本与意大利忠利集团（1883年创立）各持股50%</li><li>总部北京，16个省(区、市)设立分支机构，机构数量127家，合作银行39家、网点超7900个</li><li>截至2025年末：总资产2391亿元，累计保费收入超3000亿元，连续两年获评'寿险公司十强'</li><li>2013年成立中意资产管理公司，系行业首批合资保险资产管理公司</li></ul></div>
+  <div class="col-svc"><h4>增长服务</h4><div class="group"><div class="group-head"><span class="group-cat" style="color:#5c6c7c;background:#5c6c7c1a;border-left:3px solid #5c6c7c">星级体系</span></div><div class="gnote">《中意星级服务》（2026年6月版）：四大板块28项服务，买1年期及以上产品即成星级客户；服务周年为每年1月1日至12月31日</div><div class="svc"><div class="svc-t">1-7星分层标准</div><div class="svc-d">按投保人名下所有有效个人保单的'年化标准保费'之和：1星&lt;1万 / 2星1-3万 / 3星3-10万 / 4星10-30万 / 5星30-100万 / 6星100-200万 / 7星≥200万；保障型产品按期交×折标系数+趸交×折标系数，投连/万能按50%计入，追加保费×5%</div></div><div class="svc"><div class="svc-t">升降级规则</div><div class="svc-d">升级：犹豫期后立即升星，每日评定达标即时升级；降级：保单失效/退保/减保/减额缴清后第90天重评，第91天降星；名下无有效保单则星级置为无效</div></div><div class="svc"><div class="svc-t">服务项目阶梯</div><div class="svc-d">1星5项→2星7项→3星10项→4星15项→5星20项→6星23项→7星28项；一份保单双重服务：投保人享星级服务，被保险人同时享'意管家''悦养老'匹配权益</div></div></div><div class="group"><div class="group-head"><span class="group-cat" style="color:#5c6c7c;background:#5c6c7c1a;border-left:3px solid #5c6c7c">健康关爱</span></div><div class="svc"><div class="svc-t">健康咨询<span class="pill">1-7星</span><span class="pill">不限次</span></div><div class="svc-d">41万专业医生团队（52%为三甲医院医生），7×24小时在线一对一咨询、健康自查、历史咨询查询</div></div><div class="svc"><div class="svc-t">预约挂号<span class="pill">1-7星</span></div><div class="svc-d">连接全国23省1500余家医院；自助挂号（1-7星不限次）+门诊预约/转诊（2-7星3次/年，可指定医院科室、不可指定专家）</div></div><div class="svc"><div class="svc-t">就诊绿通<span class="pill">1-7星</span><span class="pill">1次/年</span><span class="pill">初诊/疑似轻中重症</span></div><div class="svc-d">覆盖30省140余城1900余家三甲医院：专职就医指导、门诊挂号、住院加急、陪诊（4小时/次）、检查加急</div></div><div class="svc"><div class="svc-t">照护服务<span class="pill">1-7星</span><span class="pill">本人及直系亲属</span></div><div class="svc-d">专业评估师团队+万名资深护理员；1星基础护理1天→7星全服务7天：护工院内陪护/上门，护士上门注射、PICC维护、造口换药、压疮换药、置换胃管尿管等</div></div><div class="svc"><div class="svc-t">国内二次诊疗<span class="pill">2-7星</span><span class="pill">1次/年</span></div><div class="svc-d">线上邀请国内权威专家视频/语音/书面二次诊疗意见</div></div><div class="svc"><div class="svc-t">国外二次诊疗<span class="pill">4-7星</span><span class="pill">1次/年</span></div><div class="svc-d">国外权威专家二诊（限美国、英国、日本专家）</div></div><div class="svc"><div class="svc-t">质子重离子治疗预约<span class="pill">3-7星</span><span class="pill">1次/年</span></div><div class="svc-d">确诊恶性肿瘤后协助预约上海质子重离子医院，首次专家门诊评估→检查→个性化诊疗方案（公司承担评估及预约费用，挂号/治疗费自理）</div></div><div class="svc"><div class="svc-t">MDT多学科会诊<span class="pill">3-7星</span><span class="pill">1次/年</span></div><div class="svc-d">多学科资深专家共同讨论制定个性化诊疗方案，适用于肿瘤、肾衰、心衰等复杂疾病</div></div><div class="svc"><div class="svc-t">住院垫付<span class="pill">3-7星</span><span class="pill">被保险人持有效重疾/医疗险</span></div><div class="svc-d">医疗费用紧张时垫付住院医疗费用，服务医院达6397家二级及以上公立医院</div></div><div class="svc"><div class="svc-t">海外就医<span class="pill">4-7星</span><span class="pill">1次/年</span></div><div class="svc-d">覆盖美国/英国/日本优质医疗资源：权威医院专家推荐、病历收集翻译、医院邀请函与费用预估、医疗签证辅助、医学陪同翻译（就医期间6次）、接送机等一站式安排</div></div><div class="svc"><div class="svc-t">心理咨询<span class="pill">5-7星</span><span class="pill">3次/年</span></div><div class="svc-d">压力缓解、情绪管理、婚姻家庭、亲子育儿、职涯发展等专业心理顾问咨询，50分钟/人次（工作日9-21点/周末10-18点）</div></div><div class="svc"><div class="svc-t">血压助手<span class="pill">5-7星</span><span class="pill">限申领1次</span></div><div class="svc-d">智能血压监测设备申领，方便日常血压管理</div></div><div class="svc"><div class="svc-t">专属陪诊<span class="pill">5星院内</span><span class="pill">6-7星门到门</span><span class="pill">1次/年</span></div><div class="svc-d">院内一对一陪诊（取号/缴费/检查预约+专业医疗指导）；6-7星升级门到门陪诊（家↔医院车辆接送+院内陪诊，同城普通轿车/SUV），覆盖近2000家医院、不限疾病类型（除传染/精神/心理/产科/急诊/整形/康复科）</div></div><div class="svc"><div class="svc-t">高端体检<span class="pill">6-7星</span><span class="pill">1次/年</span></div><div class="svc-d">全国知名三甲及私立医院高端体检套餐，28家体检机构（北京协和、广州和睦家、瑞金医院无锡分院、上海广慈纪念医院等），周末专场</div></div><div class="svc"><div class="svc-t">成人齿科<span class="pill">7星</span><span class="pill">1次/年</span></div><div class="svc-d">口腔基础检查+超声波洁牙+口腔全景片三项目套餐</div></div></div><div class="group"><div class="group-head"><span class="group-cat" style="color:#5c6c7c;background:#5c6c7c1a;border-left:3px solid #5c6c7c">出行保障</span></div><div class="svc"><div class="svc-t">道路救援<span class="pill">2-7星不限次</span></div><div class="svc-d">9座及以下私家车：50公里拖车、搭电、换胎、路边快修、困境救援、安全检测；5-7星另享代办年检/安全检测各1次/年</div></div><div class="svc"><div class="svc-t">机场/高铁贵宾休息室<span class="pill">4星2点/年</span><span class="pill">5-7星3点/年</span></div><div class="svc-d">'掌上中意'APP出示二维码即用；机场贵宾厅1点/次、高铁0.5点/次，每次2小时，可携伴不可转赠；另有'饭票'代金券抵扣</div></div><div class="svc"><div class="svc-t">全球紧急救援<span class="pill">4-7星</span><span class="pill">0-70周岁</span></div><div class="svc-d">SOS救援中心（40年经验、全球27个援助中心、4800名医疗专家、99种语言7×24）；国内医疗援助：紧急医疗转送最高650万元；国际援助：紧急医疗转送最高100万美元，含医疗转运回国、亲属探病住宿、未成年子女回国等</div></div></div><div class="group"><div class="group-head"><span class="group-cat" style="color:#5c6c7c;background:#5c6c7c1a;border-left:3px solid #5c6c7c">专属礼遇</span></div><div class="svc"><div class="svc-t">生日积分<span class="pill">1-7星</span></div><div class="svc-d">生日前后30天内'掌上中意'APP领取：1星100分→7星2000分，积分商城可兑换，2年有效</div></div><div class="svc"><div class="svc-t">法律咨询<span class="pill">4-7星</span><span class="pill">不限次</span></div><div class="svc-d">婚姻/继承/房产/证券/移民/财税等领域律师团队，电话咨询30分钟免费</div></div><div class="svc"><div class="svc-t">留学咨询<span class="pill">5-7星</span><span class="pill">不限次</span></div><div class="svc-d">学术导师来自TOP30名校，13000+成功名校申请经验，100000+院校数据库；留学规划、背景提升、全球名企实习、子女职业规划；名校直通车自付费享9折</div></div><div class="svc"><div class="svc-t">生日礼遇<span class="pill">5-7星</span><span class="pill">1瓶/年</span></div><div class="svc-d">忠利农业集团精选红酒（5星珍藏/6星巴尔贝拉/7星总统）</div></div><div class="svc"><div class="svc-t">米其林餐厅预订<span class="pill">6-7星</span><span class="pill">不限次</span></div><div class="svc-d">全球米其林/黑珍珠餐厅优先预订、主厨或经理问候、赠茶饮或伴手礼（餐费自理）</div></div><div class="svc"><div class="svc-t">高端酒店预订<span class="pill">6-7星</span><span class="pill">不限次</span></div><div class="svc-d">全球合作高端酒店优先预订、免费双早、提前入住/延迟退房，住3付2/住4付3等</div></div></div><div class="group"><div class="group-head"><span class="group-cat" style="color:#5c6c7c;background:#5c6c7c1a;border-left:3px solid #5c6c7c">养老生活</span></div><div class="gnote">7星专享，与直系亲属共享；康养评估/照护援助/居家改造分别于年满50/轻度失能/60周岁触发</div><div class="svc"><div class="svc-t">远程医疗<span class="pill">7星</span><span class="pill">6次/年</span></div><div class="svc-d">全科医生远程咨询（09:00-21:00，中英双语），日常疾病咨询、用药指导、体检报告解读、慢病管理</div></div><div class="svc"><div class="svc-t">康养评估<span class="pill">7星</span><span class="pill">年满50周岁</span></div><div class="svc-d">养老顾问咨询不限次+个性化评估（七大维度百余评估项）及养老服务推荐对接</div></div><div class="svc"><div class="svc-t">照护援助<span class="pill">7星</span><span class="pill">累计3次</span><span class="pill">轻度失能及以上</span></div><div class="svc-d">喘息服务（上门替代照护：助餐/助洁/助行/压疮预防）+日式上门助浴（移动式拼接浴缸，医养结合），覆盖北京/上海/苏州/宁波/泉州/青岛/成都/广州</div></div><div class="svc"><div class="svc-t">居家改造<span class="pill">7星</span><span class="pill">1次</span><span class="pill">年满60周岁</span></div><div class="svc-d">日常生活能力评估+早期认知症筛查+居家环境安全评估，出具风险预防方案，三套适老化设备自选一套配送安装</div></div></div><div class="group"><div class="group-head"><span class="group-cat" style="color:#5c6c7c;background:#5c6c7c1a;border-left:3px solid #5c6c7c">意管家·悦养老</span></div><div class="svc"><div class="svc-t">意管家健康管理</div><div class="svc-d">面向重疾险及关注健康客群：诊前诊中诊后全流程、从身体健康到心理健康多方位管家式健康管理，解决就医难、确诊难、治疗难、康复难</div></div><div class="svc"><div class="svc-t">悦养老康养服务</div><div class="svc-d">面向关注财富管理与养老规划客群：覆盖养老状态、从身心健康到环境适老多方位管家式养老服务</div></div><div class="svc"><div class="svc-t">申请路径</div><div class="svc-d">'掌上中意'APP（首页'我的服务'一键申请）/ 956156热线（家属代申请）/ 柜面（增值服务申请表）/ 代理人'掌e通'代申请</div></div></div></div>
+</div></section>
+<section class="insurer" data-kw="泰康人寿TAIKANG LIFE大型寿险泰康保险集团 贵宾权益 健康绿通 出行救援 高客私享" id="L2">
+<div class="ins-head">
+  <div class="ins-logo" style="background:#b03030">泰</div>
+  <div class="ins-title"><h3>泰康人寿 <span class="ins-en">TAIKANG LIFE</span></h3>
+  <div class="ins-meta"><span class="badge2" style="background:#b03030">泰康保险集团</span><span class="tagchip">大型寿险</span></div></div>
+  <div class="ins-actions"><a class="dl" href="posters/taikang-intro.pdf" download title="下载公司介绍海报">⬇ 介绍海报</a>
+  <a class="dl" href="posters/taikang-services.pdf" download title="下载增值服务摘要">⬇ 服务海报</a>
+  <button class="toggle" onclick="toggleIns('L2')">展开详情 <span class="arr">▾</span></button></div>
+</div>
+<div class="ins-body" id="bodyL2">
+  <div class="col-intro"><h4>公司介绍</h4><ul class="intro-list"><li>泰康保险集团旗下核心寿险子公司，全国36家分公司服务网络</li><li>自建医疗养老生态：泰康之家养老社区、自有医疗机构（仙林鼓楼医院、泰康同济武汉医院等）及泰康口腔</li></ul></div>
+  <div class="col-svc"><h4>增长服务</h4><div class="group"><div class="group-head"><span class="group-cat" style="color:#a8791c;background:#a8791c1a;border-left:3px solid #a8791c">贵宾权益</span></div><div class="svc"><div class="svc-t">贵宾三级卡体系</div><div class="svc-d">金卡（累计标保2万-5万）/铂金卡（5万-10万）/白金卡（10万-20万），按累计标准保费定级（10年期以上折算系数1）</div></div></div><div class="group"><div class="group-head"><span class="group-cat" style="color:#0e7d68;background:#0e7d681a;border-left:3px solid #0e7d68">健康绿通</span></div><div class="svc"><div class="svc-t">健康体检</div><div class="svc-d">全国200余城千余家门店；西医体检（心血管/肿瘤/综合套餐）、脑科筛查（携手冬雷脑科）、齿科体检（泰康口腔）——白金/铂金专享</div></div><div class="svc"><div class="svc-t">健康就诊协助</div><div class="svc-d">专家门诊（30日内同一医生不限次复诊）、线上专家（自费★），铂金客户泰医通服务</div></div><div class="svc"><div class="svc-t">重疾护航</div><div class="svc-d">专家门诊（30日内复诊）、检查加急、专家病房2次、术后关怀★、专家视频咨询★（铂金二选一：泰医通健康就诊/重疾护航）</div></div><div class="svc"><div class="svc-t">海外服务</div><div class="svc-d">海外二诊、海外就医（★自费）</div></div></div><div class="group"><div class="group-head"><span class="group-cat" style="color:#a8791c;background:#a8791c1a;border-left:3px solid #a8791c">出行救援</span></div><div class="svc"><div class="svc-t">出行保障</div><div class="svc-d">金卡航空+高铁各20万累计40万；铂金/白金卡家庭出行保障累计200万×5-8份</div></div><div class="svc"><div class="svc-t">紧急救援</div><div class="svc-d">国内紧急救援服务</div></div></div><div class="group"><div class="group-head"><span class="group-cat" style="color:#a8791c;background:#a8791c1a;border-left:3px solid #a8791c">高客私享</span></div><div class="svc"><div class="svc-t">私享服务</div><div class="svc-d">累计标保20万以上或投保'幸福有约'系列，升级对应等级私享服务（养老社区等泰康生态权益）</div></div></div></div>
+</div></section>
+<section class="insurer" data-kw="中华联合人寿CHINA UNITED LIFE国有控股中华保险集团 健康绿通 护理照护" id="L3">
+<div class="ins-head">
+  <div class="ins-logo" style="background:#c2571a">中</div>
+  <div class="ins-title"><h3>中华联合人寿 <span class="ins-en">CHINA UNITED LIFE</span></h3>
+  <div class="ins-meta"><span class="badge2" style="background:#c2571a">中华保险集团</span><span class="tagchip">国有控股</span></div></div>
+  <div class="ins-actions"><a class="dl" href="posters/zhonghua-intro.pdf" download title="下载公司介绍海报">⬇ 介绍海报</a>
+  <a class="dl" href="posters/zhonghua-services.pdf" download title="下载增值服务摘要">⬇ 服务海报</a>
+  <button class="toggle" onclick="toggleIns('L3')">展开详情 <span class="arr">▾</span></button></div>
+</div>
+<div class="ins-body" id="bodyL3">
+  <div class="col-intro"><h4>公司介绍</h4><ul class="intro-list"><li>2015年成立，全国唯一以'中华'冠名的国有控股保险集团（始创1986年）旗下寿险子公司</li><li>注册资本金41亿元，总部北京；截至2024年末资产总额373亿元</li><li>集团注册资本153.1亿元、资产总额1194.6亿元，营业网点超2900个，业务覆盖全国</li><li>股东含中国东方资产、辽宁成大、中国中车、富邦人寿等</li></ul></div>
+  <div class="col-svc"><h4>增长服务</h4><div class="group"><div class="group-head"><span class="group-cat" style="color:#0e7d68;background:#0e7d681a;border-left:3px solid #0e7d68">健康绿通</span></div><div class="svc"><div class="svc-t">重疾全程绿通（无门槛）<span class="pill">无门槛</span></div><div class="svc-d">就医陪诊3次/年（3个工作日内安排、单次4小时）+ 重疾门诊/住院/手术/检查绿通 + 重疾专案管理</div></div><div class="svc"><div class="svc-t">住院押金垫付<span class="pill">无门槛</span></div><div class="svc-d">住院押金垫付服务</div></div><div class="svc"><div class="svc-t">在线问诊<span class="pill">7×24小时</span><span class="pill">不限次</span></div><div class="svc-d">电话医生/图文问诊：全国230+三甲医院、41科室、3000余名主治级全科医生，7×24小时、25秒内接通、单次不低于20分钟；被保险人及其直系亲属不限次</div></div><div class="svc"><div class="svc-t">疾病绿通<span class="pill">年交保费≥10万</span></div><div class="svc-d">门诊绿通、住院绿通、手术绿通、院前120救护车、出院专车接送</div></div><div class="svc"><div class="svc-t">重疾绿通标准版<span class="pill">年交保费≥1万</span></div><div class="svc-d">就医陪诊+重疾门诊/住院/手术绿通</div></div></div><div class="group"><div class="group-head"><span class="group-cat" style="color:#0e7d68;background:#0e7d681a;border-left:3px solid #0e7d68">护理照护</span></div><div class="svc"><div class="svc-t">护理服务</div><div class="svc-d">住院护理计划、住院护工护理、出院协助、居家上门康护、居家康复指导；重疾险客户：健康护航特惠期累计保额≥20万/标准期≥30万；寿险客户：年交保费≥1万</div></div></div></div>
+</div></section>
+<section class="insurer" data-kw="大家养老DJ OLD-AGE专业养老大家保险集团 康养养老 医疗康复" id="L4">
+<div class="ins-head">
+  <div class="ins-logo" style="background:#33658a">大</div>
+  <div class="ins-title"><h3>大家养老 <span class="ins-en">DJ OLD-AGE</span></h3>
+  <div class="ins-meta"><span class="badge2" style="background:#33658a">大家保险集团</span><span class="tagchip">专业养老</span></div></div>
+  <div class="ins-actions"><a class="dl" href="posters/dajia-intro.pdf" download title="下载公司介绍海报">⬇ 介绍海报</a>
+  <a class="dl" href="posters/dajia-services.pdf" download title="下载增值服务摘要">⬇ 服务海报</a>
+  <button class="toggle" onclick="toggleIns('L4')">展开详情 <span class="arr">▾</span></button></div>
+</div>
+<div class="ins-body" id="bodyL4">
+  <div class="col-intro"><h4>公司介绍</h4><ul class="intro-list"><li>全国性养老保险公司，总部北京，注册资本金33亿元，国有控股</li><li>大家保险集团（中国保险保障基金98.23%+上汽+中石化）旗下，集团境内外总资产超万亿元</li><li>养老年金业务占比95%以上，形成'大富/大盈/大锦/大福/大成'五大年金产品系列</li><li>2024年荣获'最佳养老服务奖'；2025年会计投资收益率5.05%</li></ul></div>
+  <div class="col-svc"><h4>增长服务</h4><div class="group"><div class="group-head"><span class="group-cat" style="color:#7c5cbf;background:#7c5cbf1a;border-left:3px solid #7c5cbf">康养养老</span></div><div class="svc"><div class="svc-t">城心医养</div><div class="svc-d">'临近医疗、亲近子女、更近人间烟火'——主城区/核心区高品质养老社区，服务自理/半自理/失能/认知障碍长者，重点布局20座城心社区</div></div><div class="svc"><div class="svc-t">旅居疗养</div><div class="svc-d">旅游城市/名胜风景区社区，面向刚退休活力长者，'离红尘不远，在山水之间'</div></div><div class="svc"><div class="svc-t">居家安养</div><div class="svc-d">2025年推出'安护家'居家养老服务计划，智能科技+专业照护，把养老机构专业服务延伸到家中</div></div><div class="svc"><div class="svc-t">'金融+养老+医疗'闭环</div><div class="svc-d">覆盖全生命周期、全场景养老服务生态，打破传统三段式养老断层</div></div></div><div class="group"><div class="group-head"><span class="group-cat" style="color:#0e7d68;background:#0e7d681a;border-left:3px solid #0e7d68">医疗康复</span></div><div class="svc"><div class="svc-t">医疗康复服务体系</div><div class="svc-d">医疗大神在线问诊、顶级方案软硬加持、1+6一体化关怀照护，借鉴加拿大RC运营标准</div></div></div></div>
+</div></section>
+<section class="insurer" data-kw="中邮人寿CHINA POST LIFE银行系寿险中国邮政 康养养老" id="L5">
+<div class="ins-head">
+  <div class="ins-logo" style="background:#0a6e4f">中</div>
+  <div class="ins-title"><h3>中邮人寿 <span class="ins-en">CHINA POST LIFE</span></h3>
+  <div class="ins-meta"><span class="badge2" style="background:#0a6e4f">中国邮政</span><span class="tagchip">银行系寿险</span></div></div>
+  <div class="ins-actions"><a class="dl" href="posters/zhongyou-intro.pdf" download title="下载公司介绍海报">⬇ 介绍海报</a>
+  <a class="dl" href="posters/zhongyou-services.pdf" download title="下载增值服务摘要">⬇ 服务海报</a>
+  <button class="toggle" onclick="toggleIns('L5')">展开详情 <span class="arr">▾</span></button></div>
+</div>
+<div class="ins-body" id="bodyL5">
+  <div class="col-intro"><h4>公司介绍</h4><ul class="intro-list"><li>中邮保险康养事业部统筹'保险+康养'战略，从单一金融保障迈向覆盖全生命周期的健康养老综合服务商</li><li>构建健康驿站、居家适老化场景、机构长租样板间、旅居精品线四大服务场景</li></ul></div>
+  <div class="col-svc"><h4>增长服务</h4><div class="group"><div class="group-head"><span class="group-cat" style="color:#7c5cbf;background:#7c5cbf1a;border-left:3px solid #7c5cbf">康养养老</span></div><div class="svc"><div class="svc-t">康养服务模式</div><div class="svc-d">协同中信集团生态：租赁改造+委托中信养老运营，同时直签链接居家养老及旅居资源（轻资产模式，品质管控+资源灵活）</div></div><div class="svc"><div class="svc-t">康养服务体系</div><div class="svc-d">自建康养管家及营养师、康复师团队，专人预约服务，打通获客-养成-转化全链条</div></div></div></div>
+</div></section>
+<section class="insurer" data-kw="光大永明·光大养老EGC ELDERLY CARE央企康养光大集团 康养养老" id="L6">
+<div class="ins-head">
+  <div class="ins-logo" style="background:#7d4f8b">光</div>
+  <div class="ins-title"><h3>光大永明·光大养老 <span class="ins-en">EGC ELDERLY CARE</span></h3>
+  <div class="ins-meta"><span class="badge2" style="background:#7d4f8b">光大集团</span><span class="tagchip">央企康养</span></div></div>
+  <div class="ins-actions"><a class="dl" href="posters/guangda-intro.pdf" download title="下载公司介绍海报">⬇ 介绍海报</a>
+  <a class="dl" href="posters/guangda-services.pdf" download title="下载增值服务摘要">⬇ 服务海报</a>
+  <button class="toggle" onclick="toggleIns('L6')">展开详情 <span class="arr">▾</span></button></div>
+</div>
+<div class="ins-body" id="bodyL6">
+  <div class="col-intro"><h4>公司介绍</h4><ul class="intro-list"><li>依托中国光大集团（中管金融企业，财政部+中央汇金持股，总资产8万亿元，2022世界500强第210位）</li><li>光大养老已成为国内领先养老产业集团：39城布局、117家直管养老机构、120家居家站点、管理床位2.9万+、在住长者1.3万人</li><li>旗下光大汇晨养老、光大金夕延年、光大百龄帮三大直属公司；69家星级荣誉机构（三级以上63家）</li></ul></div>
+  <div class="col-svc"><h4>增长服务</h4><div class="group"><div class="group-head"><span class="group-cat" style="color:#7c5cbf;background:#7c5cbf1a;border-left:3px solid #7c5cbf">康养养老</span></div><div class="svc"><div class="svc-t">机构养老</div><div class="svc-d">养老院+护理院（医疗床位、医保可报，设内外科/康复/神经内科/心血管/呼吸/内分泌/肿瘤/中医等科室）+CCRC社区（泳池温泉、中西医诊所、理疗室等全配套）</div></div><div class="svc"><div class="svc-t">居家养老</div><div class="svc-d">117个居家网点（四川、重庆、杭州等地），面向高龄/独居/空巢老人的康、养、防、救服务平台</div></div><div class="svc"><div class="svc-t">旅居养老</div><div class="svc-d">覆盖京津冀、长三角、粤港澳、西南等区域的候鸟式旅居网络</div></div></div></div>
+</div></section>
+<section class="insurer" data-kw="利安人寿LIAN LIFE全国性寿险连客优体系 会员分级 健康绿通 康养旅居 生活礼遇" id="L7">
+<div class="ins-head">
+  <div class="ins-logo" style="background:#1f6f54">利</div>
+  <div class="ins-title"><h3>利安人寿 <span class="ins-en">LIAN LIFE</span></h3>
+  <div class="ins-meta"><span class="badge2" style="background:#1f6f54">连客优体系</span><span class="tagchip">全国性寿险</span></div></div>
+  <div class="ins-actions"><a class="dl" href="posters/lianshou-intro.pdf" download title="下载公司介绍海报">⬇ 介绍海报</a>
+  <a class="dl" href="posters/lianshou-services.pdf" download title="下载增值服务摘要">⬇ 服务海报</a>
+  <button class="toggle" onclick="toggleIns('L7')">展开详情 <span class="arr">▾</span></button></div>
+</div>
+<div class="ins-body" id="bodyL7">
+  <div class="col-intro"><h4>公司介绍</h4><ul class="intro-list"><li>2026版'连客优'增值服务体系，按年化标准保费六级会员制，权益可经'家庭圈'与家人共享</li></ul></div>
+  <div class="col-svc"><h4>增长服务</h4><div class="group"><div class="group-head"><span class="group-cat" style="color:#5c6c7c;background:#5c6c7c1a;border-left:3px solid #5c6c7c">会员分级</span></div><div class="svc"><div class="svc-t">六级会员</div><div class="svc-d">明珠（1万以下）/白银（1-3万）/黄金（3-10万）/铂金（10-20万）/钻石（20-50万）/皇冠（50-150万）/黑钻（150万以上），按年交保费×折算系数累计</div></div></div><div class="group"><div class="group-head"><span class="group-cat" style="color:#0e7d68;background:#0e7d681a;border-left:3px solid #0e7d68">健康绿通</span></div><div class="svc"><div class="svc-t">绿通协调</div><div class="svc-d">挂号协助（号源推荐/绿通）、直连医院就医协调/体检协调、重疾门诊/住院/手术/检查加急协调（均含陪诊）、就医陪诊</div></div><div class="svc"><div class="svc-t">视频医生</div><div class="svc-d">全科/专科/三甲专科医生视频咨询，国际MDT远程会诊（黄金级起2次起）</div></div><div class="svc"><div class="svc-t">照护上门</div><div class="svc-d">院后照护上门、护士上门（铂金级起）</div></div><div class="svc"><div class="svc-t">中医服务</div><div class="svc-d">中医体质测评、节气调理指南、二甲/三甲中医图文咨询、三甲中医线下预约</div></div><div class="svc"><div class="svc-t">药事服务</div><div class="svc-d">线上药房、特药专区</div></div></div><div class="group"><div class="group-head"><span class="group-cat" style="color:#2b7cbf;background:#2b7cbf1a;border-left:3px solid #2b7cbf">康养旅居</span></div><div class="svc"><div class="svc-t">旅居服务</div><div class="svc-d">旅居养老管家、邮轮旅居预定（钻石级起）</div></div><div class="svc"><div class="svc-t">养老三件套</div><div class="svc-d">养老商城、居家养老（居家安全评估/适老改造协调/养老辅具协调/智慧养老协调）、机构养老（咨询/即期入住协调）</div></div></div><div class="group"><div class="group-head"><span class="group-cat" style="color:#a8791c;background:#a8791c1a;border-left:3px solid #a8791c">生活礼遇</span></div><div class="svc"><div class="svc-t">出行与救援</div><div class="svc-d">高铁/机场贵宾厅服务、全球医疗救援、国际旅行援助、汽车道路救援</div></div><div class="svc"><div class="svc-t">教育与人文</div><div class="svc-d">留学支持/留学专案式服务、书香利安阅读权益、法税咨询（电话税务咨询）</div></div></div></div>
+</div></section>
+<section class="insurer" data-kw="安联人寿ALLIANZ CHINA外资寿险德国安联 健康绿通 会员俱乐部" id="L8">
+<div class="ins-head">
+  <div class="ins-logo" style="background:#0a3d7a">安</div>
+  <div class="ins-title"><h3>安联人寿 <span class="ins-en">ALLIANZ CHINA</span></h3>
+  <div class="ins-meta"><span class="badge2" style="background:#0a3d7a">德国安联</span><span class="tagchip">外资寿险</span></div></div>
+  <div class="ins-actions"><a class="dl" href="posters/allianz-intro.pdf" download title="下载公司介绍海报">⬇ 介绍海报</a>
+  <a class="dl" href="posters/allianz-services.pdf" download title="下载增值服务摘要">⬇ 服务海报</a>
+  <button class="toggle" onclick="toggleIns('L8')">展开详情 <span class="arr">▾</span></button></div>
+</div>
+<div class="ins-body" id="bodyL8">
+  <div class="col-intro"><h4>公司介绍</h4><ul class="intro-list"><li>德国安联集团（全球最大保险集团之一）成员公司，'携手安联 守护未来'</li><li>全链式健康管理：从呵护健康、管理疾病到助力康复全程守护</li></ul></div>
+  <div class="col-svc"><h4>增长服务</h4><div class="group"><div class="group-head"><span class="group-cat" style="color:#0e7d68;background:#0e7d681a;border-left:3px solid #0e7d68">健康绿通</span></div><div class="svc"><div class="svc-t">安康恒佑健康服务<span class="pill">图文问诊不限次</span></div><div class="svc-d">电话医生/图文问诊不限次、视频医生1次/保单年度、全球医学专家意见不限次、重疾绿通Plus（对症专家二次诊疗转诊/住院手术协调/陪诊/医后随访/专家复诊）、重疾MDT多学科会诊、病后营养及康复指导、欧洲转诊协助1次/保单期间</div></div></div><div class="group"><div class="group-head"><span class="group-cat" style="color:#a8791c;background:#a8791c1a;border-left:3px solid #a8791c">会员俱乐部</span></div><div class="svc"><div class="svc-t">五级俱乐部体系</div><div class="svc-d">按投保人累计资产分级：臻玉（≥5万）/铂金（≥100万）/黄钻（≥500万）/黑钻（≥1000万）/至臻（≥5000万），覆盖未来星少儿、追光者青年、私享家贵宾、颐康汇享老等俱乐部</div></div><div class="svc"><div class="svc-t">少儿权益</div><div class="svc-d">儿童生长发育测评、权威儿科专家电话咨询6次/年、和睦家少儿疫苗、留学医疗救援</div></div><div class="svc"><div class="svc-t">贵宾健康</div><div class="svc-d">三甲医生极速问诊、重疾门诊住院绿通、尊享/私立医院体检、免疫细胞储存服务（高等级存储20年）</div></div><div class="svc"><div class="svc-t">长者关怀</div><div class="svc-d">长者健康及生活管家、长者心理关怀、长者私人医生、护工到家/护士到家/出院陪护（按级别1-4次/年）</div></div><div class="svc"><div class="svc-t">全球礼遇</div><div class="svc-d">全球紧急医疗救援、欧洲转诊协助、一对一财税规划与金牌律师、意大利圣·菲利斯酒庄专享、圣·安德鲁斯老球场优先预订、安联球场拜仁体验之旅（顶级）</div></div></div></div>
+</div></section>
+<section class="insurer" data-kw="国华人寿GUOHUA LIFE混合所有制国华悠享会 积分权益 多元服务" id="L9">
+<div class="ins-head">
+  <div class="ins-logo" style="background:#4a6fa5">国</div>
+  <div class="ins-title"><h3>国华人寿 <span class="ins-en">GUOHUA LIFE</span></h3>
+  <div class="ins-meta"><span class="badge2" style="background:#4a6fa5">国华悠享会</span><span class="tagchip">混合所有制</span></div></div>
+  <div class="ins-actions"><a class="dl" href="posters/guohua-intro.pdf" download title="下载公司介绍海报">⬇ 介绍海报</a>
+  <a class="dl" href="posters/guohua-services.pdf" download title="下载增值服务摘要">⬇ 服务海报</a>
+  <button class="toggle" onclick="toggleIns('L9')">展开详情 <span class="arr">▾</span></button></div>
+</div>
+<div class="ins-body" id="bodyL9">
+  <div class="col-intro"><h4>公司介绍</h4><ul class="intro-list"><li>2007年11月成立，注册资本48.46亿元，总资产2812.67亿元，总部上海国华金融中心</li><li>18家省级分公司+91家中心支公司，年规模保费455.56亿元，年服务客户760万人</li><li>近十年（2013-2023）平均投资收益率6.21%、平均综合投资收益率6.78%；中国互联网保险先行者</li></ul></div>
+  <div class="col-svc"><h4>增长服务</h4><div class="group"><div class="group-head"><span class="group-cat" style="color:#c2571a;background:#c2571a1a;border-left:3px solid #c2571a">积分权益</span></div><div class="svc"><div class="svc-t">国华悠享会</div><div class="svc-d">积分=总保费约2%（按购买力折算），有效期2年；六大板块：家庭/女神/宝贝/长者/情感支持/玺传私享</div></div><div class="svc"><div class="svc-t">家庭医生<span class="pill">100积分</span></div><div class="svc-d">体检报告解读+私人家庭医生（图文+电话+视频），8:00-22:00，365天，可服务3名直系亲属；预约挂号覆盖2152家医院</div></div><div class="svc"><div class="svc-t">预约陪诊/代配药<span class="pill">300积分</span></div><div class="svc-d">全程陪诊（取号/导引/陪同检查/取药），老年慢病客户代配药</div></div><div class="svc"><div class="svc-t">住院护工/居家护理<span class="pill">300积分</span></div><div class="svc-d">一对一院内护工或居家护理2选1，单次8天7晚，不限既往症；护工覆盖2902家医院、居家护理覆盖249城</div></div><div class="svc"><div class="svc-t">高端体检与就医</div><div class="svc-d">指定医生就医协助15000分、美年VIP体检20000分、医生到府60000分、三甲医院高端体检100000分</div></div></div><div class="group"><div class="group-head"><span class="group-cat" style="color:#c2571a;background:#c2571a1a;border-left:3px solid #c2571a">多元服务</span></div><div class="svc"><div class="svc-t">国华悠健康VIP分级</div><div class="svc-d">黄金/铂金/钻石/尊享/至尊级（按年化标准保费8000元起分级），健康服务+法税服务+信托服务+教育及养老</div></div><div class="svc"><div class="svc-t">养老社区</div><div class="svc-d">合悦家入住权益（3000积分起）</div></div></div></div>
+</div></section>
+<section class="insurer" data-kw="幸福人寿HAPPY LIFE全国性寿险以房养老开创者 健康管理" id="L10">
+<div class="ins-head">
+  <div class="ins-logo" style="background:#9a4a7c">幸</div>
+  <div class="ins-title"><h3>幸福人寿 <span class="ins-en">HAPPY LIFE</span></h3>
+  <div class="ins-meta"><span class="badge2" style="background:#9a4a7c">以房养老开创者</span><span class="tagchip">全国性寿险</span></div></div>
+  <div class="ins-actions"><a class="dl" href="posters/xingfu-intro.pdf" download title="下载公司介绍海报">⬇ 介绍海报</a>
+  <a class="dl" href="posters/xingfu-services.pdf" download title="下载增值服务摘要">⬇ 服务海报</a>
+  <button class="toggle" onclick="toggleIns('L10')">展开详情 <span class="arr">▾</span></button></div>
+</div>
+<div class="ins-body" id="bodyL10">
+  <div class="col-intro"><h4>公司介绍</h4><ul class="intro-list"><li>2007年成立，总部北京，注册资本金101.3亿元（位居寿险公司前列），截至2025年末总资产1718.03亿元</li><li>22家分公司、200余家分支机构，服务上千万个人客户及近十万团体客户</li><li>开创住房反向抵押养老保险（以房养老）行业先河；愿景：打造卓越长青的精品公司</li></ul></div>
+  <div class="col-svc"><h4>增长服务</h4><div class="group"><div class="group-head"><span class="group-cat" style="color:#0e7d68;background:#0e7d681a;border-left:3px solid #0e7d68">健康管理</span></div><div class="svc"><div class="svc-t">健康管理全链陪伴</div><div class="svc-d">'至诚服务 守护如一'，提供覆盖全生命周期的保险保障与高品质健康服务</div></div></div></div>
+</div></section>
+<section class="insurer" data-kw="长生人寿GREAT WALL CHANGSHENG中日合资长城资产×日本生命 服务体系" id="L11">
+<div class="ins-head">
+  <div class="ins-logo" style="background:#5a6b7d">长</div>
+  <div class="ins-title"><h3>长生人寿 <span class="ins-en">GREAT WALL CHANGSHENG</span></h3>
+  <div class="ins-meta"><span class="badge2" style="background:#5a6b7d">长城资产×日本生命</span><span class="tagchip">中日合资</span></div></div>
+  <div class="ins-actions"><a class="dl" href="posters/changsheng-intro.pdf" download title="下载公司介绍海报">⬇ 介绍海报</a>
+  <a class="dl" href="posters/changsheng-services.pdf" download title="下载增值服务摘要">⬇ 服务海报</a>
+  <button class="toggle" onclick="toggleIns('L11')">展开详情 <span class="arr">▾</span></button></div>
+</div>
+<div class="ins-body" id="bodyL11">
+  <div class="col-intro"><h4>公司介绍</h4><ul class="intro-list"><li>2003年9月成立，总部上海；股东为中国长城资产管理股份有限公司、日本生命保险相互会社（1889年创立）、长城国富置业</li><li>注册资本金21.67亿元，中方控股；分支机构辐射上海、浙江、江苏、北京、四川、山东、河南</li><li>产品覆盖意外、医疗、疾病、子女教育、养老及财富管理全生命周期</li></ul></div>
+  <div class="col-svc"><h4>增长服务</h4><div class="group"><div class="group-head"><span class="group-cat" style="color:#5c6c7c;background:#5c6c7c1a;border-left:3px solid #5c6c7c">服务体系</span></div><div class="svc"><div class="svc-t">智慧服务</div><div class="svc-d">系统智能化、流程精简化、标准精细化，覆盖售前/售中/售后全周期的智慧服务体系</div></div></div></div>
+</div></section>
+<section class="insurer" data-kw="工银安盛人寿ICBC-AXA银行系合资工行×安盛×五矿 诊前健康咨询 诊中专案管理 诊后康复指导 国际健康管理 使用方式" id="L12">
+<div class="ins-head">
+  <div class="ins-logo" style="background:#7a1f2b">工</div>
+  <div class="ins-title"><h3>工银安盛人寿 <span class="ins-en">ICBC-AXA</span></h3>
+  <div class="ins-meta"><span class="badge2" style="background:#7a1f2b">工行×安盛×五矿</span><span class="tagchip">银行系合资</span></div></div>
+  <div class="ins-actions"><a class="dl" href="posters/icbc-axa-intro.pdf" download title="下载公司介绍海报">⬇ 介绍海报</a>
+  <a class="dl" href="posters/icbc-axa-services.pdf" download title="下载增值服务摘要">⬇ 服务海报</a>
+  <button class="toggle" onclick="toggleIns('L12')">展开详情 <span class="arr">▾</span></button></div>
+</div>
+<div class="ins-body" id="bodyL12">
+  <div class="col-intro"><h4>公司介绍</h4><ul class="intro-list"><li>由中国工商银行、法国安盛集团、中国五矿集团等实力股东合资组建，注册资本125.05亿元，总部上海</li><li>全国19家省级分公司、2家直属中心支公司和1家资产管理子公司</li><li>'御未来'增值服务体系：与适用重疾险产品配套，以'全链、跨境、专案'为特色，覆盖诊前健康咨询、诊中专案管理、诊后康复指导三大板块，并提供日/美/英国际医疗协助</li></ul></div>
+  <div class="col-svc"><h4>增长服务</h4><div class="group"><div class="group-head"><span class="group-cat" style="color:#0e7d68;background:#0e7d681a;border-left:3px solid #0e7d68">诊前健康咨询</span></div><div class="gnote">日常健康管理类，保单等待期满后即可使用</div><div class="svc"><div class="svc-t">健康教育宣导<span class="pill">不限次</span><span class="pill">不限保额</span></div><div class="svc-d">健康知识科普、疾病预防、营养运动等资讯与视频讲解</div></div><div class="svc"><div class="svc-t">AI智能医生<span class="pill">不限次</span></div><div class="svc-d">结合专业医疗数据库，提供智能分诊建议、中医智能咨询、健康管理建议，全天自助</div></div><div class="svc"><div class="svc-t">线上问诊及购药<span class="pill">不限次</span><span class="pill">7×24小时</span></div><div class="svc-d">全科医生7×24小时视频问诊，覆盖日常疾病/慢病管理/术后康复，提供处方药用药指导与购买路径；合作药店优先匹配附近配送，30分钟内可达（偏远地区物流约1-3天）</div></div><div class="svc"><div class="svc-t">专病早筛协调<span class="pill">1次/年</span><span class="pill">累计总保额＞30万</span></div><div class="svc-d">针对大脑、心脏、肺部、肝脏、消化系统等健康风险，提供多款专项疾病筛查项目，提升早期检出率</div></div></div><div class="group"><div class="group-head"><span class="group-cat" style="color:#0f4c81;background:#0f4c811a;border-left:3px solid #0f4c81">诊中专案管理</span></div><div class="gnote">由健管服务专员全流程跟进；部分项目按累计总保额分档（30万/60万），以官方权益表为准</div><div class="svc"><div class="svc-t">门诊预约协助及导诊陪诊<span class="pill">2次/年</span><span class="pill">疑似/确诊重疾·中症轻症</span></div><div class="svc-d">评估隶属科室→推荐医院→推荐副主任及以上专家→确认启动后5个工作日内完成预约→就诊当日全程陪诊（协助挂号付费、取化验单、取药），诊后医嘱要点提示（陪诊限时4小时，不可拆分）</div></div><div class="svc"><div class="svc-t">住院手术安排<span class="pill">1次/年</span><span class="pill">疑似或确诊重疾</span></div><div class="svc-d">提供住院单且确认启动后，7个工作日内协调安排住院；入院当日专员全程陪同办理手续</div></div><div class="svc"><div class="svc-t">国内第二诊疗意见<span class="pill">1次/年</span><span class="pill">疑似或确诊重疾</span></div><div class="svc-d">依据病历材料咨询该疾病擅长领域的副主任及以上专家，7个工作日内出具书面诊疗意见书</div></div><div class="svc"><div class="svc-t">国内多学科会诊<span class="pill">1次/年</span><span class="pill">确诊重疾</span></div><div class="svc-d">三甲医院多学科副主任及以上专家团队（至少3位专家，10个工作日内预约）共同讨论制定诊疗方案，本人或家属可现场参与并获书面报告</div></div><div class="svc"><div class="svc-t">门诊住院一体化<span class="pill">确诊重疾</span><span class="pill">累计总保额＞60万</span></div><div class="svc-d">一体化转诊住院：就医评估匹配专家（含线下私立医疗机构清单）→专家门诊看诊→多学科医疗协作→住院预约安排→出院协助，全周期专人对接</div></div><div class="svc"><div class="svc-t">PET/MR全身肿瘤筛查<span class="pill">1次/年</span><span class="pill">确诊重疾</span></div><div class="svc-d">PET/MR全身肿瘤筛查协调安排</div></div><div class="svc"><div class="svc-t">全球找药服务<span class="pill">确诊恶性肿瘤—重度</span></div><div class="svc-d">对接全球药品资源找药协调</div></div><div class="svc"><div class="svc-t">心理咨询服务<span class="pill">1次/年</span><span class="pill">确诊重疾</span></div><div class="svc-d">专业心理咨询服务</div></div><div class="svc"><div class="svc-t">检查加急服务<span class="pill">疑似或确诊重疾</span></div><div class="svc-d">医学检查加急协调</div></div><div class="svc"><div class="svc-t">电话回访<span class="pill">疑似或确诊重疾</span></div><div class="svc-d">专案服务电话回访关怀</div></div></div><div class="group"><div class="group-head"><span class="group-cat" style="color:#2b9d8f;background:#2b9d8f1a;border-left:3px solid #2b9d8f">诊后康复指导</span></div><div class="svc"><div class="svc-t">院后居家照护指导<span class="pill">出院60天内1次/年</span><span class="pill">确诊重疾</span></div><div class="svc-d">出院后居家照护专业指导，助力康复过渡</div></div></div><div class="group"><div class="group-head"><span class="group-cat" style="color:#33658a;background:#33658a1a;border-left:3px solid #33658a">国际健康管理</span></div><div class="gnote">日本/美国/英国三线国际医疗协助网络，含海外合作医疗机构列表</div><div class="svc"><div class="svc-t">海外导诊<span class="pill">1次/年</span><span class="pill">确诊重疾</span></div><div class="svc-d">海外就医导诊协调，匹配日本/美国/英国合作医疗机构</div></div><div class="svc"><div class="svc-t">海外第二诊疗意见<span class="pill">1次/年</span><span class="pill">确诊重疾</span></div><div class="svc-d">国际专家书面第二诊疗意见</div></div><div class="svc"><div class="svc-t">日本专家视频会诊安排<span class="pill">1次/年</span><span class="pill">确诊重疾</span></div><div class="svc-d">日本合作医疗专家视频会诊</div></div><div class="svc"><div class="svc-t">赴日就医安排<span class="pill">1次/年</span><span class="pill">确诊重疾</span></div><div class="svc-d">赴日就医转诊安排（日本合作医疗机构列表）</div></div><div class="svc"><div class="svc-t">中美远程多学科会诊安排<span class="pill">1次/年</span><span class="pill">确诊重疾</span></div><div class="svc-d">中美专家远程多学科会诊</div></div><div class="svc"><div class="svc-t">赴美就医转诊安排<span class="pill">1次/年</span><span class="pill">确诊重疾</span></div><div class="svc-d">赴美就医转诊（美国合作医疗机构列表）</div></div><div class="svc"><div class="svc-t">中英远程多学科会诊安排<span class="pill">1次/年</span><span class="pill">确诊重疾</span></div><div class="svc-d">中英专家远程多学科会诊</div></div><div class="svc"><div class="svc-t">赴英就医转诊安排<span class="pill">1次/年</span><span class="pill">确诊重疾</span></div><div class="svc-d">赴英就医转诊（英国合作医疗机构列表）</div></div></div><div class="group"><div class="group-head"><span class="group-cat" style="color:#5c6c7c;background:#5c6c7c1a;border-left:3px solid #5c6c7c">使用方式</span></div><div class="svc"><div class="svc-t">三种申请入口</div><div class="svc-d">微信小程序'工银安盛人寿'（实名认证后'权益/我的权益'申请）/ '工银安盛人寿官微'公众号（客户服务→我的信息/增值服务→我的权益）/ '工银安盛人寿'APP（我的权益）。服务为本公司免费提供的增值服务，覆盖病种以保险合同约定为准</div></div></div></div>
+</div></section>
+<section class="insurer" data-kw="阳光人寿SUNSHINE LIFE大型寿险阳光保险集团 享健康 宜康养 育菁英 宣传承" id="L13">
+<div class="ins-head">
+  <div class="ins-logo" style="background:#c2451e">阳</div>
+  <div class="ins-title"><h3>阳光人寿 <span class="ins-en">SUNSHINE LIFE</span></h3>
+  <div class="ins-meta"><span class="badge2" style="background:#c2451e">阳光保险集团</span><span class="tagchip">大型寿险</span></div></div>
+  <div class="ins-actions"><a class="dl" href="posters/sunshine-intro.pdf" download title="下载公司介绍海报">⬇ 介绍海报</a>
+  <a class="dl" href="posters/sunshine-services.pdf" download title="下载增值服务摘要">⬇ 服务海报</a>
+  <button class="toggle" onclick="toggleIns('L13')">展开详情 <span class="arr">▾</span></button></div>
+</div>
+<div class="ins-body" id="bodyL13">
+  <div class="col-intro"><h4>公司介绍</h4><ul class="intro-list"><li>阳光保险集团2005年7月成立，2022年12月9日在香港联交所上市；旗下阳光人寿2007年12月17日成立，注册资本金43.52亿元</li><li>以'知心阳光'为服务理念——用心做产品、贴心做服务，让客户感受阳光的爱与责任</li><li>'遇阳光·享生活'增值服务体系四大板块：享健康 / 宜康养 / 育菁英 / 宣传承</li></ul></div>
+  <div class="col-svc"><h4>增长服务</h4><div class="group"><div class="group-head"><span class="group-cat" style="color:#0e7d68;background:#0e7d681a;border-left:3px solid #0e7d68">享健康</span></div><div class="gnote">直通30全程医学管理服务——优选全国知名三甲医院、临床专家全程参与、病案经理一对一服务</div><div class="svc"><div class="svc-t">门诊就医陪同<span class="pill">看病不难</span></div><div class="svc-d">罹患约定重疾时，提供全国千余家三甲医院副主任医师及以上门诊挂号协调，可指定医院和科室（不可指定医生）；协调取号、划价、取化验单、取药、付费全程陪同</div></div><div class="svc"><div class="svc-t">住院安排<span class="pill">住院不久</span></div><div class="svc-d">罹患重疾并经医生开具住院诊疗单后，健康服务人员全权代理办理住院过程中手续，与医院沟通安排尽快接受下一步诊疗</div></div><div class="svc"><div class="svc-t">手术安排<span class="pill">术前有旅策</span></div><div class="svc-d">与手术专业协调沟通具体手术时间，制定手术方案，术后根据患者情况出具康复方案</div></div><div class="svc"><div class="svc-t">专家会诊协调<span class="pill">治病不纠结</span><span class="pill">2个工作日内确认</span></div><div class="svc-d">快速预约专家会诊：专家资深、把关诊断结果、优化治疗方案，个性化定制治疗方案及协调问题、避免影响诊疗效果</div></div><div class="svc"><div class="svc-t">专家团队随访<span class="pill">出院后至少1次</span></div><div class="svc-d">出院后主动随访：主管医生团队的临床医生在住院资质核实齐全后5个工作日内确定随访时间和次数，每次电话随访时长视病情而定</div></div><div class="svc"><div class="svc-t">适用疾病范围</div><div class="svc-d">胰腺、乳腺、胃、结肠、直肠、肝脏、胆囊、膀胱、前列腺、淋巴瘤、胶质瘤、甲状腺、胆管、子宫宫颈癌、卵巢癌、喉癌、食管癌、肺癌等15种原发性恶性肿瘤之一，及急性心肌梗死、冠状动脉搭桥术（须开胸）、心脏瓣膜手术（需开胸）、严重原发性肺动脉高压（有心力衰竭表现）四类心血管重疾之一</div></div><div class="svc"><div class="svc-t">使用条件</div><div class="svc-d">保单有效期内首次发现并确诊（疑似诊断亦触发）；自首次确诊之日起保障期间为十年；应在国家卫健委及项目基础上于确诊后30天内申请，超期不能享受服务；指定专家为优选医网中副主任医师及以上职称</div></div></div><div class="group"><div class="group-head"><span class="group-cat" style="color:#7c5cbf;background:#7c5cbf1a;border-left:3px solid #7c5cbf">宜康养</span></div><div class="gnote">旅居 + 长居双线康养养老布局</div><div class="svc"><div class="svc-t">旅居养老</div><div class="svc-d">面向市场化优质CCRC康养社区及大型康养类综合项目，打造'旅''居''养'一体的康养旅居模式：养老养生、休闲度假、文化体验、人际交流；候鸟式（冬往南方过冬、夏往北方避暑）/田园式/孝亲式（三甲医院医药理+中医药养生膳食）/人文式多种主题</div></div><div class="svc"><div class="svc-t">旅居权益特点<span class="pill">最多6人</span><span class="pill">不限次数</span></div><div class="svc-d">签约即享（保单有效可申请行权，对已交保费没有限定）/适合养老（主要面向55-75岁活力长者，行权即可用）/全家可享（行权范围最多达6人）/不限次数（保单有效期内可多次行权）</div></div><div class="svc"><div class="svc-t">阳光人家·广州康养社区</div><div class="svc-d">广州从化'中国温泉之都'，总规划400亩；一期占地97.8亩、建筑面积15万㎡：温泉养生度假酒店219间+活力养老公寓541套+护理公寓248床，可服务1500余位长者；首创H+CCRC模式（健康/快乐/家庭/度假），设中医养生、温泉养生、食疗养生、运动康复、睡眠调理五大中心</div></div><div class="svc"><div class="svc-t">阳光人家·佘山康养社区</div><div class="svc-d">上海松江佘山，占地约226亩，绿化率约45%；花园洋房与别墅、活力公寓等高品质居住环境和一站式服务，89项适老服务；'五享'服务体系（享玩乐/享雅趣/享游学/享美食/享无忧）+'四悦'医护体系（悦医享/悦护理/悦照护/悦安心），从'身、心、灵'三个维度全方位服务</div></div><div class="svc"><div class="svc-t">十养享老体系</div><div class="svc-d">康养（无氧'氧'吧、长寿首选）/居养（户外惬意、眼养入门）/泉养（独创特色中医药泡汤养生体验）/医养（联通知名医疗资源）/食养（四季科学膳食、康养营养有自助）/护养（以人为本，与权威三甲医院级建设高度医疗护理中心）/乐养（会所超级1万平，10大畅玩主题空间）/农养（1000亩农场种植区）/学养（设置阳光学院等社区活力中心）等十大维度，覆盖养老全场景</div></div><div class="svc"><div class="svc-t">一站式管家</div><div class="svc-d">生活管家/膳食管家/健康管家/活动管家/医护管家五位一体——'一切从心出发，把阳光、健康注入生活'</div></div><div class="svc"><div class="svc-t">高端健管·免疫细胞储存</div><div class="svc-d">免疫细胞储存流程：可行性评估→外周血采集→免疫细胞分离制备并深低温保存（-196℃）；乙肝、丙肝、梅毒、艾滋病、巨细胞病毒感染等不可储存</div></div></div><div class="group"><div class="group-head"><span class="group-cat" style="color:#33658a;background:#33658a1a;border-left:3px solid #33658a">育菁英</span></div><div class="gnote">子女国际教育——'直通名校·不止于国际人才教育'</div><div class="svc"><div class="svc-t">子女国际教育项目</div><div class="svc-d">2021年阳光人寿与美世教育强强联手，为阳光高客提供专项服务，链接整合全球优质教育资源，陪伴孩子学业成长每一步</div></div><div class="svc"><div class="svc-t">美世教育实力</div><div class="svc-d">深耕国际教育领域20年（首创国内中国（教育部）留学服务中心背景）；与世界排名前600的院校达成合作，独家签约百余位海外名校招生官及在职教授；美国名校OFFER数量行业领先，2020年8月完成2亿元B轮融资</div></div><div class="svc"><div class="svc-t">'直通名校'五大计划<span class="pill">5大计划</span></div><div class="svc-d">菁英计划（英美顶尖名校）/百强名校计划（世界百强名校）/香港计划（香港地区名校）/日本计划（日本名校）/藤苗计划（低龄国际教育体验），覆盖幼儿园至研究生全学段</div></div><div class="svc"><div class="svc-t">客户五大独特权益</div><div class="svc-d">背景独特（5年深度合作打造教育特色标签）/产品独特（覆盖英美加新等主流英语留学国家及日本、中国香港等亚洲顶尖学府，小初高、本硕博全阶段）/权益独特（3-10年价格锁定权、分期支付权、私享赠送权、折扣优惠权）/服务独特（VIP待遇、顶级国际教育名师团队、海外名校背景提升规划与申请护航）</div></div></div><div class="group"><div class="group-head"><span class="group-cat" style="color:#8a5a44;background:#8a5a441a;border-left:3px solid #8a5a44">宣传承</span></div><div class="gnote">保险金信托——不止于家庭财富增值</div><div class="svc"><div class="svc-t">保险金信托</div><div class="svc-d">信托公司接受单一自然人委托，以人身保险合同的相关权利和对应利益作为信托财产，保险金按信托合同约定分配给信托受益人；兼顾人寿保险的确定性、杠杆性与家族信托的灵活性、独立性，实现'1+1&gt;2'</div></div><div class="svc"><div class="svc-t">信托四大功能<span class="pill">隔离·传承·税务·增值</span></div><div class="svc-d">完善的财产隔离与保护 / 灵活的财富传承规划 / 未雨绸缪的税务筹划 / 长期稳健的保值增值</div></div><div class="svc"><div class="svc-t">双模式支持</div><div class="svc-d">1.0模式（保单投保后变更受益人为信托公司，保险金赔付后按约定管理分配）/ 2.0模式（投保即对接信托，投保人/被保险人/受益人架构更灵活），避免保单被作为遗产分割、或作为投保人财产被强制执行等风险</div></div></div></div>
+</div></section>
+<section class="insurer" data-kw="中荷人寿ING-BOB LIFE合资寿险北京银行×法国巴黎保险集团 康养养老" id="L14">
+<div class="ins-head">
+  <div class="ins-logo" style="background:#c03a2b">中</div>
+  <div class="ins-title"><h3>中荷人寿 <span class="ins-en">ING-BOB LIFE</span></h3>
+  <div class="ins-meta"><span class="badge2" style="background:#c03a2b">北京银行×法国巴黎保险集团</span><span class="tagchip">合资寿险</span></div></div>
+  <div class="ins-actions"><a class="dl" href="posters/zhonghe-intro.pdf" download title="下载公司介绍海报">⬇ 介绍海报</a>
+  <a class="dl" href="posters/zhonghe-services.pdf" download title="下载增值服务摘要">⬇ 服务海报</a>
+  <button class="toggle" onclick="toggleIns('L14')">展开详情 <span class="arr">▾</span></button></div>
+</div>
+<div class="ins-body" id="bodyL14">
+  <div class="col-intro"><h4>公司介绍</h4><ul class="intro-list"><li>北京银行与法国巴黎保险集团（BNP Paribas Cardif）合资经营，中国加入WTO后首批获准成立的中外合资寿险公司</li><li>注册资本金35.7亿元，总资产规模723亿元（截至2024年12月末）</li><li>业务覆盖环渤海、中原、长三角经济圈：大连、北京、辽宁、山东、河南、安徽、天津、上海、江苏、河北等省市10家分公司、13家中心支公司共50家分支机构，服务69万客户</li><li>荣誉：年度'高质量发展保险公司''优秀服务保险公司''品质康养服务管理企业''中法合作伙伴奖'等</li></ul></div>
+  <div class="col-svc"><h4>增长服务</h4><div class="group"><div class="group-head"><span class="group-cat" style="color:#7c5cbf;background:#7c5cbf1a;border-left:3px solid #7c5cbf">康养养老</span></div><div class="gnote">'荷护健康2.0'康养服务体系（经代渠道）：适用于经代渠道在售预定利率1.75%分红型及2.0%普通型产品，按单张保单总保费30万/50万/100万分档，达标标准以首次承保时认定</div><div class="svc"><div class="svc-t">院内护工照护<span class="pill">3次/年</span><span class="pill">单次8天7夜</span><span class="pill">含既往症</span><span class="pill">服务期6年</span></div><div class="svc-d">因疾病或意外住院，安排服务网络城市内二级及以上公立医院专业护工1对1照护（生活照护/专业护理/管家服务）；投保人本人+5位直系亲属（出生28天-80周岁）绑定共享；1个工作日内响应、审核通过后48小时内安排持证护理员24小时陪护</div></div><div class="svc"><div class="svc-t">居家照护类服务<span class="pill">20次/年</span><span class="pill">服务期6年</span></div><div class="svc-d">投保人（可转赠）享上门照护类服务</div></div><div class="svc"><div class="svc-t">智慧养老设备<span class="pill">1次</span><span class="pill">服务期8年</span></div><div class="svc-d">智能健康设备4选1（跌倒守护/健康监测类），投保人（1+7位关联人）</div></div><div class="svc"><div class="svc-t">康养旅居<span class="pill">按档位</span></div><div class="svc-d">康养旅居体验，按档位享3天2晚或7天6晚（新单期缴规模保费≥30万）</div></div><div class="svc"><div class="svc-t">使用规则</div><div class="svc-d">保单缴费类型限年缴及趸缴（月缴不参与）；服务生效后30日等待期；权益限投保人及关联直系亲属，绑定后不可替换；可持有多张权益但服务期不延长、次数可叠加</div></div></div></div>
+</div></section>
+<section class="insurer" data-kw="长城人寿GREATWALL LIFE国有控股金融街集团 育菁英 康养养老" id="L15">
+<div class="ins-head">
+  <div class="ins-logo" style="background:#1d4e89">长</div>
+  <div class="ins-title"><h3>长城人寿 <span class="ins-en">GREATWALL LIFE</span></h3>
+  <div class="ins-meta"><span class="badge2" style="background:#1d4e89">金融街集团</span><span class="tagchip">国有控股</span></div></div>
+  <div class="ins-actions"><a class="dl" href="posters/changcheng-intro.pdf" download title="下载公司介绍海报">⬇ 介绍海报</a>
+  <a class="dl" href="posters/changcheng-services.pdf" download title="下载增值服务摘要">⬇ 服务海报</a>
+  <button class="toggle" onclick="toggleIns('L15')">展开详情 <span class="arr">▾</span></button></div>
+</div>
+<div class="ins-body" id="bodyL15">
+  <div class="col-intro"><h4>公司介绍</h4><ul class="intro-list"><li>2005年成立的全国性寿险公司，北京市西城区国资委重要子企业，北京金融街投资（集团）旗下金融板块控股公司，总部北京</li><li>注册资本55.32亿元，总资产超800亿元；全国14家省级分公司、机构总数近230家；累计客户320万人</li><li>股东金融街集团总资产超2600亿元、年利税超百亿（'6+1'产业格局）</li><li>使命：'为亿万中国家庭构筑保险长城'；愿景：做最值得托付的健康财富管理合作伙伴</li></ul></div>
+  <div class="col-svc"><h4>增长服务</h4><div class="group"><div class="group-head"><span class="group-cat" style="color:#33658a;background:#33658a1a;border-left:3px solid #33658a">育菁英</span></div><div class="gnote">'曦乐·乐学'留学VIP服务（长城人寿×金融街留学）</div><div class="svc"><div class="svc-t">金融街留学高端服务<span class="pill">百强国企背书</span></div><div class="svc-d">金融街教育旗下高端留学品牌（金融街集团为总资产超2600亿的中国500强国企）：留学规划+背景提升+留学申请+海外求职推荐'全生态'服务，覆盖美国、英国、香港、新加坡、澳大利亚、加拿大</div></div><div class="svc"><div class="svc-t">计划体系</div><div class="svc-d">捷先计划 / 英联邦名校计划 / 英联邦QS前100计划 / UA奖学金计划 / 背景提升项目；与客户共同约定目标名校，将申请风险降至最低</div></div></div><div class="group"><div class="group-head"><span class="group-cat" style="color:#7c5cbf;background:#7c5cbf1a;border-left:3px solid #7c5cbf">康养养老</span></div><div class="gnote">'曦园·云居'居家养老服务（委托上海天与智慧养老服务平台）</div><div class="svc"><div class="svc-t">上门照护服务<span class="pill">专业照护</span></div><div class="svc-d">满足居家长者失能照料、失智护理及到家康复护理需求</div></div><div class="svc"><div class="svc-t">健康指标监护</div><div class="svc-d">体系化健康监测，帮助打造科学居家健康生活，医疗资源以备不时之需</div></div><div class="svc"><div class="svc-t">安全智能监控</div><div class="svc-d">360度智能守护体系：特征识别跌倒守护仪、燃气报警器、烟雾报警器、SOS双向通话、水浸报警器、人体活动感知仪等，异常情况及时报警通知管家和紧急联系人</div></div><div class="svc"><div class="svc-t">适老化改造</div><div class="svc-d">打造安全舒适居家环境，降低居家风险</div></div><div class="svc"><div class="svc-t">三档套餐</div><div class="svc-d">云居智能（智慧健康守护仪+SOS）/ 健康版 / 智享版套餐（智能设备组合+线上服务1年，产品总价值1305-4582元）</div></div></div></div>
+</div></section>
+<section class="insurer" data-kw="华泰人寿HUATAI LIFE外资寿险安达保险集团(Chubb) 会员分级 健康绿通 生活礼遇" id="L16">
+<div class="ins-head">
+  <div class="ins-logo" style="background:#14548c">华</div>
+  <div class="ins-title"><h3>华泰人寿 <span class="ins-en">HUATAI LIFE</span></h3>
+  <div class="ins-meta"><span class="badge2" style="background:#14548c">安达保险集团(Chubb)</span><span class="tagchip">外资寿险</span></div></div>
+  <div class="ins-actions"><a class="dl" href="posters/huatai-intro.pdf" download title="下载公司介绍海报">⬇ 介绍海报</a>
+  <a class="dl" href="posters/huatai-services.pdf" download title="下载增值服务摘要">⬇ 服务海报</a>
+  <button class="toggle" onclick="toggleIns('L16')">展开详情 <span class="arr">▾</span></button></div>
+</div>
+<div class="ins-body" id="bodyL16">
+  <div class="col-intro"><h4>公司介绍</h4><ul class="intro-list"><li>华泰保险集团旗下寿险子公司，2005年正式营业，注册资本金43.125亿元，总资产超676亿元，全国21家省级分公司</li><li>实际控制人为安达保险集团（Chubb Limited）：1792年起源、233年历史，全球保险业市值排名第三；伯克希尔·哈撒韦唯一保险业重仓股</li><li>连续14个季度风险综合评级A类以上（其中7次AA）；综合偿付能力充足率216.94%、核心174.76%；华泰保险集团连续盈利29年</li><li>华泰保险集团与国之重器：国产大飞机资金支持（一期150亿+二期超300亿）、50余颗卫星在轨保险、港珠澳大桥共保体、辽宁舰拖航险独家承保、马首铜像回国承保、首创淘宝运费险</li></ul></div>
+  <div class="col-svc"><h4>增长服务</h4><div class="group"><div class="group-head"><span class="group-cat" style="color:#5c6c7c;background:#5c6c7c1a;border-left:3px solid #5c6c7c">会员分级</span></div><div class="gnote">按年化标准保费六级：白银（4千-2万）/黄金（2-5万）/白金（5-10万）/钻石（10-30万）/宝石（30-50万）/至尊（≥50万）；趸交按10%折算，缴费年限≤10年按年限比例折算</div><div class="svc"><div class="svc-t">任选组合制</div><div class="svc-d">各级会员按级别开放服务'任选3-5项'组合：至尊可任选五项，宝石/钻石任选四项/三项，具体以官方权益表为准</div></div></div><div class="group"><div class="group-head"><span class="group-cat" style="color:#0e7d68;background:#0e7d681a;border-left:3px solid #0e7d68">健康绿通</span></div><div class="svc"><div class="svc-t">特需专家问诊<span class="pill">1次/年</span><span class="pill">95509申请</span></div><div class="svc-d">二级（含）以上公立医院确诊重疾后，预约国内顶级专家一对一视频问诊（30分钟/次）</div></div><div class="svc"><div class="svc-t">甄选贵宾体检<span class="pill">按级别任选</span></div><div class="svc-d">贵宾体检服务</div></div><div class="svc"><div class="svc-t">在线问诊/视频问诊购药<span class="pill">10分钟响应</span></div><div class="svc-d">5年以上临床经验注册执业医师，互联网医院日常疾病咨询、慢病管理、线上复诊、处方开具、便捷购药；'华泰人寿微服务'申请</div></div><div class="svc"><div class="svc-t">私人电话医生<span class="pill">4008185050</span></div><div class="svc-d">医疗健康信息24小时电话咨询</div></div><div class="svc"><div class="svc-t">贵宾绿通/紧急救援<span class="pill">白金级起</span></div><div class="svc-d">贵宾绿通白金级起；紧急救援（可与航行无忧意外险组合任选）</div></div></div><div class="group"><div class="group-head"><span class="group-cat" style="color:#a8791c;background:#a8791c1a;border-left:3px solid #a8791c">生活礼遇</span></div><div class="svc"><div class="svc-t">航行无忧意外险<span class="pill">按级别</span></div><div class="svc-d">年度航空意外保障（100万/200万/500万保额按级别）</div></div><div class="svc"><div class="svc-t">娱乐生活礼包<span class="pill">按级别任选</span></div><div class="svc-d">全娱通月/季卡（爱奇艺、优酷、腾讯视频、芒果TV、QQ音乐、网易云、喜马拉雅、keep等11平台任选）、全国景点门票季/年卡、鲜花或蛋糕</div></div><div class="svc"><div class="svc-t">居家服务<span class="pill">宝石/钻石级</span></div><div class="svc-d">家电清洗（五选一）、家政服务（3小时/次）</div></div><div class="svc"><div class="svc-t">出行与法税<span class="pill">按级别任选</span></div><div class="svc-d">高铁、机场贵宾厅；法税咨询</div></div></div></div>
+</div></section>
+<section class="insurer" data-kw="恒安标准人寿HENG AN STANDARD LIFE合资寿险天津泰达×安本集团 服务体系" id="L17">
+<div class="ins-head">
+  <div class="ins-logo" style="background:#2d5f8f">恒</div>
+  <div class="ins-title"><h3>恒安标准人寿 <span class="ins-en">HENG AN STANDARD LIFE</span></h3>
+  <div class="ins-meta"><span class="badge2" style="background:#2d5f8f">天津泰达×安本集团</span><span class="tagchip">合资寿险</span></div></div>
+  <div class="ins-actions"><a class="dl" href="posters/hengan-intro.pdf" download title="下载公司介绍海报">⬇ 介绍海报</a>
+  <a class="dl" href="posters/hengan-services.pdf" download title="下载增值服务摘要">⬇ 服务海报</a>
+  <button class="toggle" onclick="toggleIns('L17')">展开详情 <span class="arr">▾</span></button></div>
+</div>
+<div class="ins-body" id="bodyL17">
+  <div class="col-intro"><h4>公司介绍</h4><ul class="intro-list"><li>中国唯一一家总部设在天津的寿险公司，中国注册资本金最高的合资人寿保险公司；2024年底注册资本金逾40.46亿元</li><li>2024年Q4综合偿付能力充足率259.1%；截至2024年Q4累计33次获分类监管A类评价，偿二代二期新规后连续12次获AAA类评价</li><li>连续5年获'稳健经营保险公司'称号（2020-2024《21世纪经济报道》），累计3次'年度高质量发展保险公司'</li><li>服务网络覆盖北京、天津、广东、辽宁、山东、青岛、江苏、四川、河南等80余个城市；团险累计服务企业客户6300余家，2023年天津养老金市场份额超60%</li></ul></div>
+  <div class="col-svc"><h4>增长服务</h4><div class="group"><div class="group-head"><span class="group-cat" style="color:#5c6c7c;background:#5c6c7c1a;border-left:3px solid #5c6c7c">服务体系</span></div><div class="gnote">个险增值服务手册暂缺，以下为运营服务亮点（欢迎补充个险权益资料）</div><div class="svc"><div class="svc-t">理赔时效领先<span class="pill">2个工作日结案</span></div><div class="svc-d">大客户理赔结案平均2个工作日（高于行业平均3-5个工作日）；医疗保险平均2个工作日结案；工作日服务响应平均30分钟内</div></div><div class="svc"><div class="svc-t">'恒安E企'团险SaaS<span class="pill">团险</span></div><div class="svc-d">一站式企业服务平台：可定制化HR驾驶舱、保全理赔数据直连、企业健康状况报告、HR专属账号全流程查看</div></div><div class="svc"><div class="svc-t">理赔体验</div><div class="svc-d">线上4步完成理赔：在线发起→拍照上传→审核赔付→赔款划拨（1-3个工作日）；重点案件全程跟踪、争议案件全程介入</div></div></div></div>
+</div></section>
+<section class="insurer" data-kw="复星保德信人寿PRAMERICA FOSUN合资寿险复星×美国保德信 贵宾权益" id="L18">
+<div class="ins-head">
+  <div class="ins-logo" style="background:#1f4e9e">复</div>
+  <div class="ins-title"><h3>复星保德信人寿 <span class="ins-en">PRAMERICA FOSUN</span></h3>
+  <div class="ins-meta"><span class="badge2" style="background:#1f4e9e">复星×美国保德信</span><span class="tagchip">合资寿险</span></div></div>
+  <div class="ins-actions"><a class="dl" href="posters/fuxingbaoxin-intro.pdf" download title="下载公司介绍海报">⬇ 介绍海报</a>
+  <a class="dl" href="posters/fuxingbaoxin-services.pdf" download title="下载增值服务摘要">⬇ 服务海报</a>
+  <button class="toggle" onclick="toggleIns('L18')">展开详情 <span class="arr">▾</span></button></div>
+</div>
+<div class="ins-body" id="bodyL18">
+  <div class="col-intro"><h4>公司介绍</h4><ul class="intro-list"><li>复星与美国保德信金融集团（纽交所：PRU，超150年历史，美国最大的人寿保险公司之一，管理资产1.41万亿美元）各持股50%，2012年9月成立，总部上海</li><li>注册资本金33.621亿元；复星总资产8349亿元（2023.6），深耕健康、快乐、富足、智造四大生态</li><li>使命：'守护你想要的未来'；与复星康养合作打造'保险+养老社区'服务模式</li><li>产品体系：财富保障/品质养老/身价保障/重疾保障/健康服务五大产品线（星无忧、星海、福寿、天天盈、星守护等系列）</li></ul></div>
+  <div class="col-svc"><h4>增长服务</h4><div class="group"><div class="group-head"><span class="group-cat" style="color:#a8791c;background:#a8791c1a;border-left:3px solid #a8791c">贵宾权益</span></div><div class="gnote">'臻星守护'VIP会员体系（2026版会员服务手册）：按投保人年化保费分六级——黄金/紫金/铂金/黄钻/蓝钻/黑钻；会员激活开卡绑定8位家庭成员共享（本人+配偶、直系血亲上下2代、姻亲父母）</div><div class="svc"><div class="svc-t">名医直通·检查加急<span class="pill">黄金级起</span><span class="pill">1次/年</span></div><div class="svc-d">持指定医院检查预约单协调加急检查</div></div><div class="svc"><div class="svc-t">名医直通·名医问诊<span class="pill">黄金级起</span><span class="pill">2次/年</span></div><div class="svc-d">副主任及以上级别专家定制化远程问诊，为重大就医决策提供支持</div></div><div class="svc"><div class="svc-t">名医直通·专家预约<span class="pill">黄金级起</span><span class="pill">黄钻级以上6次/年</span></div><div class="svc-d">三甲医院副主任及以上专家门诊，14天内专家号；可优先指定专家</div></div><div class="svc"><div class="svc-t">名医直通·二次诊疗意见<span class="pill">黄金级起</span><span class="pill">1次/年</span></div><div class="svc-d">代客咨询（专人持病理信息与三甲副主任以上医生面诊）/远程会诊</div></div><div class="svc"><div class="svc-t">视频问诊<span class="pill">紫金级起</span><span class="pill">1次/年</span></div><div class="svc-d">三甲医院在职专科医生视频咨询，足不出户面对面</div></div><div class="svc"><div class="svc-t">重疾绿通三项<span class="pill">黄金级起三项合计1次/年</span><span class="pill">黄钻级以上不限次</span></div><div class="svc-d">住院/手术安排（三甲床位协调）+MDT多学科会诊（北上广知名医院多学科专家远程会诊+书面二次诊断报告）+海外医疗（美国/德国/日本就医协助：病历翻译传输、签证、机票酒店、地接翻译、海外陪诊）</div></div><div class="svc"><div class="svc-t">健康体检<span class="pill">按级别</span></div><div class="svc-d">标准体检（铂金级1次/年）→优享体检（黄钻级）→高端体检（更高级别）；另有高端齿科专享价格、心理咨询</div></div><div class="svc"><div class="svc-t">申请方式</div><div class="svc-d">微信公众号'复星保德信人寿'-'星生态'菜单-臻星守护VIP；或联系寿险顾问/客服热线400-821-6808（工作日9:00-17:30）</div></div></div></div>
+</div></section>
+    </section>
+
+    <section class="sec" id="sec-med">
+      <div class="sec-head"><span class="no">贰</span><h2>医疗险服务商服务矩阵</h2><span>产品级服务明细<br>资料更新 2025-11</span></div>
+      <div class="chips"><a class="chip" href="#M0">MSH 精准医药</a><a class="chip" href="#M1">平安健康</a><a class="chip" href="#M2">安盛（AXA）高端</a><a class="chip" href="#M3">安盛（AXA）中端·百万</a><a class="chip" href="#M4">复星联合健康</a><a class="chip" href="#M5">众安保险</a><a class="chip" href="#M6">招商信诺人寿</a><a class="chip" href="#M7">京东安联财险</a><a class="chip" href="#M8">中间带（Medilink）</a></div>
+      <section class="insurer" data-kw="MSH 精准医药 高端/中端医疗" id="M0">
+<div class="ins-head"><div class="ins-logo" style="background:#0e7d68">M</div>
+<div class="ins-title"><h3>MSH 精准医药</h3><div class="ins-meta"><span class="tagchip">高端/中端医疗</span><span class="tagchip">医疗险服务矩阵</span></div></div>
+<button class="toggle" onclick="toggleIns('M0')">展开详情<span class="arr">▾</span></button></div>
+<div class="ins-body" id="bodyM0"><div class="prods2"><div class="prod2"><div class="prod2-h">MSH精选 <span>20项</span></div><ul class="mlist"><li>线上平台手机APP</li><li>线上平台微信小程序</li><li>线上平台官网</li><li>7*24小时服务热线</li><li>专属客服团队</li><li>在线操作投保</li><li>在线理赔</li><li>慢病送药-药房直付服务</li><li>MSH宽网络-公立+私立</li><li>无限次第二诊疗意见</li><li>驻院代表</li><li>住院手术绿通</li><li>好“欣”情线上心理援助</li><li>线上健康咨询服务</li><li>公立医院互联网平台线上复诊可赔付</li><li>居家上门护理</li><li>重疾与复杂病情案件管理</li><li>网络内医院陪诊1次</li><li>出院专车护送服务1次</li><li>居家远程康复指导1次</li></ul></div><div class="prod2"><div class="prod2-h">MSH经典 <span>20项</span></div><ul class="mlist"><li>线上平台手机APP</li><li>线上平台微信小程序</li><li>线上平台官网</li><li>7*24小时服务热线</li><li>专属客服团队</li><li>在线操作投保</li><li>在线理赔</li><li>慢病送药-药房直付服务</li><li>MSH宽网络-公立+私立</li><li>无限次第二诊疗意见</li><li>驻院代表</li><li>住院手术绿通</li><li>好“欣”情线上心理援助</li><li>线上健康咨询服务</li><li>公立医院互联网平台线上复诊可赔付</li><li>居家上门护理</li><li>重疾与复杂病情案件管理</li><li>网络内医院陪诊2次</li><li>出院专车护送服务2次</li><li>居家远程康复指导2次</li></ul></div><div class="prod2"><div class="prod2-h">MSH欣生代 <span>14项</span></div><ul class="mlist"><li>线上平台手机APP</li><li>线上平台微信小程序</li><li>线上平台官网</li><li>7*24小时服务热线</li><li>专属客服团队</li><li>在线操作投保</li><li>在线理赔</li><li>慢病送药-药房直付服务</li><li>MSH宽网络-公立+私立</li><li>无限次第二诊疗意见</li><li>驻院代表</li><li>住院手术绿通</li><li>好“欣”情线上心理援助</li><li>线上健康咨询服务</li></ul></div><div class="prod2"><div class="prod2-h">MSH欣享人生(标准版) <span>17项</span></div><ul class="mlist"><li>线上平台手机APP</li><li>线上平台微信小程序</li><li>线上平台官网</li><li>7*24小时服务热线</li><li>专属客服团队</li><li>在线操作投保</li><li>在线理赔</li><li>慢病送药-药房直付服务</li><li>MSH宽网络-公立+指定私立</li><li>无限次第二诊疗意见</li><li>驻院代表</li><li>住院手术绿通</li><li>好“欣”情线上心理援助</li><li>线上健康咨询服务</li><li>门诊方案网络内直付</li><li>门诊方案网络内预约挂号</li><li>网络外医院住院垫付</li></ul></div><div class="prod2"><div class="prod2-h">MSH欣享人生(既往症) <span>17项</span></div><ul class="mlist"><li>线上平台手机APP</li><li>线上平台微信小程序</li><li>线上平台官网</li><li>7*24小时服务热线</li><li>专属客服团队</li><li>在线操作投保</li><li>在线理赔</li><li>慢病送药-药房直付服务</li><li>MSH宽网络-公立+指定私立</li><li>无限次第二诊疗意见</li><li>驻院代表</li><li>住院手术绿通</li><li>好“欣”情线上心理援助</li><li>线上健康咨询服务</li><li>门诊方案网络内直付</li><li>门诊方案网络内预约挂号</li><li>网络外医院住院垫付</li></ul></div></div></div></section><section class="insurer" data-kw="平安健康 中高端医疗" id="M1">
+<div class="ins-head"><div class="ins-logo" style="background:#0e7d68">平</div>
+<div class="ins-title"><h3>平安健康</h3><div class="ins-meta"><span class="tagchip">中高端医疗</span><span class="tagchip">医疗险服务矩阵</span></div></div>
+<button class="toggle" onclick="toggleIns('M1')">展开详情<span class="arr">▾</span></button></div>
+<div class="ins-body" id="bodyM1"><div class="prods2"><div class="prod2"><div class="prod2-h">安欣保2.0 <span>10项</span></div><table class="mtable"><thead><tr><th>服务项目</th><th>次数</th><th>说明</th></tr></thead><tbody><tr><td class="mn">家庭医生</td><td class="mv">不限次</td><td class="md">5年+临床经验全科医生， 7*24h问诊服务</td></tr><tr><td class="mn">门诊协助</td><td class="mv">1次</td><td class="md">协调安排普通部门诊</td></tr><tr><td class="mn">使用率TOP</td><td class="mv">1次</td><td class="md">就医陪诊 提供门诊陪诊服务</td></tr><tr><td class="mn">18种重疾国内二诊</td><td class="mv">1次</td><td class="md">提供书面诊疗建议和治疗方案建议</td></tr><tr><td class="mn">住院协助</td><td class="mv">1次</td><td class="md">提供住院单后协调住院床位</td></tr><tr><td class="mn">使用率TOP</td><td class="mv">1次-3天</td><td class="md">住院陪护</td></tr><tr><td class="mn">住院垫付</td><td class="mv">不限次</td><td class="md"></td></tr><tr><td class="mn">肿瘤特药直付</td><td class="mv">不限次</td><td class="md">部分药品提供线上直结配送</td></tr><tr><td class="mn">使用率TOP</td><td class="mv">1次/  每次住院</td><td class="md">出院交通 · 200公里以上可承担费用：  火车硬卧、高铁二等、飞机经济舱 ·200公里以下可提供车辆安排：  五座轿车、七座商务车、救护车</td></tr><tr><td class="mn">康复管理</td><td class="mv">1次上门居家康护 (上门3回)/  每次住院</td><td class="md"></td></tr></tbody></table></div><div class="prod2"><div class="prod2-h">e生保
+ (2025版) <span>12项</span></div><table class="mtable"><thead><tr><th>服务项目</th><th>次数</th><th>说明</th></tr></thead><tbody><tr><td class="mn">家庭医生</td><td class="mv">不限次</td><td class="md">5年+临床经验全科医生， 7*24h问诊服务</td></tr><tr><td class="mn">门诊协助</td><td class="mv">1次 (投保家庭成员  间共享)</td><td class="md">协调安排普通部门诊</td></tr><tr><td class="mn">使用率TOP</td><td class="mv">1次 (投保家庭成员 间共享)</td><td class="md">就医陪诊 提供门诊陪诊服务</td></tr><tr><td class="mn">18种重疾国内二诊</td><td class="mv">1次 (投保家庭成员 间共享)</td><td class="md">提供书面诊疗建议和治疗方案建议</td></tr><tr><td class="mn">多学科会诊咨询</td><td class="mv">1次  (恶性肿瘤)</td><td class="md"></td></tr><tr><td class="mn">住院协助</td><td class="mv">1次 (投保家庭成员  间共享)</td><td class="md">提供住院单后协调住院床位</td></tr><tr><td class="mn">住院探视</td><td class="mv">1次/  每次住院</td><td class="md">院内探访及慰问、介绍后续服务</td></tr><tr><td class="mn">使用率TOP</td><td class="mv">1次-7天 (投保家庭成员  间共享)</td><td class="md">住院陪护</td></tr><tr><td class="mn">住院垫付</td><td class="mv">不限次</td><td class="md"></td></tr><tr><td class="mn">肿瘤特药直付</td><td class="mv">不限次</td><td class="md">部分药品提供线上直结配送</td></tr><tr><td class="mn">使用率TOP</td><td class="mv">1次/  每次住院</td><td class="md">出院交通 · 200公里以上可承担费用：  火车硬卧、高铁二等、飞机经济舱 ·200公里以下可提供车辆安排：  五座轿车、七座商务车、救护车</td></tr><tr><td class="mn">康复管理</td><td class="mv">1次康复随访/  每次住院</td><td class="md"></td></tr></tbody></table></div><div class="prod2"><div class="prod2-h">e生保
+(易保版) <span>12项</span></div><table class="mtable"><thead><tr><th>服务项目</th><th>次数</th><th>说明</th></tr></thead><tbody><tr><td class="mn">家庭医生</td><td class="mv">不限次</td><td class="md">5年+临床经验全科医生， 7*24h问诊服务</td></tr><tr><td class="mn">门诊协助</td><td class="mv">1次</td><td class="md">协调安排普通部门诊</td></tr><tr><td class="mn">使用率TOP</td><td class="mv">1次</td><td class="md">就医陪诊 提供门诊陪诊服务</td></tr><tr><td class="mn">18种重疾国内二诊</td><td class="mv">1次</td><td class="md">提供书面诊疗建议和治疗方案建议</td></tr><tr><td class="mn">多学科会诊咨询</td><td class="mv">1次 (恶性肿瘤)</td><td class="md"></td></tr><tr><td class="mn">住院协助</td><td class="mv">1次</td><td class="md">提供住院单后协调住院床位</td></tr><tr><td class="mn">住院探视</td><td class="mv">1次/ 每次住院</td><td class="md">院内探访及慰问、介绍后续服务</td></tr><tr><td class="mn">使用率TOP</td><td class="mv">1次-7天</td><td class="md">住院陪护</td></tr><tr><td class="mn">住院垫付</td><td class="mv">不限次</td><td class="md"></td></tr><tr><td class="mn">肿瘤特药直付</td><td class="mv">不限次</td><td class="md">部分药品提供线上直结配送</td></tr><tr><td class="mn">使用率TOP</td><td class="mv">1次/ 每次住院</td><td class="md">出院交通 · 200公里以上可承担费用：  火车硬卧、高铁二等、飞机经济舱 ·200公里以下可提供车辆安排：  五座轿车、七座商务车、救护车</td></tr><tr><td class="mn">康复管理</td><td class="mv">1次康复随访/ 每次住院</td><td class="md"></td></tr></tbody></table></div><div class="prod2"><div class="prod2-h">明爱安馨2.0 <span>13项</span></div><table class="mtable"><thead><tr><th>服务项目</th><th>次数</th><th>说明</th></tr></thead><tbody><tr><td class="mn">家庭医生</td><td class="mv">不限次</td><td class="md">5年+临床经验全科医生， 7*24h问诊服务</td></tr><tr><td class="mn">门诊协助</td><td class="mv">1次一安心计划 2次一省心计划 (投保家庭成员 间共享)</td><td class="md">协调安排普通部门诊</td></tr><tr><td class="mn">使用率TOP</td><td class="mv">1次一安心计划 2次一省心计划 (投保家庭成员间 共享、专车接送)</td><td class="md">就医陪诊 提供门诊陪诊服务</td></tr><tr><td class="mn">18种重疾国内二诊</td><td class="mv">1次 (投保家庭成员 间共享，视频)</td><td class="md">提供书面诊疗建议和治疗方案建议</td></tr><tr><td class="mn">住院协助</td><td class="mv">1次</td><td class="md">提供住院单后协调住院床位</td></tr><tr><td class="mn">住院探视</td><td class="mv">1次/ 每次住院</td><td class="md">院内探访及慰问、介绍后续服务</td></tr><tr><td class="mn">使用率TOP</td><td class="mv">1次-7天</td><td class="md">住院陪护</td></tr><tr><td class="mn">住院垫付</td><td class="mv">不限次</td><td class="md"></td></tr><tr><td class="mn">住院直结</td><td class="mv">不限次 (仅针对特需住院)</td><td class="md"></td></tr><tr><td class="mn">基因检测服务</td><td class="mv">1次</td><td class="md">恶性肿瘤特药基因检测+指定检测机构直付</td></tr><tr><td class="mn">肿瘤特药直付</td><td class="mv">不限次</td><td class="md">部分药品提供线上直结配送</td></tr><tr><td class="mn">使用率TOP</td><td class="mv">1次/ 每次住院</td><td class="md">出院交通 · 200公里以上可承担费用：  火车硬卧、高铁二等、飞机经济舱 ·200公里以下可提供车辆安排：  五座轿车、七座商务车、救护车</td></tr><tr><td class="mn">康复管理</td><td class="mv">1次康复随访+1次 上门居家康护(上 门3回)/每次住院</td><td class="md"></td></tr></tbody></table></div><div class="prod2"><div class="prod2-h">e生安心
+(易保版)2.0 <span>13项</span></div><table class="mtable"><thead><tr><th>服务项目</th><th>次数</th><th>说明</th></tr></thead><tbody><tr><td class="mn">家庭医生</td><td class="mv">不限次</td><td class="md">5年+临床经验全科医生， 7*24h问诊服务</td></tr><tr><td class="mn">门诊协助</td><td class="mv">1次 (投保家庭成员间共享)</td><td class="md">协调安排普通部门诊</td></tr><tr><td class="mn">使用率TOP</td><td class="mv">1次 (投保家庭成员间 共享、专车接送)</td><td class="md">就医陪诊 提供门诊陪诊服务</td></tr><tr><td class="mn">18种重疾国内二诊</td><td class="mv">1次 (投保家庭成员 间共享)</td><td class="md">提供书面诊疗建议和治疗方案建议</td></tr><tr><td class="mn">多学科会诊咨询</td><td class="mv">1次 (恶性肿瘤)</td><td class="md"></td></tr><tr><td class="mn">住院协助</td><td class="mv">1次 (投保家庭成员  间共享)</td><td class="md">提供住院单后协调住院床位</td></tr><tr><td class="mn">住院探视</td><td class="mv">1次/  每次住院</td><td class="md">院内探访及慰问、介绍后续服务</td></tr><tr><td class="mn">使用率TOP</td><td class="mv">1次-7天 (投保家庭成员  间共享)</td><td class="md">住院陪护</td></tr><tr><td class="mn">住院垫付</td><td class="mv">不限次</td><td class="md"></td></tr><tr><td class="mn">住院直结</td><td class="mv">不限次(仅限省 心计划提供，仅 针对特需住院)</td><td class="md"></td></tr><tr><td class="mn">肿瘤特药直付</td><td class="mv">不限次</td><td class="md">部分药品提供线上直结配送</td></tr><tr><td class="mn">使用率TOP</td><td class="mv">1次/ 每次住院</td><td class="md">出院交通 · 200公里以上可承担费用：  火车硬卧、高铁二等、飞机经济舱 ·200公里以下可提供车辆安排：  五座轿车、七座商务车、救护车</td></tr><tr><td class="mn">康复管理</td><td class="mv">1次康复随访+1次 上门居家康护(上 门3回)/每次住院</td><td class="md"></td></tr></tbody></table></div><div class="prod2"><div class="prod2-h">颐享臻选 <span>18项</span></div><table class="mtable"><thead><tr><th>服务项目</th><th>次数</th><th>说明</th></tr></thead><tbody><tr><td class="mn">家庭医生</td><td class="mv">不限次</td><td class="md">5年+临床经验全科医生， 7*24h问诊服务</td></tr><tr><td class="mn">在线问诊药品配送和折扣</td><td class="mv">20次/年，3次/月， 药品费累计 最高抵扣2万元</td><td class="md"></td></tr><tr><td class="mn">门诊协助</td><td class="mv">1次 (可点诊)</td><td class="md">协调安排普通部门诊</td></tr><tr><td class="mn">VIP门诊协助</td><td class="mv">不限次</td><td class="md">协调安排网络内特需医疗机构 专家门诊</td></tr><tr><td class="mn">海外门诊预约</td><td class="mv">不限次</td><td class="md"></td></tr><tr><td class="mn">海外就医协助</td><td class="mv">自费</td><td class="md">特定疾病海外就医全流程协助</td></tr><tr><td class="mn">高端医疗驻点导诊</td><td class="mv">不限次</td><td class="md"></td></tr><tr><td class="mn">使用率TOP</td><td class="mv">1次  (豪车接送)</td><td class="md">就医陪诊 提供门诊陪诊服务</td></tr><tr><td class="mn">18种重疾国内二诊</td><td class="mv">1次国内  1次海外</td><td class="md">提供书面诊疗建议和治疗方案建议</td></tr><tr><td class="mn">全球紧急救援</td><td class="mv">不限次</td><td class="md"></td></tr><tr><td class="mn">住院协助</td><td class="mv">1次</td><td class="md">提供住院单后协调住院床位</td></tr><tr><td class="mn">住院探视</td><td class="mv">1次/ 每次住院</td><td class="md">院内探访及慰问、介绍后续服务</td></tr><tr><td class="mn">使用率TOP</td><td class="mv">1次-7天</td><td class="md">住院陪护</td></tr><tr><td class="mn">住院垫付</td><td class="mv">不限次</td><td class="md"></td></tr><tr><td class="mn">住院直结</td><td class="mv">不限次，  可选门诊</td><td class="md"></td></tr><tr><td class="mn">肿瘤特药直付</td><td class="mv">不限次</td><td class="md">部分药品提供线上直结配送</td></tr><tr><td class="mn">使用率TOP</td><td class="mv">1次/ 每次住院</td><td class="md">出院交通 · 200公里以上可承担费用：  火车硬卧、高铁二等、飞机经济舱 ·200公里以下可提供车辆安排：  五座轿车、七座商务车、救护车</td></tr><tr><td class="mn">康复管理</td><td class="mv">1次上门居家康护 (上门3回)/ 每次住院</td><td class="md"></td></tr></tbody></table></div></div></div></section><section class="insurer" data-kw="安盛（AXA）高端 高端医疗" id="M2">
+<div class="ins-head"><div class="ins-logo" style="background:#0e7d68">安</div>
+<div class="ins-title"><h3>安盛（AXA）高端</h3><div class="ins-meta"><span class="tagchip">高端医疗</span><span class="tagchip">医疗险服务矩阵</span></div></div>
+<button class="toggle" onclick="toggleIns('M2')">展开详情<span class="arr">▾</span></button></div>
+<div class="ins-body" id="bodyM2"><div class="prods2"><div class="prod2"><div class="prod2-h">安盛卓越环球 <span>12项</span></div><ul class="mlist"><li>特定互联网医院问诊及药品，问诊不限次，药品费100%赔付，每年累计限额5000元，每月最多4次，每次限500元</li><li>二次诊疗意见，包括重疾1次和非重疾1次</li><li>慢病送药，不限次</li><li>门诊预约协调，每保单年度2次，提前五个工作日预约，指定医院科室，不指定医生</li><li>住院协调，每保单年度1次，10个工作日内安排住院事宜，能够指定医院科室，不指定医生，患重疾不限次</li><li>住院专属护工，每保单年度1次，每次5天，在48小时内匹配护理人员</li><li>院后服务，出院交通安排及陪护，院后居家康护指导书</li><li>重疾异地补助，住宿交通每个保单年度1万元</li><li>非终极异地就医返程交通费用补助，每个保单年度2000元</li><li>院后上门护理，每个保单年度5次，住院后获得相应医嘱，提前五个工作日预约，仅限服务项目中详见服务项目表</li><li>心理咨询，每个保单年度5次</li><li>全球紧急救援</li></ul></div><div class="prod2"><div class="prod2-h">安盛尚越环球 <span>16项</span></div><ul class="mlist"><li>特定互联网医院问诊及药品，问诊不限次，药品费100%赔付，每年累计限额5000元，每月最多4次，每次限500元</li><li>二次诊疗意见，包括重疾1次和非重疾1次</li><li>慢病送药，不限次</li><li>门诊预约协调，每保单年度2次，提前五个工作日预约，指定医院科室，不指定医生</li><li>住院协调，每保单年度1次，10个工作日内安排住院事宜，能够指定医院科室，不指定医生，患重疾不限次</li><li>住院专属护工，每保单年度1次，每次5天，在48小时内匹配护理人员</li><li>院后服务，出院交通安排及陪护，院后居家康护指导书</li><li>重疾异地补助，住宿交通每个保单年度1万元</li><li>非终极异地就医返程交通费用补助，每个保单年度2000元</li><li>院后上门护理，每个保单年度5次，住院后获得相应医嘱，提前五个工作日预约，仅限服务项目中详见服务项目表</li><li>心理咨询，每个保单年度5次</li><li>全球紧急救援</li><li>在线医生，不限次</li><li>电话医生，不限次</li><li>体检套餐设计，不限次</li><li>医学陪诊，不限次</li></ul></div></div></div></section><section class="insurer" data-kw="安盛（AXA）中端·百万 中端/百万医疗" id="M3">
+<div class="ins-head"><div class="ins-logo" style="background:#0e7d68">安</div>
+<div class="ins-title"><h3>安盛（AXA）中端·百万</h3><div class="ins-meta"><span class="tagchip">中端/百万医疗</span><span class="tagchip">医疗险服务矩阵</span></div></div>
+<button class="toggle" onclick="toggleIns('M3')">展开详情<span class="arr">▾</span></button></div>
+<div class="ins-body" id="bodyM3"><div class="prods2"><div class="prod2"><div class="prod2-h">安盛智选住院 <span>11项</span></div><ul class="mlist"><li>特定互联网医院问诊及药品，问诊不限次，药品费80%赔付，每年累计限额2000元，每月最多2次，每次限200元</li><li>二次诊疗意见，包括重疾1次和非重疾1次</li><li>门诊预约协调，每保单年度2次，提前五个工作日预约，指定医院科室，不指定医生</li><li>住院协调，每保单年度1次，10个工作日内安排住院事宜，能够指定医院科室，不指定医生</li><li>住院专属护工，每保单年度1次，每次5天，在48小时内匹配护理人员</li><li>院后服务，出院交通安排及陪护，院后居家康护指导书</li><li>重疾异地补助，住宿交通每个保单年度1万元</li><li>非终极异地就医返程交通费用补助，每个保单年度2000元</li><li>院后上门护理，每个保单年度5次，住院后获得相应医嘱，提前五个工作日预约，仅限服务项目中详见服务项目表</li><li>心理咨询，每个保单年度3次</li><li>全球紧急救援</li></ul></div><div class="prod2"><div class="prod2-h">安盛卓越馨选2025 <span>17项</span></div><ul class="mlist"><li>专家门诊预约
+不限重疾
+审核通过后约5个工作日内安排预约服务</li><li>门诊陪诊
+共1次/每保单年度
+根据需要提供服务的时间至少提前3个工作日进行申请，请审核通过后约3个工作日内安排服务，单次陪诊时长不超过4小时</li><li>门诊检查加急
+共1次/每保单年度
+保单有效期内且等待期后，被保险人罹患本保险产品条款保障范围内的重大疾病时，可申请本服务。
+审核通过后约7个工作日内安排服务</li><li>住院协调
+1次/每保单年度
+审核通过后约10个工作日内安排预约服务</li><li>入院陪诊
+共1次/每保单年度
+审核通过后约3个工作日内安排服务
+单次陪诊时长不超过4小时</li><li>住院探视
+共1次/每保单年度
+审核通过后约3个工作日内安排服务
+单次服务时长不超出1小时</li><li>住院费用垫付
+不限次数
+限重疾
+1. 保单年度因某一种疾病非首次申请使用服务：
+提出申请后且提供齐全的住院相关资料后约5个工作日内安排垫付
+2. 保单年度首次因某种重疾住院时，垫付</li><li>MDT 多学科会诊
+1次/每保单年度
+限重疾
+收到完整申请资料后约10个工作日内确认专家会诊安排
+会诊后约5-10个工作日内出具会诊意见报告
+会诊时长根据病程不同约 30-60 分</li><li>靶向药基因检测
+限重疾
+1次/每保单年度
+实验室收到样本后15个工作日内，出具电子版报告给被保险人</li><li>居家上门护理服务
+共10次/每保单年度，每次可从服务项目中任选一项
+被保险人须提前3天提出服务申请，审核通过后约3个工作日内安排预约服务，服务时长依据护理项目复杂程度而定，以实际操</li><li>院内护理服务
+不限重疾
+共1次（每次不超过5天）/每保单年度
+审核通过后约3个工作日内安排预约服务，院内护理服务最长不超过5天
+护工为24小时工作制，根据客户时间要求（不早于8点）</li><li>重疾心理咨询
+限重疾，服务对象可包含被保险人本人或直系家属
+共1次/每保单年度
+审核通过后约3个工作日内安排预约服务，每次咨询沟通时长不超过1小时</li><li>就医专车补贴
+因重疾需要进行门诊就医或住院治疗的用车（出发地或目的地其一为门诊就医或住院治疗的医院，且用车时间与出入院日期相符），凭行程单与发票，向客服申请费用补贴。
+共1次/每保</li><li>院外特定药品直付（境内）（不包含港澳台地区）
+需加选“院外特定药品费用医疗保险金”责任
+不限次数
+限重疾
+资料齐全的情况下我司将在约在2个工作日完成权益及药品适应性评估，审核通过后</li><li>慈善赠药服务
+需加选“院外特定药品费用医疗保险金”责任
+限初次罹患恶性肿瘤——重度
+不限次数
+资料齐全且审核通过后约1-3个工作日进行慈善赠药申请安排</li><li>院外特定药品直付（博鳌特药）
+需加选“海南博鳌乐城特定药品费用医疗保险金”责任 不限次数
+限初次罹患恶性肿瘤——重度
+门诊预约须至少提前10个工作日申请预约</li><li>院外特定医疗器械直付
+需加选“特定医疗器械费用医疗保险金”责任
+限初次罹患条款约定的指定适应症
+每种器械最多不超过一次/每保单年度
+资料齐全后，我司将在1个工作日完成药械合理性审核</li></ul></div><div class="prod2"><div class="prod2-h">安盛卓越守护百万医疗2024 <span>13项</span></div><ul class="mlist"><li>家庭医生服务，7x24 小时(含公共节假日），
+保单有效期内无限次</li><li>就医绿色通道（门诊绿通：1次/每保单年度
+住院或手术协调：共1次/每保单年度）
+保单有效期内且等待期后，被保险人初次罹患本保险产品条款保障范围内的重大疾病后根据医生建议需要门诊就诊</li><li>住院费用垫付（不限次数，收到相关资料齐全后约5个工作日内安排垫付）
+保单有效期内且等待期后，被保险人初次罹患本保险产品条款保障范围内的重大
+疾病时，可申请本服务。</li><li>国内第二诊疗意见（1次/每保单年度；资料齐全的情况下，10-15个工作日内，出具书面意见报告。）
+保单有效期内且等待期后，被保险人初次罹患本保险产品条款保障范围内的重大疾病时可申请</li><li>MDT 多学科会诊（1次/每保单年度；收到完整资料后约10个工作日内确认专家会诊安排）
+保单有效期内且等待期后，被保险人初次罹患本保险产品条款保障范围内的重大疾病时，可申请本服务。</li><li>靶向药基因检测（1次/每保单年度；实验室收到样本后15个工作日内，出具电子版、纸质版报告给被保险人）
+保单有效期内且等待期后，被保险人初次罹患本保险产品条款保障范围内的恶性肿瘤-重</li><li>上门护理服务（共5次/每保单年度，每次可从服务项目中任选一项；服务申请审核通过后约3个工作日内安排预约服务）
+保单有效期内且等待期后，被保险人因罹患本产品保障条款范围内的疾病住院出</li><li>赴日就医协助（共10次/每保单年度，在资料齐全且符合医院接收条件且医疗签证顺利签署的情况下，我司将在40个工作日内为被保险人完成赴日本的就医安排）
+保单有效期内且等待期后，若被保险</li><li>院后康复指导（5次/每保单年度；保单有效期内且等待期后;被保险人出院后30天内可申请使用；审核通过后约1个工作日内安排预约服务，最快2个工作日内完成咨询，每次咨询时长约15-20分</li><li>院外特定药品直付(国内)（条款约定保障周期内不限次数；资料齐全的情况下我司将在约在2个工作日完成权益及药品适应性评估，审核通过后3天内为被保险人完成药房和药品匹配服务）
+药房及药品</li><li>慈善赠药服务（不限次数；保单有效期内且等待期后，被保险人初次罹患本保险产品条款保障范围内的恶性肿瘤-重度时，可申请本服务；，资料齐全且审核通过后约1-3个工作日进行慈善赠药申请安排</li><li>院外特定药品直付（进口）（不限次数/条款约定保障周期内；保单有效期内且等待期后，被保险人初次罹患本保险产品条款保障范围内的恶性肿瘤-重度时可申请本服务；门诊预约须至少提前10个工作</li><li>院外特定医疗器械直付（每种器械最多不超过一次/每保单年度）
+保单有效期内且等待期后，被保险人初次罹患本保险产品条款保障范围内指定适应症后，并经我司认可的医院的专科医生开具本保障医疗</li></ul></div></div></div></section><section class="insurer" data-kw="复星联合健康 高端/中端医疗" id="M4">
+<div class="ins-head"><div class="ins-logo" style="background:#0e7d68">复</div>
+<div class="ins-title"><h3>复星联合健康</h3><div class="ins-meta"><span class="tagchip">高端/中端医疗</span><span class="tagchip">医疗险服务矩阵</span></div></div>
+<button class="toggle" onclick="toggleIns('M4')">展开详情<span class="arr">▾</span></button></div>
+<div class="ins-body" id="bodyM4"><div class="prods2"><div class="prod2"><div class="prod2-h">复星联合全球通 （精选臻选、明亚尊享、配齐） <span>4项</span></div><ul class="mlist"><li>01 快速问诊（视频）
+【服务内容】由全职全科执业医师团队在线提供视频问诊服务。医生根据病情需要在线开方配药，药品免邮配送到家， 且在中国大陆境内17个城市核心区域平均可以半日送达</li><li>02 专家问诊（视频）
+【服务内容】由三甲医院副主任及以上级别医师，提供在线预约制视频问诊服务。医生根据病情需要在线开方配药，药
+品免邮配送，且在中国大陆境内17个城市核心区域平均</li><li>3 专案管理服务
+【服务内容】若被保险人需要住院治疗，健康专案管家将提供全流程的就医协助服务。健康专案管家将结合您的保单福
+利情况，在直付网络内精准匹配合适的医疗资源、进一步精确诊</li><li>04 高端私人医生服务
+【服务内容】您通过保福康小程序预约，在指定医疗机构（详见服务说明与注意事项）发生线下就诊后，由该医疗机构
+提供以下服务：
+(1) 家庭医生式健康管理：指定医</li></ul></div><div class="prod2"><div class="prod2-h">乐健2025 <span>11项</span></div><table class="mtable"><thead><tr><th>服务项目</th><th>次数</th><th>说明</th></tr></thead><tbody><tr><td class="mn">视频医生</td><td class="mv">不限次/年</td><td class="md">由全职全科执业医师团队在线提供视频问诊服务，包含日常健康咨询、疾病咨询、检查报告解读等。</td></tr><tr><td class="mn">专家门诊预约</td><td class="mv">不限次/年</td><td class="md">根据被保险人的病情及就医需求，提供全国主要城市3800余家合作三级医疗机构内副主任及以上级别医师住院预约服务。被保险人不可指定医院及科室，且不指定专家。</td></tr><tr><td class="mn">住院/手术加速协助</td><td class="mv">1次/年</td><td class="md">在医生为被保险人开具住院单后，协助被保险人在原就诊医院办理快速住院。或者在医生为被保险人开具住院单后，根据被保险人临床病征及手术需要，在符合医院的住院及手术条件</td></tr><tr><td class="mn">国内二次诊疗</td><td class="mv">1次/年</td><td class="md">当客户确诊罹患重大疾病时，根据客户需求，帮助客户整理完整、清晰的检查资料及相关病历资料，代客户向复旦版中国医院排名TOP100三甲医院专家（副主任及以上级别医师</td></tr><tr><td class="mn">住院专属护工</td><td class="mv">1次/年</td><td class="md">若客户发生住院情况，在住院期间，根据医院医生的病历及医嘱，结合相关的检查报告，全面评估健康状况，制定专属护工服务计划；按服务计划及医院要求，提供每天最长24小时</td></tr><tr><td class="mn">国内多学科会诊</td><td class="mv">1次/年</td><td class="md">被保险人确诊罹患重疾时，根据被保险人病情需求，在被保险人申请服务后1个工作日内响应，从被保险人提交完整资料起7个工作日内为被保险人提供特定疾病多学科联合会诊服务</td></tr><tr><td class="mn">院后居家康护（上门）</td><td class="mv">10次/年</td><td class="md">在客户出院返回其居住场所后，由护士致电进行健康评估，根据客户需求及评估结果，为客户安排上门生活照护一次或专业护理服务一次。生活照护服务由护工提供，单次服务时长不</td></tr><tr><td class="mn">国际前沿药品咨询服务</td><td class="mv">不限次/年</td><td class="md">根据确诊证明材料，为被服务人在现有合作医疗网络内寻找国际前沿药品资源，平均 3-5 个工作日反馈结果。合作医疗网络覆盖海南博鳌乐城、大湾区等国内平台。</td></tr><tr><td class="mn">快速问诊（视频）</td><td class="mv">5次/年</td><td class="md">由全职全科执业医师团队在线提供视频问诊服务。医生根据病情需要在线开方配药，药品免邮配送，且在中国大陆境内17个城市核心区域平均可以半日送达，其他非偏远地区平均1</td></tr><tr><td class="mn">重疾住院费用垫付服务</td><td class="mv">不限次/年</td><td class="md">被保险人在保单等待期后在指定垫付服务网络内发生住院可向我司登记申请住院垫付服务，由第三方服务商指引至指定线上平台提交完整审核材料，审核通过后为被保险人提供住院垫</td></tr><tr><td class="mn">住院直付服务</td><td class="mv">不限次/年</td><td class="md">被保险人在保单等待期后在指定直付医疗网络内发生住院治疗，可向我司申请住院直付服务，同时提交完整审核材料，审核通过后，为被保险人提供住院直付服务。</td></tr></tbody></table></div><div class="prod2"><div class="prod2-h">超越保2022 <span>11项</span></div><table class="mtable"><thead><tr><th>服务项目</th><th>次数</th><th>说明</th></tr></thead><tbody><tr><td class="mn">精准就医咨询服务</td><td class="mv"></td><td class="md">通过电话的方式与医生进行一对一交流，根据您描述的被 保险人的症状、既往检查结果及就诊经过，解决针对专科 性强的医疗问题、疑难杂症等疾病就诊问题。通过电话提 供就</td></tr><tr><td class="mn">特定疾病专家门诊 绿色通道服务</td><td class="mv"></td><td class="md">本公司为被保险人安排副主任及以上专家提供门诊就医服 务，提供在本公司全国主要城市合作医疗网络内的医疗机 构指定医院、指定科室，但不提供指定医生和专家的服务。2 </td></tr><tr><td class="mn">特定疾病门诊陪诊 服务</td><td class="mv"></td><td class="md">健康顾问全程陪同被保险人完成就诊过程，并提供专业指 导。为被保险人提供协助预约检查，排队取药，排队付费 等服务。在全程导医服务过程中，健康顾问给予必要的专 业指</td></tr><tr><td class="mn">特定疾病住院绿色 通道服务</td><td class="mv"></td><td class="md">为被保险人安排全国主要城市住院绿色通道，协助被保险 人快速入住国内知名医院，享受专业、快速的治疗，尽早 安心接受治疗。提供在本公司全国主要城市合作医疗网络 内的</td></tr><tr><td class="mn">特定疾病专家手术 安排服务</td><td class="mv"></td><td class="md">为被保险人快速接受国内优秀专家的先进手术治疗方案的 服务。在本公司全国主要城市合作医疗网络内的医疗机构 根据被保险人的住院单安排专家手术的服务。</td></tr><tr><td class="mn">特定疾病多学科会 诊安排服务</td><td class="mv"></td><td class="md">为被保险人涉及多学科会诊的就医需求提供特定疾病多学 科联合会诊服务。安排由两名或两名以上具备门诊资质的 专家现场讨论病情，从而明确诊断或出具合适的治疗方案 在本</td></tr><tr><td class="mn">特定疾病中医专家 一对一指导服务</td><td class="mv"></td><td class="md">为被保险人安排副主任及以上中医专家提供门诊就医预约 安排服务。提供在本公司全国主要城市合作医疗网络内的 中医专科医疗机构、或医疗机构的中医科不指定医生和专 家的</td></tr><tr><td class="mn">特定疾病海外专科 医生视频会诊服务</td><td class="mv"></td><td class="md">1.由海外专科医生通过视频方式根据被保险人的国内原诊 病例报告、医学影像资料等，做出客观的分析和第二次诊 断，并由海外医生签署发出诊断报告和治疗建议。为被保 险</td></tr><tr><td class="mn">出院协助服务</td><td class="mv"></td><td class="md">协助被保险人办理出院手续，并进行慰问，讲解出院首日、次日的照护要点。指导被保险人整理递交理赔材料</td></tr><tr><td class="mn">住院押金垫付服务</td><td class="mv"></td><td class="md">通过提供住院押金垫付的服务解决住院入院过程中的资金 问题，使被保险人不会因为一时难以筹集医疗费用而耽误 治疗的最佳时机。 适用于一般疾病和特定疾病的住院治疗。审</td></tr><tr><td class="mn">恶性肿瘤特定药品 配送服务</td><td class="mv"></td><td class="md">为被保险人提供由指定恶性肿瘤院外特定药品的指定药店 药品配送服务</td></tr></tbody></table></div></div></div></section><section class="insurer" data-kw="众安保险 百万/中高端/高端医疗" id="M5">
+<div class="ins-head"><div class="ins-logo" style="background:#0e7d68">众</div>
+<div class="ins-title"><h3>众安保险</h3><div class="ins-meta"><span class="tagchip">百万/中高端/高端医疗</span><span class="tagchip">医疗险服务矩阵</span></div></div>
+<button class="toggle" onclick="toggleIns('M5')">展开详情<span class="arr">▾</span></button></div>
+<div class="ins-body" id="bodyM5"><div class="prods2"><div class="prod2"><div class="prod2-h">尊享e生2025版 <span>17项</span></div><table class="mtable"><thead><tr><th>服务项目</th><th>次数</th><th>说明</th></tr></thead><tbody><tr><td class="mn">在线问诊 5年+临床经验全科医生 7*24问诊服务</td><td class="mv">不限次</td><td class="md"></td></tr><tr><td class="mn">专家门诊(重疾绿通) 分诊电话沟通，门诊线下安排</td><td class="mv">1次</td><td class="md"></td></tr><tr><td class="mn">检查加速(重疾绿通)</td><td class="mv">1次</td><td class="md"></td></tr><tr><td class="mn">质子重离子就医协助</td><td class="mv">含</td><td class="md"></td></tr><tr><td class="mn">远程电话问诊 (重疾绿通)</td><td class="mv">1次</td><td class="md"></td></tr><tr><td class="mn">住院安排(重疾绿通)</td><td class="mv">1次</td><td class="md"></td></tr><tr><td class="mn">手术安排(重疾绿通)</td><td class="mv">1次</td><td class="md"></td></tr><tr><td class="mn">住院探视(重疾绿道) 院内探访及慰问，介绍后续服务</td><td class="mv">1次</td><td class="md"></td></tr><tr><td class="mn">预留高端病房</td><td class="mv">1次</td><td class="md"></td></tr><tr><td class="mn">用药前基因检测 恶性肿瘤基因检测</td><td class="mv">1次</td><td class="md"></td></tr><tr><td class="mn">住院护工</td><td class="mv">重疾最长30天/年</td><td class="md"></td></tr><tr><td class="mn">住院垫付</td><td class="mv">不限次</td><td class="md"></td></tr><tr><td class="mn">医后随访(重疾绿通)</td><td class="mv">1次</td><td class="md"></td></tr><tr><td class="mn">康复管理(重疾绿通)</td><td class="mv">中医理疗线下，1次 营养方案线下，1次 专家复诊线下，1次</td><td class="md"></td></tr><tr><td class="mn">术后家庭护理</td><td class="mv">一般疾病住院限2次 特定疾病住院限6次</td><td class="md"></td></tr><tr><td class="mn">肿瘤特药直付</td><td class="mv">不限次</td><td class="md"></td></tr><tr><td class="mn">癌症早筛服务</td><td class="mv">1次</td><td class="md"></td></tr></tbody></table></div><div class="prod2"><div class="prod2-h">众民保百万医疗险
+2025版 <span>17项</span></div><table class="mtable"><thead><tr><th>服务项目</th><th>次数</th><th>说明</th></tr></thead><tbody><tr><td class="mn">在线问诊 5年+临床经验全科医生 7*24问诊服务</td><td class="mv">不限次</td><td class="md"></td></tr><tr><td class="mn">在线问诊药品费用医疗保险金</td><td class="mv">12次/年，1次/月，药 品费累计最高优省 5000元</td><td class="md"></td></tr><tr><td class="mn">专家门诊(重疾绿通) 分诊电话沟通，门诊线下安排</td><td class="mv">1次</td><td class="md"></td></tr><tr><td class="mn">检查加速(重疾绿通)</td><td class="mv">1次</td><td class="md"></td></tr><tr><td class="mn">就医陪诊 提供门诊/住院陪诊服务</td><td class="mv">2次</td><td class="md"></td></tr><tr><td class="mn">质子重离子就医协助</td><td class="mv">含</td><td class="md"></td></tr><tr><td class="mn">远程电话问诊 (重疾绿通)</td><td class="mv">1次</td><td class="md"></td></tr><tr><td class="mn">住院安排(重疾绿通)</td><td class="mv">1次</td><td class="md"></td></tr><tr><td class="mn">手术安排(重疾绿通)</td><td class="mv">1次</td><td class="md"></td></tr><tr><td class="mn">住院探视(重疾绿道) 院内探访及慰问，介绍后续服务</td><td class="mv">1次</td><td class="md"></td></tr><tr><td class="mn">预留高端病房</td><td class="mv">1次</td><td class="md"></td></tr><tr><td class="mn">用药前基因检测 恶性肿瘤基因检测</td><td class="mv">1次</td><td class="md"></td></tr><tr><td class="mn">住院护工</td><td class="mv">限1次/年，最长5天/ 次</td><td class="md"></td></tr><tr><td class="mn">住院垫付</td><td class="mv">不限次</td><td class="md"></td></tr><tr><td class="mn">医后随访(重疾绿通)</td><td class="mv">1次</td><td class="md"></td></tr><tr><td class="mn">康复管理(重疾绿通)</td><td class="mv">中医理疗线下，1次 营养方案线下，1次 专家复诊线下，1次</td><td class="md"></td></tr><tr><td class="mn">肿瘤特药直付</td><td class="mv">不限次</td><td class="md"></td></tr></tbody></table></div><div class="prod2"><div class="prod2-h">尊享e生中高端
+PLUS2025版 <span>22项</span></div><table class="mtable"><thead><tr><th>服务项目</th><th>次数</th><th>说明</th></tr></thead><tbody><tr><td class="mn">在线问诊 5年+临床经验全科医生 7*24问诊服务</td><td class="mv">不限次</td><td class="md"></td></tr><tr><td class="mn">专家门诊(重疾绿通) 分诊电话沟通，门诊线下安排</td><td class="mv">1次</td><td class="md"></td></tr><tr><td class="mn">检查加速(重疾绿通)</td><td class="mv">1次</td><td class="md"></td></tr><tr><td class="mn">就医陪诊 提供门诊/住院陪诊服务</td><td class="mv">门诊2次，住院1次， (购买门急诊加油包 限5次，每次不超过4 小时)</td><td class="md"></td></tr><tr><td class="mn">重疾二次会诊</td><td class="mv">1次(国内+美国)</td><td class="md"></td></tr><tr><td class="mn">质子重离子就医协助</td><td class="mv">含</td><td class="md"></td></tr><tr><td class="mn">重疾多学科会诊</td><td class="mv">1次(全球)</td><td class="md"></td></tr><tr><td class="mn">远程电话问诊 (重疾绿通)</td><td class="mv">1次</td><td class="md"></td></tr><tr><td class="mn">紧急救援 中国大陆及港澳台地区</td><td class="mv">含(全球)</td><td class="md"></td></tr><tr><td class="mn">住院安排(重疾绿通)</td><td class="mv">1次</td><td class="md"></td></tr><tr><td class="mn">手术安排(重疾绿通)</td><td class="mv">1次</td><td class="md"></td></tr><tr><td class="mn">住院探视(重疾绿道) 院内探访及慰问，介绍后续服务</td><td class="mv">1次</td><td class="md"></td></tr><tr><td class="mn">预留高端病房</td><td class="mv">1次</td><td class="md"></td></tr><tr><td class="mn">用药前基因检测 恶性肿瘤基因检测</td><td class="mv">1次</td><td class="md"></td></tr><tr><td class="mn">住院护工</td><td class="mv">一般住院限1次/年， 最长5天/次，重疾最 长30天/年</td><td class="md"></td></tr><tr><td class="mn">住院垫付</td><td class="mv">不限次</td><td class="md"></td></tr><tr><td class="mn">直付医疗</td><td class="mv">不限次</td><td class="md"></td></tr><tr><td class="mn">医后随访(重疾绿通)</td><td class="mv">1次</td><td class="md"></td></tr><tr><td class="mn">同城出入院专车 100公里以内提供车辆安排</td><td class="mv">2次/出入院视为2次</td><td class="md"></td></tr><tr><td class="mn">康复管理(重疾绿通)</td><td class="mv">中医理疗线下，1次 营养方案线下，1次 专家复诊线下，1次</td><td class="md"></td></tr><tr><td class="mn">术后家庭护理</td><td class="mv">一般疾病住院限2次 特定疾病住院限6次</td><td class="md"></td></tr><tr><td class="mn">肿瘤特药直付</td><td class="mv">不限次</td><td class="md"></td></tr></tbody></table></div><div class="prod2"><div class="prod2-h">尊享e生中高端2025版 <span>22项</span></div><table class="mtable"><thead><tr><th>服务项目</th><th>次数</th><th>说明</th></tr></thead><tbody><tr><td class="mn">在线问诊 5年+临床经验全科医生 7*24问诊服务</td><td class="mv">不限次</td><td class="md"></td></tr><tr><td class="mn">专家门诊(重疾绿通) 分诊电话沟通，门诊线下安排</td><td class="mv">1次</td><td class="md"></td></tr><tr><td class="mn">检查加速(重疾绿通)</td><td class="mv">1次</td><td class="md"></td></tr><tr><td class="mn">就医陪诊 提供门诊/住院陪诊服务</td><td class="mv">门诊2次，住院1次， (购买门急诊加油包限 5次，每次不超过4小 时 )</td><td class="md"></td></tr><tr><td class="mn">重疾二次会诊</td><td class="mv">1次(国内+美国)</td><td class="md"></td></tr><tr><td class="mn">质子重离子就医协助</td><td class="mv">含</td><td class="md"></td></tr><tr><td class="mn">重疾多学科会诊</td><td class="mv">1次</td><td class="md"></td></tr><tr><td class="mn">远程电话问诊 (重疾绿通)</td><td class="mv">1次</td><td class="md"></td></tr><tr><td class="mn">紧急救援 中国大陆及港澳台地区</td><td class="mv">含(大陆或港澳台)</td><td class="md"></td></tr><tr><td class="mn">住院安排(重疾绿通)</td><td class="mv">1次</td><td class="md"></td></tr><tr><td class="mn">手术安排(重疾绿通)</td><td class="mv">1次</td><td class="md"></td></tr><tr><td class="mn">住院探视(重疾绿道) 院内探访及慰问，介绍后续服务</td><td class="mv">1次</td><td class="md"></td></tr><tr><td class="mn">预留高端病房</td><td class="mv">1次</td><td class="md"></td></tr><tr><td class="mn">用药前基因检测 恶性肿瘤基因检测</td><td class="mv">1次</td><td class="md"></td></tr><tr><td class="mn">住院护工</td><td class="mv">一般住院限1次/年，最 长5天/次，重疾最长30 天/年</td><td class="md"></td></tr><tr><td class="mn">住院垫付</td><td class="mv">不限次</td><td class="md"></td></tr><tr><td class="mn">直付医疗</td><td class="mv">不限次(仅针对计划二 特定疾病特需住院)</td><td class="md"></td></tr><tr><td class="mn">医后随访(重疾绿通)</td><td class="mv">1次</td><td class="md"></td></tr><tr><td class="mn">同城出入院专车 100公里以内提供车辆安排</td><td class="mv">2次/出入院视为2次 (限计划二)</td><td class="md"></td></tr><tr><td class="mn">康复管理(重疾绿通)</td><td class="mv">中医理疗线下，1次 营养方案线下，1次 专家复诊线下，1次</td><td class="md"></td></tr><tr><td class="mn">术后家庭护理</td><td class="mv">一般疾病住院限2次 特定疾病住院限6次</td><td class="md"></td></tr><tr><td class="mn">肿瘤特药直付</td><td class="mv">不限次</td><td class="md"></td></tr></tbody></table></div><div class="prod2"><div class="prod2-h">众民保中高端 <span>19项</span></div><table class="mtable"><thead><tr><th>服务项目</th><th>次数</th><th>说明</th></tr></thead><tbody><tr><td class="mn">在线问诊 5年+临床经验全科医生 7*24问诊服务</td><td class="mv">不限次</td><td class="md"></td></tr><tr><td class="mn">专家门诊(重疾绿通) 分诊电话沟通，门诊线下安排</td><td class="mv">1次</td><td class="md"></td></tr><tr><td class="mn">检查加速(重疾绿通)</td><td class="mv">1次</td><td class="md"></td></tr><tr><td class="mn">就医陪诊 提供门诊/住院陪诊服务</td><td class="mv">4次(住院2次+门诊2 次 )</td><td class="md"></td></tr><tr><td class="mn">质子重离子就医协助</td><td class="mv">含</td><td class="md"></td></tr><tr><td class="mn">远程电话问诊 (重疾绿通)</td><td class="mv">1次</td><td class="md"></td></tr><tr><td class="mn">住院安排(重疾绿通)</td><td class="mv">1次</td><td class="md"></td></tr><tr><td class="mn">手术安排(重疾绿通)</td><td class="mv">1次</td><td class="md"></td></tr><tr><td class="mn">住院探视(重疾绿道) 院内探访及慰问，介绍后续服务</td><td class="mv">1次</td><td class="md"></td></tr><tr><td class="mn">预留高端病房</td><td class="mv">1次</td><td class="md"></td></tr><tr><td class="mn">用药前基因检测 恶性肿瘤基因检测</td><td class="mv">1次</td><td class="md"></td></tr><tr><td class="mn">住院护工</td><td class="mv">一般住院限1次/年， 最长5天/次，重疾最 长30天/年</td><td class="md"></td></tr><tr><td class="mn">住院垫付</td><td class="mv">不限次</td><td class="md"></td></tr><tr><td class="mn">直付医疗</td><td class="mv">不限次(仅针对重疾 特需住院)</td><td class="md"></td></tr><tr><td class="mn">医后随访(重疾绿通)</td><td class="mv">1次</td><td class="md"></td></tr><tr><td class="mn">同城出入院专车 100公里以内提供车辆安排</td><td class="mv">1次/每次住院(仅针 对重疾住院)</td><td class="md"></td></tr><tr><td class="mn">康复管理(重疾绿通)</td><td class="mv">中医理疗线下，1次 营养方案线下，1次 专家复诊线下，1次</td><td class="md"></td></tr><tr><td class="mn">肿瘤特药直付</td><td class="mv">不限次</td><td class="md"></td></tr><tr><td class="mn">结节综合管理</td><td class="mv">1次</td><td class="md"></td></tr></tbody></table></div><div class="prod2"><div class="prod2-h">尊享宝贝少儿高端
+2025版 <span>16项</span></div><table class="mtable"><thead><tr><th>服务项目</th><th>次数</th><th>说明</th></tr></thead><tbody><tr><td class="mn">在线问诊 5年+临床经验全科医生 7*24问诊服务</td><td class="mv">不限次</td><td class="md"></td></tr><tr><td class="mn">专家门诊(重疾绿通) 分诊电话沟通，门诊线下安排</td><td class="mv">1次</td><td class="md"></td></tr><tr><td class="mn">检查加速(重疾绿通)</td><td class="mv">1次</td><td class="md"></td></tr><tr><td class="mn">质子重离子就医协助</td><td class="mv">含</td><td class="md"></td></tr><tr><td class="mn">协助预约安排疫苗服务</td><td class="mv">不限次</td><td class="md"></td></tr><tr><td class="mn">远程电话问诊 (重疾绿通)</td><td class="mv">1次</td><td class="md"></td></tr><tr><td class="mn">住院安排(重疾绿通)</td><td class="mv">1次</td><td class="md"></td></tr><tr><td class="mn">手术安排(重疾绿通)</td><td class="mv">1次</td><td class="md"></td></tr><tr><td class="mn">住院探视(重疾绿道) 院内探访及慰问，介绍后续服务</td><td class="mv">1次</td><td class="md"></td></tr><tr><td class="mn">预留高端病房</td><td class="mv">1次</td><td class="md"></td></tr><tr><td class="mn">住院护工</td><td class="mv">限1次/年，最长5天/ 次</td><td class="md"></td></tr><tr><td class="mn">住院垫付</td><td class="mv">不限次</td><td class="md"></td></tr><tr><td class="mn">直付医疗</td><td class="mv">不限次</td><td class="md"></td></tr><tr><td class="mn">医后随访(重疾绿通)</td><td class="mv">1次</td><td class="md"></td></tr><tr><td class="mn">康复管理(重疾绿通)</td><td class="mv">中医理疗线下，1次 营养方案线下，1次 专家复诊线下，1次</td><td class="md"></td></tr><tr><td class="mn">肿瘤特药直付</td><td class="mv">不限次</td><td class="md"></td></tr></tbody></table></div></div></div></section><section class="insurer" data-kw="招商信诺人寿 高端医疗" id="M6">
+<div class="ins-head"><div class="ins-logo" style="background:#0e7d68">招</div>
+<div class="ins-title"><h3>招商信诺人寿</h3><div class="ins-meta"><span class="tagchip">高端医疗</span><span class="tagchip">医疗险服务矩阵</span></div></div>
+<button class="toggle" onclick="toggleIns('M6')">展开详情<span class="arr">▾</span></button></div>
+<div class="ins-body" id="bodyM6"><div class="prods2"><div class="prod2"><div class="prod2-h">醇悦人生II <span>6项</span></div><ul class="mlist"><li>医疗咨询热线，不限次</li><li>重疾国内/全球二诊，各1次/年</li><li>赴美就医咨询，限1次/年</li><li>住院/手术协调，不限次</li><li>门诊预约服务，3次/年</li><li>全球紧急救援，不限次</li></ul></div><div class="prod2"><div class="prod2-h">醇享人生PRO <span>7项</span></div><ul class="mlist"><li>医疗咨询热线，不限次</li><li>重疾全球二诊，不限次</li><li>住院/手术协调，不限次</li><li>门诊预约，不限次</li><li>视频问诊，不限次</li><li>全球紧急救援（被保险人及配偶子女，一家4口），不限次</li><li>药品递送服务</li></ul></div><div class="prod2"><div class="prod2-h">醇致人生 <span>10项</span></div><ul class="mlist"><li>视频问诊，不限次</li><li>指定专家门诊，3次/年</li><li>陪诊服务，3次/年</li><li>住院/手术协调，1次/年</li><li>诺相守服务1次/年（院中护理3天、出院协助1次、出院交通1次、院后护工5天）</li><li>重疾全球二诊，1次</li><li>赴美就医咨询，1次/年</li><li>全球找药（特药服务），1次/年</li><li>全球紧急救援（被保险人及配偶子女，一家4口），不限次</li><li>药品递送服务</li></ul></div><div class="prod2"><div class="prod2-h">智惠人生 <span>10项</span></div><ul class="mlist"><li>医疗咨询热线，不限次数</li><li>国内二诊，1次/年</li><li>门诊预约服务，3次/年</li><li>视频问诊，不限次数</li><li>住院/手术协调，不限次数</li><li>出院交通安排及陪护，1次/年</li><li>院后居家康护指导书，1次/年</li><li>院后居家上门康护服务，1.5h/次，3次/年</li><li>院中陪诊服务，4h/次，1次/年</li><li>住院护工服务：10天/次，1次/年</li></ul></div></div></div></section><section class="insurer" data-kw="京东安联财险 少儿/高端/孕产医疗" id="M7">
+<div class="ins-head"><div class="ins-logo" style="background:#0e7d68">京</div>
+<div class="ins-title"><h3>京东安联财险</h3><div class="ins-meta"><span class="tagchip">少儿/高端/孕产医疗</span><span class="tagchip">医疗险服务矩阵</span></div></div>
+<button class="toggle" onclick="toggleIns('M7')">展开详情<span class="arr">▾</span></button></div>
+<div class="ins-body" id="bodyM7"><div class="prods2"><div class="prod2"><div class="prod2-h">·成长优享（互联网全国版） <span>9项</span></div><table class="mtable"><thead><tr><th>服务项目</th><th>次数</th><th>说明</th></tr></thead><tbody><tr><td class="mn">儿科疾病电话问诊</td><td class="mv">含</td><td class="md"></td></tr><tr><td class="mn">儿科线上图文问诊</td><td class="mv">含</td><td class="md"></td></tr><tr><td class="mn">就医分诊</td><td class="mv">含</td><td class="md"></td></tr><tr><td class="mn">协助预约安排疫苗</td><td class="mv">含</td><td class="md"></td></tr><tr><td class="mn">健康科普</td><td class="mv">含</td><td class="md"></td></tr><tr><td class="mn">公立医院特需部驻点服务</td><td class="mv">含</td><td class="md"></td></tr><tr><td class="mn">住院垫付</td><td class="mv">含</td><td class="md"></td></tr><tr><td class="mn">12联呼吸道病毒细菌检测5次</td><td class="mv">含</td><td class="md"></td></tr><tr><td class="mn">家庭医生服务 （在线问诊/开药、专属健康管家、专属健康档案、生长发育评估、少儿健康管理、儿童体检项目建议、预防接种提醒）</td><td class="mv">含</td><td class="md"></td></tr></tbody></table></div><div class="prod2"><div class="prod2-h">· <span>9项</span></div><table class="mtable"><thead><tr><th>服务项目</th><th>次数</th><th>说明</th></tr></thead><tbody><tr><td class="mn">儿科疾病电话问诊</td><td class="mv">含</td><td class="md"></td></tr><tr><td class="mn">儿科线上图文问诊</td><td class="mv">含</td><td class="md"></td></tr><tr><td class="mn">就医分诊</td><td class="mv">含</td><td class="md"></td></tr><tr><td class="mn">协助预约安排疫苗</td><td class="mv">含</td><td class="md"></td></tr><tr><td class="mn">健康科普</td><td class="mv">含</td><td class="md"></td></tr><tr><td class="mn">公立医院特需部驻点服务</td><td class="mv">含</td><td class="md"></td></tr><tr><td class="mn">住院垫付</td><td class="mv">含</td><td class="md"></td></tr><tr><td class="mn">12联呼吸道病毒细菌检测5次</td><td class="mv">含</td><td class="md"></td></tr><tr><td class="mn">家庭医生服务 （在线问诊/开药、专属健康管家、专属健康档案、生长发育评估、少儿健康管理、儿童体检项目建议、预防接种提醒）</td><td class="mv">含</td><td class="md"></td></tr></tbody></table></div><div class="prod2"><div class="prod2-h">·成长优享Pro（互联网北京版） <span>9项</span></div><table class="mtable"><thead><tr><th>服务项目</th><th>次数</th><th>说明</th></tr></thead><tbody><tr><td class="mn">儿科疾病电话问诊</td><td class="mv">含</td><td class="md"></td></tr><tr><td class="mn">儿科线上图文问诊</td><td class="mv">含</td><td class="md"></td></tr><tr><td class="mn">就医分诊</td><td class="mv">含</td><td class="md"></td></tr><tr><td class="mn">协助预约安排疫苗</td><td class="mv">含</td><td class="md"></td></tr><tr><td class="mn">健康科普</td><td class="mv">含</td><td class="md"></td></tr><tr><td class="mn">公立医院特需部驻点服务</td><td class="mv">含</td><td class="md"></td></tr><tr><td class="mn">住院垫付</td><td class="mv">含</td><td class="md"></td></tr><tr><td class="mn">12联呼吸道病毒细菌检测5次</td><td class="mv">含</td><td class="md"></td></tr><tr><td class="mn">家庭医生服务 （在线问诊/开药、专属健康管家、专属健康档案、生长发育评估、少儿健康管理、儿童体检项目建议、预防接种提醒）</td><td class="mv">含</td><td class="md"></td></tr></tbody></table></div><div class="prod2"><div class="prod2-h">· <span>9项</span></div><table class="mtable"><thead><tr><th>服务项目</th><th>次数</th><th>说明</th></tr></thead><tbody><tr><td class="mn">儿科疾病电话问诊</td><td class="mv">含</td><td class="md"></td></tr><tr><td class="mn">儿科线上图文问诊</td><td class="mv">含</td><td class="md"></td></tr><tr><td class="mn">就医分诊</td><td class="mv">含</td><td class="md"></td></tr><tr><td class="mn">协助预约安排疫苗</td><td class="mv">含</td><td class="md"></td></tr><tr><td class="mn">健康科普</td><td class="mv">含</td><td class="md"></td></tr><tr><td class="mn">公立医院特需部驻点服务</td><td class="mv">含</td><td class="md"></td></tr><tr><td class="mn">住院垫付</td><td class="mv">含</td><td class="md"></td></tr><tr><td class="mn">12联呼吸道病毒细菌检测5次</td><td class="mv">含</td><td class="md"></td></tr><tr><td class="mn">家庭医生服务 （在线问诊/开药、专属健康管家、专属健康档案、生长发育评估、少儿健康管理、儿童体检项目建议、预防接种提醒）</td><td class="mv">含</td><td class="md"></td></tr></tbody></table></div><div class="prod2"><div class="prod2-h">卓越全球高端医疗险2025 <span>26项</span></div><table class="mtable"><thead><tr><th>服务项目</th><th>次数</th><th>说明</th></tr></thead><tbody><tr><td class="mn">项目</td><td class="mv"></td><td class="md">内容</td></tr><tr><td class="mn">健康档案建立</td><td class="mv"></td><td class="md">不限次数</td></tr><tr><td class="mn">体检咨询和报告解读</td><td class="mv"></td><td class="md">不限次数</td></tr><tr><td class="mn">心理咨询服务（限5次/年）</td><td class="mv"></td><td class="md">每次不超过60分钟、可提供中英文咨询。</td></tr><tr><td class="mn">紧急救援协助服务</td><td class="mv"></td><td class="md">包含：亲属前往处理后事、紧急返回常住地、遗失行李或文件援助。</td></tr><tr><td class="mn">就医推荐及预约 （仅住院计划不提供门诊推荐及预约服务）</td><td class="mv"></td><td class="md">不限次数</td></tr><tr><td class="mn">就医陪诊（限12次/年） （仅住院计划不提供门诊陪诊服务）</td><td class="mv"></td><td class="md">每次不超4个小时</td></tr><tr><td class="mn">院内陪护（限5次/年）</td><td class="mv"></td><td class="md">每次最多不超8天7夜</td></tr><tr><td class="mn">直付服务 （仅住院计划不提供门诊直付）</td><td class="mv"></td><td class="md">不限次数</td></tr><tr><td class="mn">全球第二诊疗意见</td><td class="mv"></td><td class="md">安排全球范围内权威专家根据被保险人的实际疾病情况，给与诊断、治疗、出院方案等方面的建议。</td></tr><tr><td class="mn">重大疾病多学科会诊MDT</td><td class="mv"></td><td class="md">安排面对面、多学科的医学专家联合会诊，给予综合性、个体化的治疗方案，有效解决患者“精准治疗”的诉求。</td></tr><tr><td class="mn">住院垫付服务</td><td class="mv"></td><td class="md">被保险人在垫付网络列表中的医院门诊就诊后，拿到住院证即可联系我们，我们根据被保险人提供的门诊病历、病理检验报告、住院证明等必要的材料进行审核。如审核通过，我们将</td></tr><tr><td class="mn">恶性肿瘤及罕见病特定药品基因检测</td><td class="mv"></td><td class="md">提供国内顶尖且有资质的基因检测实验室进行检测，同时提供基因检测中匹配的套餐内容、套餐选择、样本类型及检测意义等咨询和解读。</td></tr><tr><td class="mn">全球第二诊疗意见</td><td class="mv"></td><td class="md">不限次数</td></tr><tr><td class="mn">重大疾病多学科会诊MDT</td><td class="mv"></td><td class="md">重疾启动，不限次数。（北上广地区三甲医院）</td></tr><tr><td class="mn">住院垫付服务</td><td class="mv"></td><td class="md">不限次数</td></tr><tr><td class="mn">恶性肿瘤及罕见病特定药品基因检测</td><td class="mv"></td><td class="md">限恶性肿瘤、不限次数</td></tr><tr><td class="mn">恶性肿瘤及罕见病院外特定药品直付 （包含CAR-T）</td><td class="mv"></td><td class="md">限恶性肿瘤、不限次数</td></tr><tr><td class="mn">出院陪同（含同城车辆）</td><td class="mv"></td><td class="md">距离医院50公里（含）以内的指定地点。</td></tr><tr><td class="mn">数字化康复</td><td class="mv"></td><td class="md">不限次数</td></tr><tr><td class="mn">诊后营养方案</td><td class="mv"></td><td class="md">不限次数，在经过手术治疗后</td></tr><tr><td class="mn">慢病配药 （仅住院计划不提供慢病配药服务）</td><td class="mv"></td><td class="md">不限次数、保单期间内罹患慢病</td></tr><tr><td class="mn">上门护理（限12次/年）</td><td class="mv"></td><td class="md">每次不超过12小时。</td></tr><tr><td class="mn">诊后随访</td><td class="mv"></td><td class="md">住院结束后，不限次数</td></tr><tr><td class="mn">美国及中国香港就医直通车</td><td class="mv"></td><td class="md">被保险人初次罹患重大疾病并经全球第二诊疗意见评估及保司预授权审批后，为被保险人链接例如美国梅奥诊所、香港综合癌症中心等权威医疗机构，在海外就医旅程提供支持，确保</td></tr><tr><td class="mn">父母关爱权益</td><td class="mv"></td><td class="md">成年被保险人父母（60周岁及以上，90周岁以下）可以免费享受长达一年的父母关爱权益，可广泛覆盖全国范围内20个省/直辖市，由康复治疗师、执业护士等组成的专业团队</td></tr></tbody></table></div><div class="prod2"><div class="prod2-h">优享人生增值服务 <span>14项</span></div><table class="mtable"><thead><tr><th>服务项目</th><th>次数</th><th>说明</th></tr></thead><tbody><tr><td class="mn">住院、门诊就医绿通</td><td class="mv"></td><td class="md">重疾启动，各1次/年</td></tr><tr><td class="mn">MDT多学科会诊/海外专家二诊</td><td class="mv"></td><td class="md">重疾启动，1次/年</td></tr><tr><td class="mn">全程陪同免现金住院服务</td><td class="mv"></td><td class="md">不限疾病，无次数限制</td></tr><tr><td class="mn">恶性肿瘤靶向药物基因检测</td><td class="mv"></td><td class="md">1次/年</td></tr><tr><td class="mn">特定药品院外药房直付</td><td class="mv"></td><td class="md">无次数限制</td></tr><tr><td class="mn">临床急需进口特定药品服务</td><td class="mv"></td><td class="md">无次数限制</td></tr><tr><td class="mn">术后上门护理服务</td><td class="mv"></td><td class="md">10次/年</td></tr><tr><td class="mn">临床前沿治疗直通车</td><td class="mv"></td><td class="md">无次数限制</td></tr><tr><td class="mn">肿瘤患者家族早癌筛查</td><td class="mv"></td><td class="md">2次/每位被保险人，仅限肠癌、肝癌、肺癌三种恶性肿瘤</td></tr><tr><td class="mn">专属病案管家</td><td class="mv"></td><td class="md">无次数限制</td></tr><tr><td class="mn">互联网超低购药折扣</td><td class="mv"></td><td class="md">无次数限制</td></tr><tr><td class="mn">重大疾病海外就医服务</td><td class="mv"></td><td class="md">选购重大疾病海外医疗责任方可申请，无次数限制</td></tr><tr><td class="mn">肿瘤类器官（PDO）药敏检测服务</td><td class="mv"></td><td class="md">1次/年</td></tr><tr><td class="mn">注释：最终以保险公司提供的服务为准，详见计划书或者服务手册</td><td class="mv"></td><td class="md"></td></tr></tbody></table></div></div></div></section><section class="insurer" data-kw="中间带（Medilink） 高端医疗/孕产/少儿" id="M8">
+<div class="ins-head"><div class="ins-logo" style="background:#0e7d68">中</div>
+<div class="ins-title"><h3>中间带（Medilink）</h3><div class="ins-meta"><span class="tagchip">高端医疗/孕产/少儿</span><span class="tagchip">医疗险服务矩阵</span></div></div>
+<button class="toggle" onclick="toggleIns('M8')">展开详情<span class="arr">▾</span></button></div>
+<div class="ins-body" id="bodyM8"><div class="prods2"><div class="prod2"><div class="prod2-h">平安财·臻高端/臻荣耀（中间带） <span>8项</span></div><table class="mtable"><thead><tr><th>服务项目</th><th>次数</th><th>说明</th></tr></thead><tbody><tr><td class="mn">就诊协助</td><td class="mv"></td><td class="md"></td></tr><tr><td class="mn">驻点服务
+陪诊服务
+住院垫付
+就医绿通
+二次诊疗(国内&amp;国外)</td><td class="mv"></td><td class="md"></td></tr><tr><td class="mn">线上健康</td><td class="mv"></td><td class="md"></td></tr><tr><td class="mn">视频问诊
+送药上门
+慢病配药</td><td class="mv"></td><td class="md"></td></tr><tr><td class="mn">全流程贴心陪护</td><td class="mv"></td><td class="md"></td></tr><tr><td class="mn">重疾住院陪护
+术后上门护理
+术后随访</td><td class="mv"></td><td class="md"></td></tr><tr><td class="mn">健康预防</td><td class="mv"></td><td class="md"></td></tr><tr><td class="mn">流感疫苗
+体检定制服务/报告解读</td><td class="mv"></td><td class="md"></td></tr></tbody></table></div><div class="prod2"><div class="prod2-h">都邦·臻合意（中间带） <span>18项</span></div><table class="mtable"><thead><tr><th>服务项目</th><th>次数</th><th>说明</th></tr></thead><tbody><tr><td class="mn">VIP门诊协助</td><td class="mv"></td><td class="md"></td></tr><tr><td class="mn">就诊陪诊服务</td><td class="mv"></td><td class="md"></td></tr><tr><td class="mn">国内大病二次诊疗服务</td><td class="mv"></td><td class="md"></td></tr><tr><td class="mn">线上健康服务(限直付计划)</td><td class="mv"></td><td class="md"></td></tr><tr><td class="mn">全球紧急医疗数援服务(限直付计划)</td><td class="mv"></td><td class="md"></td></tr><tr><td class="mn">住院协助</td><td class="mv"></td><td class="md"></td></tr><tr><td class="mn">住院直结服务(限直付计划)</td><td class="mv"></td><td class="md"></td></tr><tr><td class="mn">住院垫付</td><td class="mv"></td><td class="md"></td></tr><tr><td class="mn">重大疾病多学科会诊MDT</td><td class="mv"></td><td class="md"></td></tr><tr><td class="mn">恶性肿瘤特定用药基因检测服务</td><td class="mv"></td><td class="md"></td></tr><tr><td class="mn">国内院外特定药品药房直付服务</td><td class="mv"></td><td class="md"></td></tr><tr><td class="mn">海南博鳌国际特药服务</td><td class="mv"></td><td class="md"></td></tr><tr><td class="mn">国内院外特定医疗器械直付服务</td><td class="mv"></td><td class="md"></td></tr><tr><td class="mn">住院陪护服务</td><td class="mv"></td><td class="md"></td></tr><tr><td class="mn">住院探视</td><td class="mv"></td><td class="md"></td></tr><tr><td class="mn">出院交通</td><td class="mv"></td><td class="md"></td></tr><tr><td class="mn">术后居家护理服务</td><td class="mv"></td><td class="md"></td></tr><tr><td class="mn">重大疾病心理疏导</td><td class="mv"></td><td class="md"></td></tr></tbody></table></div><div class="prod2"><div class="prod2-h">利宝·欧思脉（中间带） <span>14项</span></div><table class="mtable"><thead><tr><th>服务项目</th><th>次数</th><th>说明</th></tr></thead><tbody><tr><td class="mn">高端医疗服务：</td><td class="mv"></td><td class="md"></td></tr><tr><td class="mn">1</td><td class="mv"></td><td class="md"></td></tr><tr><td class="mn">2</td><td class="mv"></td><td class="md"></td></tr><tr><td class="mn">3</td><td class="mv"></td><td class="md"></td></tr><tr><td class="mn">4</td><td class="mv"></td><td class="md"></td></tr><tr><td class="mn">5</td><td class="mv"></td><td class="md"></td></tr><tr><td class="mn">6</td><td class="mv"></td><td class="md"></td></tr><tr><td class="mn">境外医疗服务：</td><td class="mv"></td><td class="md"></td></tr><tr><td class="mn">1</td><td class="mv"></td><td class="md"></td></tr><tr><td class="mn">2</td><td class="mv"></td><td class="md"></td></tr><tr><td class="mn">3</td><td class="mv"></td><td class="md"></td></tr><tr><td class="mn">4</td><td class="mv"></td><td class="md"></td></tr><tr><td class="mn">5</td><td class="mv"></td><td class="md"></td></tr><tr><td class="mn">6</td><td class="mv"></td><td class="md"></td></tr></tbody></table></div><div class="prod2"><div class="prod2-h">利宝·喜燕宝孕中险（中间带） <span>7项</span></div><table class="mtable"><thead><tr><th>服务项目</th><th>次数</th><th>说明</th></tr></thead><tbody></tbody></table></div><div class="prod2"><div class="prod2-h">中荷·新燕宝2025（中间带） <span>17项</span></div><table class="mtable"><thead><tr><th>服务项目</th><th>次数</th><th>说明</th></tr></thead><tbody><tr><td class="mn">1.新燕宝金牌认证医生
+新燕宝独家顶尖医疗机构在职医生团队，新燕宝金牌医生独享快速预约通道，最晚次日确认就诊时间，最快可</td><td class="mv"></td><td class="md"></td></tr><tr><td class="mn">2.就医绿通服务
+·在您提出专家号门诊预约需求的情况下，根据您的申请和病情为您提供专家号的门诊就医绿色通道服务。
+北上广</td><td class="mv"></td><td class="md"></td></tr><tr><td class="mn">3.住院垫付:全年不限次数
+您前往非中间带直付医疗机构就诊时，为您直接支付住院押金，无需自行支付住院费用。完成治疗出院后</td><td class="mv"></td><td class="md"></td></tr><tr><td class="mn">4.大病二次诊疗服务
+为重大疾病确诊患者，提供诊断准确性评估、用药合理性评估、临床治疗方案优化等医疗意见。</td><td class="mv"></td><td class="md"></td></tr><tr><td class="mn">5.流感疫苗
+保险期间内，上海客户可于公立医院或【中间带医疗·宜汇】或【中间带医疗·百诺】接种一次流感疫苗;其他地区客户</td><td class="mv"></td><td class="md"></td></tr><tr><td class="mn">线上健康服务</td><td class="mv"></td><td class="md"></td></tr><tr><td class="mn">1.健康咨询
+线上专属家庭医生，免费为您及您的家属提供日常健康咨询、包含:与健康相关的咨询，如疾病饮食调节、亚健康咨询、</td><td class="mv"></td><td class="md"></td></tr><tr><td class="mn">2.视频问诊
+一键视频即可咨询医生，无需排队挂号，无需填写繁琐信息，享有医生服务，医生协助录入电子病历，形成连续的健康档</td><td class="mv"></td><td class="md"></td></tr><tr><td class="mn">3.送药上门
+客户提供有效处方，经中间带健管团队审核符合保险责任，提供送药上门服务，保险期间内不限次数，且不占用门诊次数</td><td class="mv"></td><td class="md"></td></tr><tr><td class="mn">其它增值服务</td><td class="mv"></td><td class="md"></td></tr><tr><td class="mn">区域</td><td class="mv"></td><td class="md"></td></tr><tr><td class="mn">北京</td><td class="mv"></td><td class="md"></td></tr><tr><td class="mn">北京</td><td class="mv"></td><td class="md"></td></tr><tr><td class="mn">北京</td><td class="mv"></td><td class="md"></td></tr><tr><td class="mn">北京</td><td class="mv"></td><td class="md"></td></tr><tr><td class="mn">北京</td><td class="mv"></td><td class="md"></td></tr><tr><td class="mn">注释：最终以保险公司提供的服务为准，详见计划书或者服务手册</td><td class="mv"></td><td class="md"></td></tr></tbody></table></div></div></div></section>
+    </section>
+
+    <div class="note">说明：以上内容由个人根据各保险公司公开服务手册、宣传资料整理，仅供信息参考，不构成产品推荐或服务承诺。各增值服务由相应保险公司或其合作服务商提供，服务内容、次数、适用条件、会员/积分规则可能调整，均以保险合同约定和保险公司官方最新发布为准。</div>
+  </main>
+</div>
+
+<footer>
+  <div class="fin">
+    <h4>关于本站</h4>
+    <p>本站汇总各保险公司"保单之外"的增长服务：健康绿通、重疾协助、康养养老社区、旅居、贵宾权益、教育与传承体系，帮助你更全面地理解一份保单的真实价值。</p>
+    <p>资料来源：各保险公司服务手册与公司介绍（经明亚保险经纪渠道资料整理）· 更新：2026-11</p>
+    <p>免责声明：本页面为个人整理的信息参考，不构成保险产品的推荐、邀约或任何服务承诺；各服务商的增值服务以其官方最新发布及保险合同约定为准。分红/万能等利益演示假设均非保证，具体以产品条款为准。</p>
+    <p class="copy">© 罗其 · 保险增长服务全景</p>
+  </div>
+</footer>
+
+<script>
+function toggleIns(id){
+  const sec=document.getElementById(id), body=document.getElementById('body'+id);
+  sec.classList.toggle('open');
+  const t=sec.querySelector('.toggle');
+  t.innerHTML=sec.classList.contains('open')?'收起 <span class="arr">▴</span>':'展开详情 <span class="arr">▾</span>';
+}
+function setAll(open){
+  document.querySelectorAll('.insurer').forEach(s=>{
+    const target=open, cur=s.classList.contains('open');
+    if(target!==cur) toggleIns(s.id);
+  });
+  document.getElementById('expandAll').textContent=open?'全部收起':'全部展开';
+}
+document.getElementById('expandAll').addEventListener('click',()=>{
+  const anyOpen=document.querySelector('.insurer.open');
+  setAll(!anyOpen);
+});
+const q=document.getElementById('q'), info=document.getElementById('resultInfo');
+q.addEventListener('input',()=>{
+  const kw=q.value.trim().toLowerCase(); let hit=0;
+  document.querySelectorAll('.insurer').forEach(sec=>{
+    const hay=(sec.dataset.kw+' '+sec.textContent).toLowerCase();
+    const ok=!kw||hay.includes(kw);
+    sec.classList.toggle('hidden',!ok);
+    if(ok&&kw)hit++;
+  });
+  document.querySelectorAll('.sec').forEach(s=>{
+    const any=s.querySelectorAll('.insurer:not(.hidden)').length>0;
+    s.classList.toggle('hidden',!any);
+  });
+  if(kw){info.textContent=`匹配到 ${hit} 家保司/服务商`;info.classList.remove('hidden');}
+  else info.classList.add('hidden');
+});
+// scrollspy
+const links=[...document.querySelectorAll('.navlink')];
+const map={}; links.forEach(l=>map[l.getAttribute('href').slice(1)]=l);
+const io=new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    if(e.isIntersecting){
+      links.forEach(l=>l.classList.remove('active'));
+      const l=map[e.target.id]; if(l){l.classList.add('active');}
+    }
+  });
+},{rootMargin:'-70px 0px -70% 0px'});
+document.querySelectorAll('.insurer').forEach(s=>io.observe(s));
+</script>
+</body>
+</html>
