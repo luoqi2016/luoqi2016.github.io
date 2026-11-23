@@ -88,6 +88,12 @@ a{color:inherit;text-decoration:none}
 .my-body .profile{margin:0}
 .my-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px}
 .my-sub{margin:4px 0 0;color:var(--navy);font-size:15px}
+.branch-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.branch-col{border:1px solid var(--line);border-radius:10px;background:#fff;padding:10px 12px}
+.branch-h{font-weight:700;color:#17637a;font-size:13.5px;margin-bottom:8px}
+.branch-h em{font-style:normal;float:right;color:#8a9bb0;font-weight:600}
+.bchips{display:flex;flex-wrap:wrap;gap:6px}
+.bchips span{background:#eef5f4;color:#28514a;border-radius:14px;padding:3px 10px;font-size:12px}
 .tier{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fbfdff;display:flex;flex-direction:column}
 .tier.wide{grid-column:1/-1}
 .tier-h{display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding:11px 16px;background:linear-gradient(90deg,#17637a 0%,#17637ac2 90%);color:#fff;flex-wrap:wrap}
@@ -999,24 +1005,30 @@ PLUS2025版 <span>22项</span></div><table class="mtable"><thead><tr><th>服务�
     <section class="sec" id="sec-mingya">
       <div class="sec-head"><span class="no">叁</span><h2>明亚保险经纪</h2><span>公司介绍 · 增值服务 · 签约机构<br>资料更新 2026-11</span></div>
       
-<section class="insurer" data-kw="明亚 明亚保险经纪 MINGYA 保险经纪 公司介绍 注册资本 经纪人" id="LMY1">
+<section class="insurer" data-kw="明亚 明亚保险经纪 MINGYA 保险经纪 公司介绍 成立时间 注册资本 省级分公司 机构分布 分支机构布局 北区 东区 南区 西区" id="LMY1">
 <div class="ins-head" style="border-top:3px solid #17637a">
   <div class="ins-logo" style="background:#17637a">明</div>
   <div class="ins-title"><h3>明亚保险经纪股份有限公司 <span class="ins-en">MINGYA INSURANCE BROKER</span></h3>
   <div class="ins-meta"><span class="badge2" style="background:#17637a">国内首家个人寿险经纪</span><span class="tagchip">保险经纪公司</span></div></div>
-  <div class="ins-actions"><button class="toggle" onclick="toggleIns('LMY1')">展开详情 <span class="arr">▾</span></button></div>
+  <div class="ins-actions"><details class="dlm"><summary class="dl dldoc">⬇ 官方资料 <span class="caret">▾</span></summary><div class="dlm-menu"><a href="docs/mingya-intro.docx" download><span>公司简介（word版）</span><em>12KB · DOCX</em></a><a href="docs/mingya-profile.jpg" download><span>公司介绍长图</span><em>0.3MB · JPG</em></a></div></details><button class="toggle" onclick="toggleIns('LMY1')">展开详情 <span class="arr">▾</span></button></div>
 </div>
 <div class="ins-body" id="bodyLMY1">
   <div class="my-body">
-    <div class="profile"><div class="pf-year" style="background:linear-gradient(155deg,#17637a 0%,#17637acc 100%)"><small>诞生于</small><b>2004</b><span>年</span></div><div class="pf-stats"><div class="pf-stat"><b>2004</b><span>成立年份</span></div><div class="pf-stat"><b>7560万</b><span>注册资本</span></div><div class="pf-stat"><b>2万+</b><span>经纪人员</span></div><div class="pf-stat"><b>800+</b><span>支持人员</span></div><div class="pf-stat"><b>62家</b><span>签约保司</span></div><div class="pf-stat"><b>727</b><span>签约关系</span></div></div></div>
+    <div class="profile"><div class="pf-year" style="background:linear-gradient(155deg,#17637a 0%,#17637acc 100%)"><small>诞生于</small><b>2004</b><span>年</span></div><div class="pf-stats"><div class="pf-stat"><b>2004</b><span>成立年份</span></div><div class="pf-stat"><b>33家</b><span>省级分公司</span></div><div class="pf-stat"><b>150+</b><span>合作保司</span></div><div class="pf-stat"><b>7560万</b><span>注册资本</span></div><div class="pf-stat"><b>2万+</b><span>经纪人员</span></div><div class="pf-stat"><b>2度</b><span>中华慈善奖</span></div></div></div>
     <ul class="intro-list">
-      <li>2004年11月18日成立，注册资本7560万元，总部位于北京</li>
-      <li>国内率先将保险经纪人机制引入个人寿险领域的保险经纪公司，专注风险管理、保险经纪与财富管理咨询</li>
-      <li>20000多名专业保险经纪人员，800余名销售支持人员（其中专业技术人员近400名）</li>
-      <li>已服务上千家企业客户，涉及领事馆、国际学校、投行、信息技术、金融服务、律师事务所等行业</li>
-      <li>产品线覆盖寿险、医疗险、财产险等，签约保险公司及服务商众多，满足多元化客户需求</li>
-      <li>正以建立完善的"保·救·康·养"增值服务体系为目标，持续引入品牌好、服务优、品质佳的供应商</li>
+      <li>成立于2004年11月18日，总部设于北京，在全国已设立33家省级分公司；自创建之初便接轨国际先进模式，致力于将保险经纪人的理念与服务引入中国个人寿险营销领域</li>
+      <li>始终恪守独立、客观、公正的立场，旨在成为个人及企业客户的风险管理顾问；已和150余家保险公司建立合作关系，产品供给丰富且差异化，满足每位客户的个性化需求</li>
+      <li>20000多名专业保险经纪人员、800余名销售支持人员（其中专业技术人员近400名）；独立研发MYRM风险管理与财务规划系统，MyBA明亚AI销售助手体系建立，布局大模型领域</li>
+      <li>长期投身公益慈善事业，曾两度荣获中国公益慈善领域的最高政府奖项——中华慈善奖</li>
+      <li>愿景：推动保险事业的健康发展，让每个家庭都拥有专属的保险经纪人——"聚志同道合之士，创泽世利人之功"</li>
     </ul>
+    <h4 class="my-sub">分支机构布局 <small style="font-weight:400;color:#8a9bb0">（来源：明亚官网"机构分布"，总部北京 · 33家省级分公司）</small></h4>
+    <div class="branch-grid">
+      <div class="branch-col"><div class="branch-h">北区 <em>9</em></div><div class="bchips"><span>北京</span><span>河北</span><span>吉林</span><span>辽宁</span><span>内蒙古</span><span>天津</span><span>山西</span><span>大连</span><span>黑龙江</span></div></div>
+      <div class="branch-col"><div class="branch-h">东区 <em>8</em></div><div class="bchips"><span>安徽</span><span>河南</span><span>江苏</span><span>宁波</span><span>青岛</span><span>山东</span><span>上海</span><span>浙江</span></div></div>
+      <div class="branch-col"><div class="branch-h">南区 <em>8</em></div><div class="bchips"><span>福建</span><span>广东</span><span>广西</span><span>湖南</span><span>厦门</span><span>深圳</span><span>海南</span><span>江西</span></div></div>
+      <div class="branch-col"><div class="branch-h">西区 <em>8</em></div><div class="bchips"><span>湖北</span><span>宁夏</span><span>陕西</span><span>四川</span><span>新疆</span><span>重庆</span><span>云南</span><span>贵州</span></div></div>
+    </div>
   </div>
 </div></section>
 <section class="insurer" data-kw="明亚增值服务 会员 V1 V2 V3 预备会员 荣誉会员 尊享会员 积分兑换 健康绿通 全球紧急救援 明亚医生" id="LMY2">
