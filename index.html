@@ -245,6 +245,36 @@ footer .copy{margin-top:18px;opacity:.55;font-size:12px}
 }
 @media print{.topbar,.sidenav,.toggle,.dl,.chips{display:none!important}.hero{padding:30px}}
 .insurer{scroll-margin-top:82px}
+
+/* ===== 微信内置浏览器下载兼容层 ===== */
+.wx-tip{position:fixed;left:0;right:0;bottom:0;z-index:9990;display:none;background:linear-gradient(180deg,#16375c,#0e2a47);color:#fff;padding:11px 16px;font-size:13px;line-height:1.55;box-shadow:0 -8px 24px rgba(8,26,46,.28);align-items:flex-start;gap:10px}
+.wx-tip.show{display:flex}
+body.wx-tip-on{padding-bottom:84px}
+.wx-tip .ico{flex:0 0 auto;width:18px;height:18px;border-radius:50%;background:#2f7dd1;color:#fff;font-size:12px;line-height:18px;text-align:center;font-weight:700;margin-top:2px}
+.wx-tip .txt{flex:1}
+.wx-tip b{color:#ffd98a;font-weight:600}
+.wx-tip .x{flex:0 0 auto;opacity:.65;font-size:20px;line-height:1;padding:0 2px;background:none;border:0;color:#fff;cursor:pointer}
+.wx-mask{position:fixed;inset:0;z-index:9995;background:rgba(8,20,34,.74);display:none;align-items:center;justify-content:center;padding:24px}
+.wx-mask.show{display:flex}
+.wx-card{background:#fff;border-radius:16px;width:100%;max-width:330px;max-height:88vh;overflow-y:auto;padding:22px 22px 16px;box-shadow:0 24px 60px rgba(0,0,0,.32);font-family:var(--sans)}
+.wx-card h3{font-size:16px;color:var(--navy);margin-bottom:6px;font-weight:600}
+.wx-card p.sub{font-size:12.5px;color:var(--muted);margin-bottom:14px;line-height:1.6}
+.wx-step{display:flex;gap:10px;font-size:13px;color:#22374d;line-height:1.6;margin-bottom:10px;align-items:flex-start}
+.wx-step i{flex:0 0 auto;width:19px;height:19px;border-radius:50%;background:#e8f1fb;color:var(--brand);font-style:normal;font-size:11.5px;font-weight:700;text-align:center;line-height:19px;margin-top:1px}
+.wx-step .k{color:var(--brand);font-weight:600}
+.wx-btns{display:flex;gap:8px;margin-top:16px}
+.wx-btns button{flex:1;border:0;border-radius:10px;padding:10px 0;font-size:13.5px;font-family:var(--sans);cursor:pointer}
+.wx-btns .ok{background:var(--brand);color:#fff}
+.wx-btns .cp{background:#eff5fb;color:var(--brand);border:1px solid #cfe0f0}
+.wx-imgmask{position:fixed;inset:0;z-index:9995;background:rgba(8,20,34,.95);display:none;flex-direction:column}
+.wx-imgmask.show{display:flex}
+.wx-imgbar{flex:0 0 auto;display:flex;align-items:center;gap:10px;color:#fff;padding:12px 16px;font-size:13px;background:rgba(10,24,40,.95)}
+.wx-imgbar .t{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;opacity:.92}
+.wx-imgbar button{background:none;border:0;color:#fff;font-size:22px;line-height:1;opacity:.8;cursor:pointer}
+.wx-imgbody{flex:1;overflow:auto;-webkit-overflow-scrolling:touch;padding:0 12px 24px}
+.wx-imgbody img{width:100%;height:auto;display:block;border-radius:10px;background:#fff}
+.wx-imghint{position:sticky;bottom:0;margin:12px auto 0;max-width:100%;background:#ffd98a;color:#4a3410;font-size:12.5px;text-align:center;padding:9px 12px;border-radius:999px;box-shadow:0 6px 18px rgba(0,0,0,.28)}
+@media print{.wx-tip,.wx-mask,.wx-imgmask{display:none!important}}
 </style>
 </head>
 <body>
@@ -1298,5 +1328,97 @@ const io=new IntersectionObserver(es=>{
 document.querySelectorAll('.insurer').forEach(s=>io.observe(s));
 </script>
 <script>document.addEventListener('toggle',function(e){var d=e.target;if(d&&d.matches&&d.matches('.dlm')){var sec=d.closest('.insurer');if(sec)sec.classList.toggle('dl-open',d.open);}},{capture:true});</script>
+
+<script>
+/* 微信内置浏览器：不支持直接下载文件 → 图片走页内长按保存，PDF/Word 引导转浏览器 */
+(function(){
+  var IS_WX = /MicroMessenger/i.test(navigator.userAgent);
+  if(!IS_WX) return;
+  function ext(u){var m=/[?&]?([^.\/]+)\.([A-Za-z0-9]{2,5})(?:[?#]|$)/.exec(u||'');return m?m[2].toLowerCase():'';}
+  function $(h){var d=document.createElement('div');d.innerHTML=h.trim();return d.firstChild;}
+
+  /* 底部常驻提示（点过下载后不再重复提示） */
+  var tip=null;
+  function showTip(){
+    if(tip || sessionStorage.getItem('wxTipOff')==='1') return;
+    tip=$('<div class="wx-tip"><span class="ico">!</span><span class="txt"><b>微信内不支持直接下载</b>，请点右上角 <b>···</b> 用「在浏览器打开」</span><button class="x" aria-label="关闭">×</button></div>');
+    document.body.appendChild(tip);
+    requestAnimationFrame(function(){tip.classList.add('show');document.body.classList.add('wx-tip-on');});
+    tip.querySelector('.x').onclick=function(){tip.classList.remove('show');document.body.classList.remove('wx-tip-on');sessionStorage.setItem('wxTipOff','1');setTimeout(function(){tip&&tip.remove();tip=null;},200);};
+  }
+
+  /* 引导弹层 */
+  var mask=null;
+  function guide(url){
+    closeGuide();
+    mask=$('<div class="wx-mask"><div class="wx-card"><h3>微信内暂不支持下载</h3>'+
+      '<p class="sub">这是微信内置浏览器的限制，不是链接失效。用下面的方式即可正常下载：</p>'+
+      '<div class="wx-step"><i>1</i><span>点右上角 <span class="k">···</span> 更多按钮</span></div>'+
+      '<div class="wx-step"><i>2</i><span>选择 <span class="k">在浏览器打开</span></span></div>'+
+      '<div class="wx-step"><i>3</i><span>回到页面，重新点击下载即可</span></div>'+
+      '<div class="wx-btns"><button class="cp">复制文件链接</button><button class="ok">我知道了</button></div>'+
+      '</div></div>');
+    document.body.appendChild(mask);
+    requestAnimationFrame(function(){mask.classList.add('show');});
+    mask.addEventListener('click',function(e){if(e.target===mask)closeGuide();});
+    mask.querySelector('.ok').onclick=closeGuide;
+    mask.querySelector('.cp').onclick=function(){
+      var b=this, abs=url;
+      try{abs=new URL(url,location.href).href;}catch(err){}
+      var ta=document.createElement('textarea');
+      ta.value=abs;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);
+      ta.select();
+      var okc=false;
+      try{okc=document.execCommand('copy');}catch(err){}
+      ta.remove();
+      if(!okc && navigator.clipboard){navigator.clipboard.writeText(abs);okc=true;}
+      b.textContent=okc?'已复制，去浏览器粘贴':'请长按上方步骤操作';
+      setTimeout(function(){b.textContent='复制文件链接';},2200);
+    };
+  }
+  function closeGuide(){if(mask){mask.classList.remove('show');var m=mask;mask=null;setTimeout(function(){m.remove();},180);}}
+
+  /* 图片预览（长按保存） */
+  var iv=null;
+  function openImg(src,title){
+    closeImg();
+    iv=$('<div class="wx-imgmask"><div class="wx-imgbar"><span class="t"></span><button aria-label="关闭">×</button></div><div class="wx-imgbody"><img alt=""><div class="wx-imghint">长按图片 → 保存到相册 / 发送给朋友</div></div></div>');
+    iv.querySelector('.t').textContent=title||'图片预览';
+    iv.querySelector('img').src=src;
+    iv.querySelector('button').onclick=closeImg;
+    document.body.appendChild(iv);
+    document.body.style.overflow='hidden';
+    requestAnimationFrame(function(){iv.classList.add('show');});
+  }
+  function closeImg(){if(iv){iv.classList.remove('show');document.body.style.overflow='';var x=iv;iv=null;setTimeout(function(){x.remove();},180);}}
+
+  document.addEventListener('click',function(e){
+    var a=e.target;
+    while(a && a.tagName!=='A'){a=a.parentElement;}
+    if(!a) return;
+    var href=a.getAttribute('href')||'';
+    if(!href || href.charAt(0)==='#') return;
+    var hasDl=a.hasAttribute('download');
+    var isFile=/\.(jpg|jpeg|png|pdf|docx?|xlsx?|pptx?)([?#]|$)/i.test(href) || hasDl;
+    if(!isFile) return;
+    e.preventDefault();
+    e.stopPropagation();
+    var t=(a.textContent||'').replace(/\s+/g,' ').trim().slice(0,40);
+    var x=ext(href);
+    if(x==='jpg'||x==='jpeg'||x==='png'){
+      openImg(href,t);
+    }else{
+      guide(href);
+      showTip();
+    }
+  },true);
+
+  /* 首次进入提示一次（仅在向下滚动后出现，避免遮挡首屏） */
+  var scrolled=false;
+  window.addEventListener('scroll',function(){
+    if(!scrolled && window.scrollY>240){scrolled=true;showTip();}
+  },{passive:true});
+})();
+</script>
 </body>
 </html>
