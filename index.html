@@ -244,6 +244,7 @@ footer .copy{margin-top:18px;opacity:.55;font-size:12px}
   .pf-stats{grid-template-columns:repeat(auto-fit,minmax(130px,1fr))}
 }
 @media print{.topbar,.sidenav,.toggle,.dl,.chips{display:none!important}.hero{padding:30px}}
+.insurer{scroll-margin-top:82px}
 </style>
 </head>
 <body>
@@ -1252,6 +1253,17 @@ function setAll(open){
   });
   document.getElementById('expandAll').textContent=open?'全部收起':'全部展开';
 }
+/* 扫码/带锚点进入时：自动展开目标卡片并滚动到位（如 #LMY4） */
+function openFromHash(){
+  var h=(location.hash||'').replace('#','');
+  if(!h) return;
+  var sec=document.getElementById(h);
+  if(!sec) return;
+  if(!sec.classList.contains('open')) toggleIns(h);
+  setTimeout(function(){ sec.scrollIntoView({behavior:'smooth',block:'start'}); }, 120);
+}
+window.addEventListener('hashchange', openFromHash);
+window.addEventListener('load', function(){ if(location.hash) setTimeout(openFromHash, 60); });
 document.getElementById('expandAll').addEventListener('click',()=>{
   const anyOpen=document.querySelector('.insurer.open');
   setAll(!anyOpen);
