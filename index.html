@@ -243,7 +243,7 @@ footer .copy{margin-top:18px;opacity:.55;font-size:12px}
   .hero h1{font-size:32px}
   .insurer.open .ins-body{grid-template-columns:1fr}
   .ins-head{flex-wrap:wrap}
-  .ins-actions{width:100%;justify-content:flex-start}
+  .ins-actions{width:100%;justify-content:flex-start;flex-wrap:wrap}
   .profile{flex-wrap:wrap}
   .pf-stats{grid-template-columns:repeat(auto-fit,minmax(130px,1fr))}
 }
@@ -270,6 +270,14 @@ footer .copy{margin-top:18px;opacity:.55;font-size:12px}
   .sec-head .no{font-size:24px}
   .sec-head h2{font-size:20px}
   .sec-head span:last-child{flex:1 0 100%;margin-left:0;text-align:left;font-size:12px;line-height:1.65}
+  /* 保司卡片：手机上按钮换行 + 紧凑尺寸，避免被 overflow:hidden 裁掉 */
+  .ins-head{align-items:flex-start;padding:14px 15px;gap:12px}
+  .ins-title h3{font-size:18px}
+  .ins-en{display:none}
+  .ins-actions{gap:6px}
+  .ins-actions .dl,.ins-actions .toggle{font-size:11.5px;padding:5px 10px;gap:4px}
+  .ins-body{padding:0 15px 18px}
+  .dlm-menu{min-width:0;max-width:78vw}
 }
 @media print{.topbar,.sidenav,.toggle,.dl,.chips{display:none!important}.hero{padding:30px}}
 .insurer{scroll-margin-top:82px}
