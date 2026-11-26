@@ -63,8 +63,7 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);
 .search-wrap .clr.show{display:block}
 
 /* 缴费期筛选 */
-.periods{display:flex;gap:7px;overflow-x:auto;padding:3px 0 8px;scrollbar-width:none}
-.periods::-webkit-scrollbar{display:none}
+.periods{display:flex;flex-wrap:wrap;gap:7px;padding:3px 0 8px}
 .chip{flex:0 0 auto;padding:6px 13px;border-radius:18px;border:1px solid var(--line);
   background:var(--card);color:#5c6884;font-size:12px;cursor:pointer;white-space:nowrap;transition:.15s}
 .chip.on{background:var(--gold-soft);border-color:var(--gold);color:#8a6316;font-weight:700}
@@ -257,8 +256,8 @@ function renderTabs(){
 function periodOrder(p){
   if(p==="趸交") return 0;
   const m = String(p).match(/^(\d+)/);
-  if(m){ const n=+m[1]; return n<10?n:n+20; }
-  return 999;
+  if(m) return +m[1]*10 + (String(p).includes("-")?1:0);
+  return 9990;
 }
 function renderPeriods(){
   const ps = [...new Set(DATA.rows[state.cat].map(r=>r.p))].sort((a,b)=>periodOrder(a)-periodOrder(b));
