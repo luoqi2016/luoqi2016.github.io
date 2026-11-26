@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#16264a">
+<title>佣金速查 · 产品佣金横向对比</title>
+<style>
+:root{
+  --navy:#16264a; --navy2:#27407c; --gold:#e0b45c; --gold-soft:#f6e7c8;
+  --bg:#f3f5fa; --card:#ffffff; --ink:#1b2540; --muted:#8490ab; --line:#e6eaf3;
+  --red:#d43a30; --red-soft:#fdecea; --blue:#2f6fd0; --blue-soft:#eaf2ff;
+  --radius:14px; --shadow:0 2px 12px rgba(22,38,74,.07);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
+  font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.app{max-width:520px;margin:0 auto;min-height:100vh;padding-bottom:40px;background:var(--bg);position:relative;overflow:hidden}
+
+/* 海报头 */
+.hero{position:relative;background:linear-gradient(135deg,#122044 0%,#1d3263 55%,#2a4787 100%);
+  color:#fff;padding:30px 22px 26px;overflow:hidden}
+.hero::before{content:"";position:absolute;width:240px;height:240px;border-radius:50%;
+  border:1px solid rgba(224,180,92,.22);right:-90px;top:-110px}
+.hero::after{content:"";position:absolute;width:150px;height:150px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.10);right:30px;top:-60px}
+.hero .tag{display:inline-flex;align-items:center;gap:6px;font-size:11px;letter-spacing:2px;
+  color:var(--gold);border:1px solid rgba(224,180,92,.45);border-radius:20px;padding:3px 11px;margin-bottom:14px}
+.hero .tag i{width:5px;height:5px;background:var(--gold);border-radius:50%;display:block}
+.hero h1{margin:0;font-size:34px;letter-spacing:3px;font-weight:800;line-height:1.2}
+.hero h1 span{color:var(--gold)}
+.hero .sub{margin-top:9px;font-size:13px;color:#c4d2f0;letter-spacing:.5px}
+.hero .stats{display:flex;gap:8px;margin-top:18px;flex-wrap:wrap}
+.hero .stat{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.12);
+  border-radius:9px;padding:7px 11px;font-size:11px;color:#dbe5ff}
+.hero .stat b{color:#fff;font-size:15px;margin-right:3px}
+.hero .date{position:absolute;right:18px;bottom:14px;font-size:10px;color:rgba(255,255,255,.45);letter-spacing:1px}
+
+/* 通用区块 */
+.section{margin:16px 14px 0}
+.label{font-size:11px;color:var(--muted);letter-spacing:1px;margin:0 0 8px 2px;font-weight:600}
+
+/* 分类 Tab */
+.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}
+.tab{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:11px 2px 9px;
+  text-align:center;cursor:pointer;transition:.18s;box-shadow:var(--shadow)}
+.tab .t-name{font-size:13px;font-weight:700;display:block}
+.tab .t-num{font-size:10px;color:var(--muted);margin-top:2px;display:block}
+.tab.on{background:linear-gradient(135deg,var(--navy),var(--navy2));border-color:var(--navy);color:#fff}
+.tab.on .t-num{color:#b9c9ef}
+.tab:active{transform:scale(.97)}
+
+/* 搜索 */
+.search-wrap{position:relative;margin-top:14px}
+.search-wrap input{width:100%;height:44px;border:1px solid var(--line);border-radius:12px;
+  background:var(--card);padding:0 40px 0 38px;font-size:14px;color:var(--ink);outline:none;
+  box-shadow:var(--shadow);transition:.2s}
+.search-wrap input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(47,111,208,.10)}
+.search-wrap .ico{position:absolute;left:13px;top:13px;width:17px;height:17px;color:var(--muted)}
+.search-wrap .clr{position:absolute;right:10px;top:9px;width:26px;height:26px;border:none;background:#eef1f7;
+  border-radius:50%;color:var(--muted);font-size:16px;cursor:pointer;display:none;line-height:24px}
+.search-wrap .clr.show{display:block}
+
+/* 缴费期筛选 */
+.periods{display:flex;gap:7px;overflow-x:auto;padding:3px 0 8px;scrollbar-width:none}
+.periods::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;padding:6px 13px;border-radius:18px;border:1px solid var(--line);
+  background:var(--card);color:#5c6884;font-size:12px;cursor:pointer;white-space:nowrap;transition:.15s}
+.chip.on{background:var(--gold-soft);border-color:var(--gold);color:#8a6316;font-weight:700}
+.chip:active{transform:scale(.96)}
+
+/* 结果信息 */
+.result-info{display:flex;justify-content:space-between;align-items:center;margin:6px 2px 9px;
+  font-size:11px;color:var(--muted)}
+.result-info b{color:var(--navy)}
+.sort-btn{border:1px solid var(--line);background:var(--card);border-radius:14px;padding:4px 10px;
+  font-size:11px;color:#5c6884;cursor:pointer}
+.sort-btn.on{background:var(--blue-soft);border-color:#bcd4f7;color:var(--blue)}
+
+/* 对比卡片 */
+.list{display:flex;flex-direction:column;gap:11px}
+.pcard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow);overflow:hidden}
+.pcard .head{display:flex;align-items:flex-start;gap:10px;padding:13px 13px 10px;cursor:pointer}
+.co-badge{flex:0 0 auto;width:38px;height:38px;border-radius:10px;display:flex;align-items:center;
+  justify-content:center;font-size:12px;font-weight:800;color:#fff;background:var(--navy2);letter-spacing:-.5px}
+.pcard .meta{flex:1;min-width:0}
+.pcard .pname{font-size:13px;font-weight:700;line-height:1.35;word-break:break-all}
+.pcard .psub{font-size:10px;color:var(--muted);margin-top:3px}
+.pcard .arrow{flex:0 0 auto;color:var(--muted);font-size:12px;transition:.2s;margin-top:3px}
+.pcard.open .arrow{transform:rotate(180deg)}
+
+/* 对比数据行 */
+.cmp{display:flex;align-items:center;gap:0;padding:0 10px 11px}
+.cmp-cell{flex:1;text-align:center;border-radius:8px;padding:7px 1px 6px;position:relative}
+.cmp-cell+.cmp-cell{margin-left:3px}
+.cmp-cell .k{font-size:9px;color:var(--muted);white-space:nowrap}
+.cmp-cell .v{font-size:15px;font-weight:800;margin-top:2px;letter-spacing:-.3px}
+.cmp-cell .v.dash{color:#c4ccdb;font-weight:500}
+.cmp-cell.perf{background:#f7f8fc;border:1px solid var(--line)}
+.cmp-cell.perf .v{color:var(--navy);font-size:13px}
+.cmp-cell.red .v{color:var(--red)}
+.cmp-cell.red{background:var(--red-soft)}
+
+/* 展开明细 */
+.detail{display:none;border-top:1px dashed var(--line);background:#fafbfe;padding:10px 11px 13px}
+.pcard.open .detail{display:block}
+.dtable{width:100%;border-collapse:collapse;font-size:11px}
+.dtable th{background:var(--navy);color:#fff;font-weight:600;padding:6px 2px;text-align:center;font-size:10px;white-space:nowrap}
+.dtable th:first-child{border-radius:6px 0 0 0}
+.dtable th:last-child{border-radius:0 6px 0 0}
+.dtable td{border-bottom:1px solid var(--line);padding:6px 2px;text-align:center;white-space:nowrap}
+.dtable td:first-child{text-align:left;font-weight:600;color:#44506c}
+.dtable tr:last-child td{border-bottom:none}
+.dtable .r{color:var(--red);font-weight:700}
+.dtable .dash{color:#c4ccdb}
+.dtable .perf-col{background:#f2f6ff;font-weight:700;color:var(--navy)}
+.scroll-x{overflow-x:auto;-webkit-overflow-scrolling:touch}
+
+/* 横向对比大表 */
+.bigtable-wrap{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow);overflow:hidden}
+.bigtable{width:100%;border-collapse:collapse;font-size:11px;min-width:520px}
+.bigtable th{background:var(--navy);color:#fff;padding:9px 6px;text-align:center;font-size:10px;
+  position:sticky;top:0;z-index:3;font-weight:600;white-space:nowrap}
+.bigtable th:nth-child(1),.bigtable td:nth-child(1){position:sticky;left:0;z-index:4;background:var(--card)}
+.bigtable th:nth-child(1){z-index:5;background:var(--navy);text-align:left;min-width:112px}
+.bigtable td{border-bottom:1px solid var(--line);padding:9px 6px;text-align:center;white-space:nowrap}
+.bigtable td:nth-child(1){text-align:left;font-weight:600;box-shadow:1px 0 0 var(--line)}
+.bigtable td:nth-child(1) small{display:block;color:var(--muted);font-weight:400;font-size:9px;max-width:100px;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bigtable .r{color:var(--red);font-weight:700;background:var(--red-soft)}
+.bigtable .dash{color:#c4ccdb}
+.bigtable .rank{display:inline-block;width:16px;height:16px;line-height:16px;border-radius:4px;
+  font-size:9px;background:#eef1f7;color:#6b7690;margin-right:4px}
+.bigtable .rank.top{background:var(--gold);color:#fff}
+.bigtable tr:hover td{background:#f8faff}
+.bigtable tr:hover td:nth-child(1){background:#f8faff}
+
+/* 视图切换 */
+.viewtoggle{display:flex;background:#e9edf5;border-radius:10px;padding:3px;margin-left:auto}
+.viewtoggle button{border:none;background:transparent;padding:5px 11px;border-radius:8px;font-size:11px;
+  color:#6b7690;cursor:pointer;white-space:nowrap}
+.viewtoggle button.on{background:#fff;color:var(--navy);font-weight:700;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+
+.empty{text-align:center;padding:44px 20px;color:var(--muted);font-size:13px}
+.empty .big{font-size:34px;margin-bottom:10px;opacity:.5}
+
+/* 底部说明 */
+.footer{margin:22px 14px 0;background:#eceff6;border-radius:12px;padding:13px 14px;
+  font-size:10px;color:#8b96ad;line-height:1.75}
+.footer b{color:#66718c}
+.footer .warn{color:var(--red)}
+
+@media (min-width:521px){.app{box-shadow:0 0 40px rgba(22,38,74,.12)}}
+</style>
+</head>
+<body>
+<div class="app">
+
+  <div class="hero">
+    <div class="tag"><i></i>INTERNAL · 佣金速查</div>
+    <h1>佣金<span>速查</span></h1>
+    <div class="sub">选品类 · 输关键词 · 横向对比各公司佣金</div>
+    <div class="stats">
+      <div class="stat"><b id="statTotal">39</b>款产品</div>
+      <div class="stat"><b>4</b>大品类</div>
+      <div class="stat"><b id="statRows">219</b>条费率</div>
+    </div>
+    <div class="date">数据更新 2026.11</div>
+  </div>
+
+  <div class="section">
+    <p class="label">① 选择产品品类</p>
+    <div class="tabs" id="tabs"></div>
+  </div>
+
+  <div class="section">
+    <p class="label">② 搜索产品或公司</p>
+    <div class="search-wrap">
+      <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/>
+      </svg>
+      <input id="kw" type="search" placeholder="如：养老年金 / 中荷 / 福满堂" autocomplete="off">
+      <button class="clr" id="clr" aria-label="清空">×</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <p class="label">③ 选择缴费期（横向对比）</p>
+    <div class="periods" id="periods"></div>
+  </div>
+
+  <div class="section">
+    <div class="result-info">
+      <div>共 <b id="cnt">0</b> 款产品 · <b id="cntRows">0</b> 条费率</div>
+      <div style="display:flex;align-items:center;gap:6px">
+        <button class="sort-btn on" id="sortBtn">佣金↓</button>
+        <div class="viewtoggle">
+          <button class="on" data-view="card">卡片</button>
+          <button data-view="table">大表</button>
+        </div>
+      </div>
+    </div>
+    <div id="list" class="list"></div>
+    <div id="bigWrap" class="bigtable-wrap scroll-x" style="display:none"></div>
+  </div>
+
+  <div class="footer">
+    <b>使用说明</b><br>
+    · 首年业绩比例用于业绩核算（保费 × 比例）；金/红色数字为原表标注的特殊非标准比例。<br>
+    · “--” 表示原表该缴费期无此佣金档位。<br>
+    · 数据依据 39 张原始佣金表整理，<span class="warn">佣金率以公司最新政策为准</span>；分红型产品红利分配不确定，不代表实际收益。<br>
+    · 内部资料，仅供业务参考，请勿对外传播。
+  </div>
+
+</div>
+
+<script src="data.js"></script>
+<script>
+const CATS = ["增额寿","养老金","快返年金","杠杆寿"];
+const CO_COLOR = {
+  "中意":"#2e5fa8","中英人寿":"#b3392f","中荷":"#2f7d6e","中邮":"#3a6ea5",
+  "恒安标准":"#7a5aa6","同方全球":"#b3732b","陆家嘴国泰":"#31698f","复星保德信":"#a94f7c",
+  "长城":"#4a6b3a","光大永明":"#8a6b2f","阳光人寿":"#c2691e","华泰人寿":"#33628f","瑞泰":"#5c6099"
+};
+const state = { cat:"养老金", kw:"", period:"5年", view:"card", sortDesc:true, open:new Set() };
+function defaultPeriod(cat){
+  const ps=[...new Set(DATA.rows[cat].map(r=>r.p))];
+  if(ps.includes("5年")) return "5年";
+  const nonSingle=ps.filter(p=>p!=="趸交");
+  return nonSingle.length?nonSingle[0]:"全部";
+}
+const $ = id => document.getElementById(id);
+const pct = v => (typeof v === "number" ? (+(v*100).toFixed(2)) + "%" : (v === 0 ? "0%" : "—"));
+const isNum = v => typeof v === "number";
+const shortName = n => n.replace(/（分红型）/g,"").replace(/终身寿险/g,"终身寿")
+  .replace(/养老年金保险/g,"养老年金").replace(/年金保险/g,"年金").replace(/保险/g,"")
+  .replace(/（普通版）/g,"");
+
+function init(){
+  const allRows = CATS.reduce((a,c)=>a.concat(DATA.rows[c]),[]);
+  $("statTotal").textContent = new Set(allRows.map(r=>r.n)).size;
+  $("statRows").textContent = allRows.length;
+  state.period = defaultPeriod(state.cat);
+  renderTabs();
+  bindEvents();
+  renderPeriods();
+  render();
+}
+function renderTabs(){
+  $("tabs").innerHTML = CATS.map(c=>`<div class="tab ${c===state.cat?'on':''}" data-cat="${c}">
+    <span class="t-name">${c}</span><span class="t-num">${new Set(DATA.rows[c].map(r=>r.n)).size} 款</span></div>`).join("");
+  $("tabs").querySelectorAll(".tab").forEach(el=>el.onclick=()=>{
+    state.cat = el.dataset.cat; state.period=defaultPeriod(state.cat); state.kw=""; $("kw").value=""; $("clr").classList.remove("show");
+    state.open.clear(); renderTabs(); renderPeriods(); render();
+  });
+}
+function periodOrder(p){
+  if(p==="趸交") return 0;
+  const m = String(p).match(/^(\d+)/);
+  if(m){ const n=+m[1]; return n<10?n:n+20; }
+  return 999;
+}
+function renderPeriods(){
+  const ps = [...new Set(DATA.rows[state.cat].map(r=>r.p))].sort((a,b)=>periodOrder(a)-periodOrder(b));
+  $("periods").innerHTML = ["全部",...ps].map(p=>`<div class="chip ${p===state.period?'on':''}" data-p="${p}">${p}</div>`).join("");
+  $("periods").querySelectorAll(".chip").forEach(el=>el.onclick=()=>{
+    state.period = el.dataset.p; renderPeriods(); render();
+  });
+}
+function bindEvents(){
+  const kw=$("kw");
+  kw.addEventListener("input",()=>{ state.kw=kw.value.trim(); $("clr").classList.toggle("show",!!kw.value); render(); });
+  $("clr").onclick=()=>{ kw.value=""; state.kw=""; $("clr").classList.remove("show"); render(); };
+  $("sortBtn").onclick=()=>{ state.sortDesc=!state.sortDesc; $("sortBtn").classList.toggle("on",state.sortDesc);
+    $("sortBtn").textContent=state.sortDesc?"佣金↓":"佣金↑"; render(); };
+  document.querySelectorAll(".viewtoggle button").forEach(b=>b.onclick=()=>{
+    state.view=b.dataset.view;
+    document.querySelectorAll(".viewtoggle button").forEach(x=>x.classList.toggle("on",x===b));
+    render();
+  });
+}
+function filtered(){
+  let rows = DATA.rows[state.cat];
+  if(state.period!=="全部") rows = rows.filter(r=>r.p===state.period);
+  if(state.kw){ const k=state.kw.toLowerCase(); rows = rows.filter(r=>r.n.toLowerCase().includes(k)||r.co.toLowerCase().includes(k)); }
+  return rows;
+}
+function groupByProduct(rows){
+  const map=new Map();
+  rows.forEach(r=>{ if(!map.has(r.n)) map.set(r.n,[]); map.get(r.n).push(r); });
+  return [...map.entries()];
+}
+function rankMap(rows){
+  // 按当期首年佣金排名（用于大表序号）
+  const m=new Map();
+  const sorted=[...rows].sort((a,b)=>(isNum(b.c[0].v)?b.c[0].v:-1)-(isNum(a.c[0].v)?a.c[0].v:-1));
+  sorted.forEach((r,i)=>m.set(r,i+1));
+  return m;
+}
+function render(){
+  const rows = filtered();
+  const groups = groupByProduct(rows);
+  $("cnt").textContent = groups.length;
+  $("cntRows").textContent = rows.length;
+  if(!rows.length){
+    $("list").innerHTML=`<div class="empty"><div class="big">🔍</div>没有匹配的费率<br>换个关键词或缴费期试试</div>`;
+    $("bigWrap").style.display="none"; $("list").style.display="block"; return;
+  }
+  if(state.view==="card") renderCards(rows,groups);
+  else renderTable(rows);
+}
+function cmpCell(c,label){
+  const v=c.v, red=c.red;
+  const cls = isNum(v) ? (red?"red":"") : "dash";
+  return `<div class="cmp-cell ${cls}"><div class="k">${label}</div><div class="v ${isNum(v)?'':'dash'}">${pct(v)}</div></div>`;
+}
+function renderCards(rows,groups){
+  $("bigWrap").style.display="none"; $("list").style.display="flex";
+  const allByProduct={};
+  DATA.rows[state.cat].forEach(r=>{ (allByProduct[r.n]=allByProduct[r.n]||[]).push(r); });
+  let items = groups.map(([name,rs])=>{
+    const first = rs.slice().sort((a,b)=>periodOrder(a.p)-periodOrder(b.p));
+    const display = rs;
+    const co = display[0].co;
+    const color = CO_COLOR[co]||"#445f9c";
+    const det = allByProduct[name].slice().sort((a,b)=>periodOrder(a.p)-periodOrder(b.p));
+    const detailRows = det.map(r=>`<tr>
+      <td>${r.p}</td>${r.c.slice(0,5).map(c=>`<td class="${isNum(c.v)?(c.red?'r':''):'dash'}">${pct(c.v)}</td>`).join("")}
+      <td class="perf-col ${r.c[5].red?'r':''}">${pct(r.c[5].v)}</td></tr>`).join("");
+    const cards = display.map(r=>`<div class="cmp">
+      ${r.c.slice(0,5).map((c,i)=>cmpCell(c,"第"+"一二三四五"[i]+"年")).join("")}
+      ${cmpCell(r.c[5],"业绩")}
+    </div>`).join("");
+    const isOpen = state.open.has(name);
+    const sortVal = isNum(display[0].c[0].v) ? display[0].c[0].v : -1;
+    const html = `<div class="pcard ${isOpen?'open':''}" data-name="${escapeAttr(name)}">
+      <div class="head">
+        <div class="co-badge" style="background:${color}">${co.slice(0,2)}</div>
+        <div class="meta"><div class="pname">${name}</div>
+          <div class="psub">${display.length>1?'多期费率 · 点击展开全部':display[0].p+' 缴费'} · 首年佣金 ${pct(display[0].c[0].v)}</div></div>
+        <div class="arrow">▾</div>
+      </div>
+      ${cards}
+      <div class="detail"><div class="scroll-x"><table class="dtable">
+        <thead><tr><th>缴费期</th><th>第1年</th><th>第2年</th><th>第3年</th><th>第4年</th><th>第5年</th><th>业绩比例</th></tr></thead>
+        <tbody>${detailRows}</tbody></table></div></div>
+    </div>`;
+    return { html, sortVal };
+  });
+  items.sort((a,b)=> state.sortDesc ? b.sortVal-a.sortVal : a.sortVal-b.sortVal);
+  $("list").innerHTML = items.map(x=>x.html).join("");
+  $("list").querySelectorAll(".pcard .head").forEach(h=>h.onclick=()=>{
+    const name=h.parentElement.dataset.name;
+    if(state.open.has(name)) state.open.delete(name); else state.open.add(name);
+    h.parentElement.classList.toggle("open");
+  });
+}
+function renderTable(rows){
+  $("list").style.display="none"; $("bigWrap").style.display="block";
+  const ranks = rankMap(rows);
+  const body = rows.map(r=>{
+    const rank = ranks.get(r);
+    const rc = r.c.slice(0,5).map(c=>`<td class="${isNum(c.v)?(c.red?'r':''):'dash'}">${pct(c.v)}</td>`).join("");
+    return `<tr><td><span class="rank ${rank<=3?'top':''}">${rank}</span>${r.co}<small>${shortName(r.n)}</small></td>
+      <td>${r.p}</td>${rc}<td class="perf-col ${r.c[5].red?'r':''}">${pct(r.c[5].v)}</td></tr>`;
+  }).join("");
+  $("bigWrap").innerHTML = `<table class="bigtable"><thead><tr>
+    <th>公司 / 产品</th><th>缴费期</th><th>第1年</th><th>第2年</th><th>第3年</th><th>第4年</th><th>第5年</th><th>业绩比例</th>
+    </tr></thead><tbody>${body}</tbody></table>`;
+}
+function escapeAttr(s){ return String(s).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;"); }
+init();
+</script>
+</body>
+</html>
