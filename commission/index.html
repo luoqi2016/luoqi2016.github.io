@@ -225,12 +225,9 @@ const CO_COLOR = {
   "恒安标准":"#7a5aa6","同方全球":"#b3732b","陆家嘴国泰":"#31698f","复星保德信":"#a94f7c",
   "长城":"#4a6b3a","光大永明":"#8a6b2f","阳光人寿":"#c2691e","华泰人寿":"#33628f","瑞泰":"#5c6099"
 };
-const state = { cat:"养老金", kw:"", period:"5年", view:"card", sortDesc:true, open:new Set() };
+const state = { cat:"养老金", kw:"", period:"全部", view:"card", sortDesc:true, open:new Set() };
 function defaultPeriod(cat){
-  const ps=[...new Set(DATA.rows[cat].map(r=>r.p))];
-  if(ps.includes("5年")) return "5年";
-  const nonSingle=ps.filter(p=>p!=="趸交");
-  return nonSingle.length?nonSingle[0]:"全部";
+  return "全部";
 }
 const $ = id => document.getElementById(id);
 const pct = v => (typeof v === "number" ? (+(v*100).toFixed(2)) + "%" : (v === 0 ? "0%" : "—"));
@@ -272,7 +269,9 @@ function renderPeriods(){
 }
 function bindEvents(){
   const kw=$("kw");
-  kw.addEventListener("input",()=>{ state.kw=kw.value.trim(); $("clr").classList.toggle("show",!!kw.value); render(); });
+  kw.addEventListener("input",()=>{ state.kw=kw.value.trim(); $("clr").classList.toggle("show",!!kw.value);
+    if(state.kw && state.period!=="全部"){ state.period="全部"; renderPeriods(); }
+    render(); });
   $("clr").onclick=()=>{ kw.value=""; state.kw=""; $("clr").classList.remove("show"); render(); };
   $("sortBtn").onclick=()=>{ state.sortDesc=!state.sortDesc; $("sortBtn").classList.toggle("on",state.sortDesc);
     $("sortBtn").textContent=state.sortDesc?"佣金↓":"佣金↑"; render(); };
