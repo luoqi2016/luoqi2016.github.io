@@ -3,6 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>/* 刷新回到顶部：关闭浏览器滚动位置恢复；若本次是刷新则清掉地址栏锚点 */
+(function(){try{
+  if('scrollRestoration' in history) history.scrollRestoration='manual';
+  var t=0, es=performance.getEntriesByType&&performance.getEntriesByType('navigation');
+  if(es&&es.length&&es[0].type){ t = es[0].type==='reload' ? 1 : 0; }
+  else if(performance.navigation){ t = performance.navigation.type; }
+  window.__isReload = (t===1);
+  if(window.__isReload && location.hash){
+    history.replaceState(null,'',location.pathname+location.search);
+  }
+}catch(e){}})();</script>
 <title>罗其 · 保司增值服务全景</title>
 <meta name="description" content="各保险公司介绍与增值服务全景：健康绿通、康养养老、旅居、贵宾权益、医疗险服务矩阵，一页读懂保单之外的价值。支持一键下载保司介绍海报与增值服务手册摘要。">
 <style>
@@ -1329,7 +1340,28 @@ function openFromHash(){
   setTimeout(function(){ sec.scrollIntoView({behavior:'smooth',block:'start'}); }, 120);
 }
 window.addEventListener('hashchange', openFromHash);
-window.addEventListener('load', function(){ if(location.hash) setTimeout(openFromHash, 60); });
+window.addEventListener('load', function(){
+  /* 刷新：一律回到最顶部，不按锚点跳转 */
+  if(window.__isReload){
+    if(location.hash){ try{history.replaceState(null,'',location.pathname+location.search);}catch(e){} }
+    window.scrollTo(0,0);
+    setTimeout(function(){ window.scrollTo(0,0); }, 80);
+    return;
+  }
+  var h=(location.hash||'').replace('#','');
+  if(!h) return;
+  /* 同一标签页已跳过一次该锚点（刷新兜底，兼容不返回 navigation type 的浏览器） */
+  var seen=false;
+  try{ seen=!!sessionStorage.getItem('hs:'+h); }catch(e){}
+  if(seen){
+    try{ history.replaceState(null,'',location.pathname+location.search); }catch(e){}
+    window.scrollTo(0,0);
+    setTimeout(function(){ window.scrollTo(0,0); }, 80);
+    return;
+  }
+  try{ sessionStorage.setItem('hs:'+h,'1'); }catch(e){}
+  setTimeout(openFromHash, 60);
+});
 document.getElementById('expandAll').addEventListener('click',()=>{
   const anyOpen=document.querySelector('.insurer.open');
   setAll(!anyOpen);
