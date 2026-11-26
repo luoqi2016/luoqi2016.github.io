@@ -253,15 +253,21 @@ function renderTabs(){
     state.open.clear(); renderTabs(); renderPeriods(); render();
   });
 }
+const PERIOD_ALIAS = {"3-4年":"4年","5-9年":"7年"};
+const PERIOD_HIDE = ["10-14年","20-99年"];
+function periodLabel(p){ return PERIOD_ALIAS[p] || p; }
 function periodOrder(p){
-  if(p==="趸交") return 0;
-  const m = String(p).match(/^(\d+)/);
-  if(m) return +m[1]*10 + (String(p).includes("-")?1:0);
+  const s = periodLabel(p);
+  if(s==="趸交") return 0;
+  const m = String(s).match(/^(\d+)/);
+  if(m) return +m[1]*10 + (String(s).includes("-")?1:0);
   return 9990;
 }
 function renderPeriods(){
-  const ps = [...new Set(DATA.rows[state.cat].map(r=>r.p))].sort((a,b)=>periodOrder(a)-periodOrder(b));
-  $("periods").innerHTML = ["全部",...ps].map(p=>`<div class="chip ${p===state.period?'on':''}" data-p="${p}">${p}</div>`).join("");
+  const ps = [...new Set(DATA.rows[state.cat].map(r=>r.p))]
+    .filter(p=>!PERIOD_HIDE.includes(p))
+    .sort((a,b)=>periodOrder(a)-periodOrder(b));
+  $("periods").innerHTML = ["全部",...ps].map(p=>`<div class="chip ${p===state.period?'on':''}" data-p="${p}">${periodLabel(p)}</div>`).join("");
   $("periods").querySelectorAll(".chip").forEach(el=>el.onclick=()=>{
     state.period = el.dataset.p; renderPeriods(); render();
   });
@@ -326,7 +332,7 @@ function renderCards(rows,groups){
     const color = CO_COLOR[co]||"#445f9c";
     const det = allByProduct[name].slice().sort((a,b)=>periodOrder(a.p)-periodOrder(b.p));
     const detailRows = det.map(r=>`<tr>
-      <td>${r.p}</td>${r.c.slice(0,5).map(c=>`<td class="${isNum(c.v)?(c.red?'r':''):'dash'}">${pct(c.v)}</td>`).join("")}
+      <td>${periodLabel(r.p)}</td>${r.c.slice(0,5).map(c=>`<td class="${isNum(c.v)?(c.red?'r':''):'dash'}">${pct(c.v)}</td>`).join("")}
       <td class="perf-col ${r.c[5].red?'r':''}">${pct(r.c[5].v)}</td></tr>`).join("");
     const cards = display.map(r=>`<div class="cmp">
       ${r.c.slice(0,5).map((c,i)=>cmpCell(c,"第"+"一二三四五"[i]+"年")).join("")}
@@ -338,7 +344,7 @@ function renderCards(rows,groups){
       <div class="head">
         <div class="co-badge" style="background:${color}">${co.slice(0,2)}</div>
         <div class="meta"><div class="pname">${name}</div>
-          <div class="psub">${display.length>1?'多期费率 · 点击展开全部':display[0].p+' 缴费'} · 首年佣金 ${pct(display[0].c[0].v)}</div></div>
+          <div class="psub">${display.length>1?'多期费率 · 点击展开全部':periodLabel(display[0].p)+' 缴费'} · 首年佣金 ${pct(display[0].c[0].v)}</div></div>
         <div class="arrow">▾</div>
       </div>
       ${cards}
@@ -363,7 +369,7 @@ function renderTable(rows){
     const rank = ranks.get(r);
     const rc = r.c.slice(0,5).map(c=>`<td class="${isNum(c.v)?(c.red?'r':''):'dash'}">${pct(c.v)}</td>`).join("");
     return `<tr><td><span class="rank ${rank<=3?'top':''}">${rank}</span>${r.co}<small>${shortName(r.n)}</small></td>
-      <td>${r.p}</td>${rc}<td class="perf-col ${r.c[5].red?'r':''}">${pct(r.c[5].v)}</td></tr>`;
+      <td>${periodLabel(r.p)}</td>${rc}<td class="perf-col ${r.c[5].red?'r':''}">${pct(r.c[5].v)}</td></tr>`;
   }).join("");
   $("bigWrap").innerHTML = `<table class="bigtable"><thead><tr>
     <th>公司 / 产品</th><th>缴费期</th><th>第1年</th><th>第2年</th><th>第3年</th><th>第4年</th><th>第5年</th><th>业绩比例</th>
